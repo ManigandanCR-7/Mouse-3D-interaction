@@ -1,35 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gooey Effect</title>
-  <!-- Link to the external CSS file -->
-  <link rel="stylesheet" href="css/3D.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Pink Dots Grid</title>
+    <style>
+        body {
+            background-color: #000000; /* Black background */
+            margin: 0;
+            overflow-x: hidden; /* Hide horizontal scrollbar */
+            overflow-y: auto; /* Enable vertical scrollbar */
+            font-family: Arial, sans-serif;
+        }
+
+        .content {
+            width: 7680px; /* Set width to 7680px */
+            height: 3072px; /* Set height to 3072px */
+            position: relative; /* Make it a positioning context */
+        }
+
+        .water-drop {
+            position: absolute;
+            width: 60px; /* Width of the water drop */
+            height: 60px; /* Height of the water drop */
+            background: rgba(0, 191, 255, 0.7); /* Light blue color */
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(0, 191, 255, 0.5); /* Glow effect */
+            transform: scale(1);
+            pointer-events: none; /* Make sure it doesn’t block mouse events */
+            transition: transform 0.1s ease; /* Smooth scale transition */
+        }
+
+        .water-drop.magnify {
+            transform: scale(1.5); /* Increase size on hover */
+        }
+
+        /* Custom scrollbar */
+        body::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        body::-webkit-scrollbar-track {
+            background: rgba(0, 191, 255, 0.2); /* Light blue with transparency */
+            border-radius: 6px;
+        }
+
+        body::-webkit-scrollbar-thumb {
+            background: rgba(0, 191, 255, 0.5); /* Light blue with transparency */
+            border-radius: 6px;
+        }
+
+        body::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 191, 255, 0.8); /* Brighter blue on hover */
+        }
+
+        /* Shining effect on scrollbar */
+        @keyframes shine {
+            0% {
+                background: rgba(0, 191, 255, 0.5);
+            }
+            50% {
+                background: rgba(0, 191, 255, 1);
+            }
+            100% {
+                background: rgba(0, 191, 255, 0.5);
+            }
+        }
+
+        body::-webkit-scrollbar-thumb:active {
+            animation: shine 1s infinite;
+        }
+
+        /* Glassy fixed rectangle removed */
+        /* Navigation bar removed */
+        
+        audio {
+            display: none; /* Hide audio controls */
+        }
+    </style>
 </head>
 <body>
-  <div class="box">
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-  </div>
+    <div class="content">
+        <canvas id="dotsCanvas"></canvas>
+        <div class="water-drop"></div>
+    </div>
+    <audio id="background-music" autoplay loop>
+        <source src="path-to-your-pink-panther-music.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
 
+    <script>
+        const canvas = document.getElementById('dotsCanvas');
+        const ctx = canvas.getContext('2d');
+        const dotSize = 10;
+        const spacing = 30; // Increase spacing for better performance
+        const distanceThreshold = 100;
+        let dots = [];
+        let animationFrameId;
 
-  
-  <!-- SVG Filters -->
-  <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
-    <defs>
-      <filter id="filter-name">
-        <feGaussianBlur in="SourceGraphic" stdDeviation="15" result="my-blur" />
-        <feColorMatrix in="my-blur" mode="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 20 -8" result="my-gooey" />
-      </filter>
-    </defs>
-  </svg>
+        function resizeCanvas() {
+            canvas.width = document.querySelector('.content').scrollWidth;
+            canvas.height = document.querySelector('.content').scrollHeight;
+            createDots();
+        }
 
-  <!-- Link to the external JavaScript file -->
-  <script src="js/3D.js"></script>
+        function createDots() {
+            dots = [];
+            const numCols = Math.ceil(canvas.width / (dotSize + spacing));
+            const numRows = Math.ceil(canvas.height / (dotSize + spacing));
+            
+            for (let row = 0; row < numRows; row++) {
+                for (let col = 0; col < numCols; col++) {
+                    dots.push({
+                        x: col * (dotSize + spacing),
+                        y: row * (dotSize + spacing),
+                        opacity: 1,
+                        targetX: col * (dotSize + spacing),
+                        targetY: row * (dotSize + spacing)
+                    });
+                }
+            }
+        }
+
+        function drawDots() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            dots.forEach(dot => {
+                ctx.globalAlpha = dot.opacity;
+                ctx.fillStyle = '#FF69B4';
+                ctx.beginPath();
+                ctx.arc(dot.x, dot.y, dotSize / 2, 0, Math.PI * 2);
+                ctx.fill();
+            });
+            ctx.globalAlpha = 1; // Reset alpha
+        }
+
+        function updateDots() {
+            dots.forEach(dot => {
+                dot.x += (dot.targetX - dot.x) * 0.1;
+                dot.y += (dot.targetY - dot.y) * 0.1;
+            });
+            drawDots();
+            animationFrameId = requestAnimationFrame(updateDots);
+        }
+
+        function handleMouseMove(event) {
+            const mouseX = event.pageX;
+            const mouseY = event.pageY;
+            const waterDrop = document.querySelector('.water-drop');
+
+            waterDrop.style.left = `${mouseX - waterDrop.offsetWidth / 2}px`;
+            waterDrop.style.top = `${mouseY - waterDrop.offsetHeight / 2}px`;
+
+            dots.forEach(dot => {
+                const dx = mouseX - dot.x;
+                const dy = mouseY - dot.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+
+                if (distance < distanceThreshold) {
+                    dot.opacity = Math.max(0, 1 - distance / distanceThreshold);
+                    dot.targetX = mouseX + Math.cos(Math.atan2(dy, dx)) * distanceThreshold * 0.5;
+                    dot.targetY = mouseY + Math.sin(Math.atan2(dy, dx)) * distanceThreshold * 0.5;
+                } else {
+                    dot.opacity = Math.min(1, dot.opacity + 0.05);
+                    dot.targetX = dot.x;
+                    dot.targetY = dot.y;
+                }
+            });
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+        document.addEventListener('mousemove', handleMouseMove);
+        resizeCanvas();
+        updateDots();
+    </script>
 </body>
 </html>
