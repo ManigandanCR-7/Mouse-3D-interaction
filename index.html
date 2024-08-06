@@ -21,16 +21,17 @@
 
         .fixed-rectangle {
             position: fixed;
-            top: 180px; /* Adjust this value based on the height of your rows */
+            top: 180px; /* Starts at the top of row 6 */
             left: 50%;
             transform: translateX(-50%);
             width: 1002px;
-            height: 600px; /* Adjust this value to cover rows 6 to 18 */
+            height: 360px; /* Height covering rows 6 to 18 */
             background: rgba(255, 255, 255, 0.2); /* Transparent white */
             backdrop-filter: blur(10px);
             border-radius: 35px;
             box-shadow: 0 0 20px rgba(0, 191, 255, 0.5); /* Glow effect */
             pointer-events: none; /* Make sure it doesn’t block mouse events */
+            z-index: 1; /* Ensure it is above the dots */
         }
 
         .water-drop {
