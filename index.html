@@ -291,20 +291,17 @@
         .contact input, .contact textarea, .contact button {
             width: 100%;
             padding: 15px;
-            margin: 10px 0;
-            border: none;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
             border-radius: 5px;
-        }
-
-        .contact input, .contact textarea {
-            background: rgba(255, 255, 255, 0.2); /* Transparent background */
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-sizing: border-box;
+            font-size: 1em;
         }
 
         .contact button {
             background: linear-gradient(45deg, #ff69b4, #ff1493);
             color: white;
+            border: none;
             cursor: pointer;
             transition: background 0.3s ease, transform 0.3s ease;
         }
@@ -316,77 +313,40 @@
 
         /* Footer */
         footer {
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: #111;
             color: white;
             text-align: center;
             padding: 20px;
-            position: relative;
-            bottom: 0;
+        }
+
+        .dot-container {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            backdrop-filter: blur(15px); /* Glassy effect */
-        }
-
-        footer p {
-            margin: 0;
-        }
-
-        footer a {
-            color: #ff69b4;
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        /* Slider Animation */
-        @keyframes slide {
-            0% { transform: translateX(0); }
-            25% { transform: translateX(-100%); }
-            50% { transform: translateX(-200%); }
-            75% { transform: translateX(-300%); }
-            100% { transform: translateX(-400%); }
-        }
-
-        /* Slider Container */
-        .slider {
-            position: relative;
+            height: 100%;
             overflow: hidden;
-            width: 100%;
-            height: 600px;
-            border-radius: 15px;
-            background: rgba(255, 255, 255, 0.1); /* Transparent background */
-            border: 1px solid rgba(255, 105, 180, 0.3); /* Transparent border */
-            backdrop-filter: blur(15px); /* Glassy effect */
-            margin: 0 auto;
+            pointer-events: none;
+            z-index: 0;
         }
 
-        .slides {
-            display: flex;
-            width: 500%;
-            height: 100%;
-            animation: slide 20s infinite linear;
-        }
-
-        .slide {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            box-sizing: border-box;
+        .dot {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: pink;
+            border-radius: 50%;
+            pointer-events: none;
+            transition: transform 0.3s ease-out, opacity 0.3s ease-out;
         }
     </style>
 </head>
 <body>
+    <!-- Header -->
     <header>
         <div class="header-content">
-            <h1>SaaS Company</h1>
+            <h1>Nilofer 3D SaaS</h1>
             <nav class="nav-links">
-                <a href="#home">Home</a>
                 <a href="#features">Features</a>
                 <a href="#pricing">Pricing</a>
                 <a href="#testimonials">Testimonials</a>
@@ -395,96 +355,115 @@
         </div>
     </header>
 
+    <!-- Hero Section -->
     <section class="hero">
-        <h1>Welcome to SaaS Company</h1>
-        <p>Your ultimate solution for [Service/Feature].</p>
+        <h1>Experience the Future of 3D SaaS</h1>
+        <p>Creating Interactive 3D Experiences for Web Design Agencies</p>
         <a href="#contact" class="cta-button">Get Started</a>
     </section>
 
+    <!-- Main container -->
     <div class="main-container">
-        <div class="slider">
-            <div class="slides">
-                <div class="slide" style="background: url('slide1.jpg') no-repeat center center/cover;">Slide 1</div>
-                <div class="slide" style="background: url('slide2.jpg') no-repeat center center/cover;">Slide 2</div>
-                <div class="slide" style="background: url('slide3.jpg') no-repeat center center/cover;">Slide 3</div>
-                <div class="slide" style="background: url('slide4.jpg') no-repeat center center/cover;">Slide 4</div>
-                <div class="slide" style="background: url('slide5.jpg') no-repeat center center/cover;">Slide 5</div>
-            </div>
-        </div>
-
+        <!-- Features Section -->
         <section id="features" class="features">
             <h2>Features</h2>
             <div class="feature-item">
                 <img src="feature1.png" alt="Feature 1">
-                <h3>Feature 1</h3>
-                <p>Description of feature 1.</p>
+                <h3>Interactive 3D Models</h3>
+                <p>Create stunning 3D models that engage and captivate your audience.</p>
             </div>
             <div class="feature-item">
                 <img src="feature2.png" alt="Feature 2">
-                <h3>Feature 2</h3>
-                <p>Description of feature 2.</p>
+                <h3>Seamless Integration</h3>
+                <p>Integrate 3D models effortlessly into your existing websites and applications.</p>
             </div>
             <div class="feature-item">
                 <img src="feature3.png" alt="Feature 3">
-                <h3>Feature 3</h3>
-                <p>Description of feature 3.</p>
+                <h3>Customizable Designs</h3>
+                <p>Personalize your 3D models to match your brand and style.</p>
             </div>
         </section>
 
+        <!-- Pricing Section -->
         <section id="pricing" class="pricing">
-            <h2>Pricing Plans</h2>
+            <h2>Pricing</h2>
             <div class="pricing-table">
                 <div class="pricing-item">
-                    <h3>Basic Plan</h3>
-                    <div class="price">$10/month</div>
-                    <p>Features of Basic Plan.</p>
-                    <a href="#" class="cta-button">Choose Plan</a>
+                    <h3>Basic</h3>
+                    <p class="price">$19/month</p>
+                    <a href="#" class="cta-button">Sign Up</a>
                 </div>
                 <div class="pricing-item">
-                    <h3>Pro Plan</h3>
-                    <div class="price">$25/month</div>
-                    <p>Features of Pro Plan.</p>
-                    <a href="#" class="cta-button">Choose Plan</a>
+                    <h3>Standard</h3>
+                    <p class="price">$49/month</p>
+                    <a href="#" class="cta-button">Sign Up</a>
                 </div>
                 <div class="pricing-item">
-                    <h3>Enterprise Plan</h3>
-                    <div class="price">$50/month</div>
-                    <p>Features of Enterprise Plan.</p>
-                    <a href="#" class="cta-button">Choose Plan</a>
+                    <h3>Premium</h3>
+                    <p class="price">$99/month</p>
+                    <a href="#" class="cta-button">Sign Up</a>
                 </div>
             </div>
         </section>
 
+        <!-- Testimonials Section -->
         <section id="testimonials" class="testimonials">
-            <h2>What Our Clients Say</h2>
+            <h2>Testimonials</h2>
             <div class="testimonial-item">
-                <p>"This SaaS solution has transformed our business!"</p>
-                <cite>- Client 1</cite>
+                <p>"Nilofer 3D SaaS has transformed our web design projects. The interactive 3D models are a game-changer."</p>
+                <cite>- Jane Doe, Web Designer</cite>
             </div>
             <div class="testimonial-item">
-                <p>"An incredible tool with fantastic support."</p>
-                <cite>- Client 2</cite>
-            </div>
-            <div class="testimonial-item">
-                <p>"A must-have for any business looking to streamline operations."</p>
-                <cite>- Client 3</cite>
+                <p>"Our clients love the engaging 3D experiences we can now offer thanks to Nilofer 3D SaaS."</p>
+                <cite>- John Smith, Creative Director</cite>
             </div>
         </section>
 
+        <!-- Contact Section -->
         <section id="contact" class="contact">
             <h2>Contact Us</h2>
             <form>
-                <input type="text" placeholder="Your Name" required>
-                <input type="email" placeholder="Your Email" required>
-                <textarea rows="4" placeholder="Your Message" required></textarea>
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" required></textarea>
                 <button type="submit">Send Message</button>
             </form>
         </section>
     </div>
 
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2024 SaaS Company. All rights reserved.</p>
-        <p><a href="#home">Back to Top</a></p>
+        <p>&copy; 2024 Nilofer 3D SaaS. All rights reserved.</p>
     </footer>
+
+    <!-- Dots Animation Container -->
+    <div class="dot-container"></div>
+
+    <script>
+        // Dots animation script
+        const dotContainer = document.querySelector('.dot-container');
+        const numberOfDots = 100;
+        const dots = [];
+
+        for (let i = 0; i < numberOfDots; i++) {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            dotContainer.appendChild(dot);
+            dots.push(dot);
+        }
+
+        document.addEventListener('mousemove', (event) => {
+            const mouseX = event.clientX;
+            const mouseY = event.clientY;
+
+            dots.forEach((dot, index) => {
+                const delay = index * 0.02;
+                setTimeout(() => {
+                    dot.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+                    dot.style.opacity = 1 - (index / numberOfDots);
+                }, delay * 1000);
+            });
+        });
+    </script>
 </body>
 </html>
