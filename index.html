@@ -298,8 +298,7 @@
 
         .contact input, .contact textarea {
             background: rgba(255, 255, 255, 0.2); /* Transparent background */
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #fff;
         }
 
         .contact button {
@@ -320,73 +319,19 @@
             color: white;
             text-align: center;
             padding: 20px;
-            position: relative;
+            position: fixed;
             bottom: 0;
             width: 100%;
+            z-index: 1000;
             backdrop-filter: blur(15px); /* Glassy effect */
-        }
-
-        footer p {
-            margin: 0;
-        }
-
-        footer a {
-            color: #ff69b4;
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        /* Slider Animation */
-        @keyframes slide {
-            0% { transform: translateX(0); }
-            25% { transform: translateX(-100%); }
-            50% { transform: translateX(-200%); }
-            75% { transform: translateX(-300%); }
-            100% { transform: translateX(-400%); }
-        }
-
-        /* Slider Container */
-        .slider {
-            position: relative;
-            overflow: hidden;
-            width: 100%;
-            height: 600px;
-            border-radius: 15px;
-            background: rgba(255, 255, 255, 0.1); /* Transparent background */
-            border: 1px solid rgba(255, 105, 180, 0.3); /* Transparent border */
-            backdrop-filter: blur(15px); /* Glassy effect */
-            margin: 0 auto;
-        }
-
-        .slides {
-            display: flex;
-            width: 500%;
-            height: 100%;
-            animation: slide 20s infinite linear;
-        }
-
-        .slide {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            box-sizing: border-box;
         }
     </style>
 </head>
 <body>
     <header>
         <div class="header-content">
-            <h1>SaaS Company</h1>
+            <h1>Here's Your Website 3D Mouse Interaction Program Installed</h1>
             <nav class="nav-links">
-                <a href="#home">Home</a>
                 <a href="#features">Features</a>
                 <a href="#pricing">Pricing</a>
                 <a href="#testimonials">Testimonials</a>
@@ -396,95 +341,111 @@
     </header>
 
     <section class="hero">
-        <h1>Welcome to SaaS Company</h1>
-        <p>Your ultimate solution for [Service/Feature].</p>
-        <a href="#contact" class="cta-button">Get Started</a>
+        <h1>Experience the Future of SaaS</h1>
+        <p>Innovative 3D interactions and cutting-edge design</p>
+        <a href="#features" class="cta-button">Learn More</a>
     </section>
 
     <div class="main-container">
+        <!-- Slider -->
         <div class="slider">
             <div class="slides">
-                <div class="slide" style="background: url('slide1.jpg') no-repeat center center/cover;">Slide 1</div>
-                <div class="slide" style="background: url('slide2.jpg') no-repeat center center/cover;">Slide 2</div>
-                <div class="slide" style="background: url('slide3.jpg') no-repeat center center/cover;">Slide 3</div>
-                <div class="slide" style="background: url('slide4.jpg') no-repeat center center/cover;">Slide 4</div>
-                <div class="slide" style="background: url('slide5.jpg') no-repeat center center/cover;">Slide 5</div>
+                <div class="slide">Slide 1</div>
+                <div class="slide">Slide 2</div>
+                <div class="slide">Slide 3</div>
             </div>
         </div>
 
+        <!-- Features Section -->
         <section id="features" class="features">
             <h2>Features</h2>
             <div class="feature-item">
                 <img src="feature1.png" alt="Feature 1">
-                <h3>Feature 1</h3>
-                <p>Description of feature 1.</p>
+                <h3>Interactive 3D</h3>
+                <p>Engage your users with stunning 3D interactions.</p>
             </div>
             <div class="feature-item">
                 <img src="feature2.png" alt="Feature 2">
-                <h3>Feature 2</h3>
-                <p>Description of feature 2.</p>
+                <h3>Seamless Integration</h3>
+                <p>Easy to integrate with your existing setup.</p>
             </div>
             <div class="feature-item">
                 <img src="feature3.png" alt="Feature 3">
-                <h3>Feature 3</h3>
-                <p>Description of feature 3.</p>
+                <h3>Customizable</h3>
+                <p>Fully customizable to match your brand.</p>
             </div>
         </section>
 
+        <!-- Pricing Section -->
         <section id="pricing" class="pricing">
-            <h2>Pricing Plans</h2>
+            <h2>Pricing</h2>
             <div class="pricing-table">
                 <div class="pricing-item">
-                    <h3>Basic Plan</h3>
-                    <div class="price">$10/month</div>
-                    <p>Features of Basic Plan.</p>
-                    <a href="#" class="cta-button">Choose Plan</a>
+                    <h3>Basic</h3>
+                    <div class="price">$19/month</div>
+                    <a href="#" class="cta-button">Get Started</a>
                 </div>
                 <div class="pricing-item">
-                    <h3>Pro Plan</h3>
-                    <div class="price">$25/month</div>
-                    <p>Features of Pro Plan.</p>
-                    <a href="#" class="cta-button">Choose Plan</a>
+                    <h3>Pro</h3>
+                    <div class="price">$49/month</div>
+                    <a href="#" class="cta-button">Get Started</a>
                 </div>
                 <div class="pricing-item">
-                    <h3>Enterprise Plan</h3>
-                    <div class="price">$50/month</div>
-                    <p>Features of Enterprise Plan.</p>
-                    <a href="#" class="cta-button">Choose Plan</a>
+                    <h3>Enterprise</h3>
+                    <div class="price">$99/month</div>
+                    <a href="#" class="cta-button">Get Started</a>
                 </div>
             </div>
         </section>
 
+        <!-- Testimonials Section -->
         <section id="testimonials" class="testimonials">
-            <h2>What Our Clients Say</h2>
+            <h2>Testimonials</h2>
             <div class="testimonial-item">
-                <p>"This SaaS solution has transformed our business!"</p>
-                <cite>- Client 1</cite>
+                <p>"This SaaS has transformed the way we interact with our users. Highly recommended!"</p>
+                <cite>- John Doe, CEO</cite>
             </div>
             <div class="testimonial-item">
-                <p>"An incredible tool with fantastic support."</p>
-                <cite>- Client 2</cite>
-            </div>
-            <div class="testimonial-item">
-                <p>"A must-have for any business looking to streamline operations."</p>
-                <cite>- Client 3</cite>
+                <p>"Amazing 3D interactions and seamless integration. Our users love it!"</p>
+                <cite>- Jane Smith, CTO</cite>
             </div>
         </section>
 
+        <!-- Contact Section -->
         <section id="contact" class="contact">
             <h2>Contact Us</h2>
             <form>
                 <input type="text" placeholder="Your Name" required>
                 <input type="email" placeholder="Your Email" required>
-                <textarea rows="4" placeholder="Your Message" required></textarea>
+                <textarea placeholder="Your Message" required></textarea>
                 <button type="submit">Send Message</button>
             </form>
         </section>
     </div>
 
     <footer>
-        <p>&copy; 2024 SaaS Company. All rights reserved.</p>
-        <p><a href="#home">Back to Top</a></p>
+        <p>&copy; 2024 Futuristic SaaS Company. All rights reserved.</p>
     </footer>
+
+    <script>
+        let slideIndex = 0;
+
+        function showSlides() {
+            const slides = document.querySelectorAll('.slide');
+            slides.forEach((slide, index) => {
+                slide.style.display = 'none';
+            });
+
+            slideIndex++;
+            if (slideIndex > slides.length) {
+                slideIndex = 1;
+            }
+
+            slides[slideIndex - 1].style.display = 'block';
+            setTimeout(showSlides, 3000); // Change slide every 3 seconds
+        }
+
+        showSlides();
+    </script>
 </body>
 </html>
