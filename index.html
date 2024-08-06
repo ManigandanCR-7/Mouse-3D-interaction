@@ -3,220 +3,337 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Pink Dots Grid</title>
+    <title>SaaS Homepage</title>
     <style>
         body {
-            background-color: #000000; /* Black background */
             margin: 0;
-            overflow-x: hidden; /* Hide horizontal scrollbar */
-            overflow-y: auto; /* Enable vertical scrollbar */
             font-family: Arial, sans-serif;
+            scroll-behavior: smooth;
         }
 
-        .content {
-            width: 7680px; /* Set width to 7680px */
-            height: 3072px; /* Set height to 3072px */
-            position: relative; /* Make it a positioning context */
-        }
-
-        .water-drop {
-            position: absolute;
-            width: 60px; /* Width of the water drop */
-            height: 60px; /* Height of the water drop */
-            background: rgba(0, 191, 255, 0.7); /* Light blue color */
-            border-radius: 50%;
-            box-shadow: 0 0 10px rgba(0, 191, 255, 0.5); /* Glow effect */
-            transform: scale(1);
-            pointer-events: none; /* Make sure it doesn’t block mouse events */
-            transition: transform 0.1s ease; /* Smooth scale transition */
-        }
-
-        .water-drop.magnify {
-            transform: scale(1.5); /* Increase size on hover */
-        }
-
-        /* Custom scrollbar */
-        body::-webkit-scrollbar {
-            width: 12px;
-        }
-
-        body::-webkit-scrollbar-track {
-            background: rgba(0, 191, 255, 0.2); /* Light blue with transparency */
-            border-radius: 6px;
-        }
-
-        body::-webkit-scrollbar-thumb {
-            background: rgba(0, 191, 255, 0.5); /* Light blue with transparency */
-            border-radius: 6px;
-        }
-
-        body::-webkit-scrollbar-thumb:hover {
-            background: rgba(0, 191, 255, 0.8); /* Brighter blue on hover */
-        }
-
-        /* Shining effect on scrollbar */
-        @keyframes shine {
-            0% {
-                background: rgba(0, 191, 255, 0.5);
-            }
-            50% {
-                background: rgba(0, 191, 255, 1);
-            }
-            100% {
-                background: rgba(0, 191, 255, 0.5);
-            }
-        }
-
-        body::-webkit-scrollbar-thumb:active {
-            animation: shine 1s infinite;
-        }
-
-        /* Glassy fixed rectangle */
-        .fixed-rectangle {
+        /* Header */
+        header {
+            background-color: #282c34;
+            color: white;
+            padding: 20px;
             position: fixed;
-            top: 320px; /* Adjust based on your requirement */
-            left: 0;
             width: 100%;
-            height: 2875px; /* Height of the rectangle */
-            background: rgba(255, 255, 255, 0.2); /* Glassy transparent effect */
-            backdrop-filter: blur(10px); /* Apply blur effect */
-            border-radius: 35px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); /* Optional: shadow effect */
-            z-index: 1000; /* Ensure it appears above other content */
-        }
-
-        .fixed-rectangle .inner-content {
-            position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
+            z-index: 1000;
+        }
+
+        .header-content {
             display: flex;
+            justify-content: space-between;
             align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header-content h1 {
+            margin: 0;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('hero-bg.jpg') no-repeat center center/cover;
+            color: white;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
             justify-content: center;
+            align-items: center;
+            text-align: center;
         }
 
-        /* Fixed image slide */
-        .fixed-image-slide {
-            position: fixed;
-            top: 20px; /* Adjust top position */
-            right: 20px; /* Adjust right position */
-            width: 300px; /* Adjust image width */
-            height: auto; /* Maintain aspect ratio */
-            border-radius: 15px; /* Optional: rounded corners */
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Optional: shadow effect */
-            overflow: hidden;
-            z-index: 1001; /* Ensure it appears above the rectangle */
+        .hero h1 {
+            font-size: 4em;
+            margin: 0;
         }
 
-        .fixed-image-slide img {
-            width: 100%; /* Make the image fill the container */
-            height: auto; /* Maintain aspect ratio */
+        .hero p {
+            font-size: 1.5em;
+            margin: 20px 0;
+        }
+
+        .hero .cta-button {
+            background-color: #61dafb;
+            color: #282c34;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            cursor: pointer;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .hero .cta-button:hover {
+            background-color: #21a1f1;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 60px 20px;
+            background-color: #f4f4f4;
+        }
+
+        .features h2 {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .feature-item {
+            text-align: center;
+            max-width: 300px;
+            margin: 20px auto;
+        }
+
+        .feature-item img {
+            width: 100px;
+            height: 100px;
+        }
+
+        .feature-item h3 {
+            margin: 20px 0 10px;
+        }
+
+        .feature-item p {
+            color: #555;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .pricing h2 {
+            margin-bottom: 40px;
+        }
+
+        .pricing-table {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .pricing-item {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 30px;
+            width: 300px;
+            margin: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .pricing-item h3 {
+            margin-top: 0;
+        }
+
+        .pricing-item .price {
+            font-size: 2em;
+            margin: 20px 0;
+        }
+
+        .pricing-item .cta-button {
+            background-color: #61dafb;
+            color: #282c34;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .pricing-item .cta-button:hover {
+            background-color: #21a1f1;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 60px 20px;
+            background-color: #f4f4f4;
+        }
+
+        .testimonials h2 {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .testimonial-item {
+            text-align: center;
+            max-width: 800px;
+            margin: 20px auto;
+        }
+
+        .testimonial-item p {
+            font-style: italic;
+            color: #555;
+        }
+
+        .testimonial-item cite {
             display: block;
+            margin-top: 10px;
+            color: #333;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .contact h2 {
+            margin-bottom: 40px;
+        }
+
+        .contact form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact input, .contact textarea {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .contact button {
+            background-color: #61dafb;
+            color: #282c34;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .contact button:hover {
+            background-color: #21a1f1;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #282c34;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer a {
+            color: #61dafb;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-    <div class="content">
-        <canvas id="dotsCanvas"></canvas>
-        <div class="water-drop"></div>
-        <div class="fixed-rectangle">
-            <div class="inner-content">
-                <!-- Add content here if needed -->
+    <header>
+        <div class="header-content">
+            <h1>SaaS Company</h1>
+            <nav class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#features">Features</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#testimonials">Testimonials</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <h1>Welcome to Our SaaS Solution</h1>
+        <p>Transform your business with our innovative software.</p>
+        <a href="#contact" class="cta-button">Get Started</a>
+    </section>
+
+    <section id="features" class="features">
+        <h2>Features</h2>
+        <div class="feature-item">
+            <img src="feature1.png" alt="Feature 1">
+            <h3>Feature One</h3>
+            <p>Discover the amazing capabilities of our first feature.</p>
+        </div>
+        <div class="feature-item">
+            <img src="feature2.png" alt="Feature 2">
+            <h3>Feature Two</h3>
+            <p>Experience the benefits of our second feature.</p>
+        </div>
+        <div class="feature-item">
+            <img src="feature3.png" alt="Feature 3">
+            <h3>Feature Three</h3>
+            <p>Utilize our third feature to enhance your productivity.</p>
+        </div>
+    </section>
+
+    <section id="pricing" class="pricing">
+        <h2>Pricing Plans</h2>
+        <div class="pricing-table">
+            <div class="pricing-item">
+                <h3>Basic Plan</h3>
+                <div class="price">$29/month</div>
+                <p>Great for individuals and small teams.</p>
+                <a href="#contact" class="cta-button">Sign Up</a>
+            </div>
+            <div class="pricing-item">
+                <h3>Pro Plan</h3>
+                <div class="price">$79/month</div>
+                <p>Advanced features for growing businesses.</p>
+                <a href="#contact" class="cta-button">Sign Up</a>
+            </div>
+            <div class="pricing-item">
+                <h3>Enterprise Plan</h3>
+                <div class="price">$149/month</div>
+                <p>Comprehensive solution for large organizations.</p>
+                <a href="#contact" class="cta-button">Sign Up</a>
             </div>
         </div>
-        <div class="fixed-image-slide">
-            <img src="path-to-your-image.jpg" alt="Sliding Image">
+    </section>
+
+    <section id="testimonials" class="testimonials">
+        <h2>What Our Clients Say</h2>
+        <div class="testimonial-item">
+            <p>"This SaaS solution has transformed the way we operate. It's intuitive and highly effective!"</p>
+            <cite>- John Doe, CEO of Company</cite>
         </div>
-    </div>
-    <audio id="background-music" autoplay loop>
-        <source src="path-to-your-pink-panther-music.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
+        <div class="testimonial-item">
+            <p>"We've seen a significant increase in productivity since we started using this software."</p>
+            <cite>- Jane Smith, CTO of TechCorp</cite>
+        </div>
+    </section>
 
-    <script>
-        const canvas = document.getElementById('dotsCanvas');
-        const ctx = canvas.getContext('2d');
-        const dotSize = 10;
-        const spacing = 30; // Increase spacing for better performance
-        const distanceThreshold = 100;
-        let dots = [];
-        let animationFrameId;
+    <section id="contact" class="contact">
+        <h2>Contact Us</h2>
+        <form>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea rows="4" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
 
-        function resizeCanvas() {
-            canvas.width = document.querySelector('.content').scrollWidth;
-            canvas.height = document.querySelector('.content').scrollHeight;
-            createDots();
-        }
-
-        function createDots() {
-            dots = [];
-            const numCols = Math.ceil(canvas.width / (dotSize + spacing));
-            const numRows = Math.ceil(canvas.height / (dotSize + spacing));
-            
-            for (let row = 0; row < numRows; row++) {
-                for (let col = 0; col < numCols; col++) {
-                    dots.push({
-                        x: col * (dotSize + spacing),
-                        y: row * (dotSize + spacing),
-                        opacity: 1,
-                        targetX: col * (dotSize + spacing),
-                        targetY: row * (dotSize + spacing)
-                    });
-                }
-            }
-        }
-
-        function drawDots() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            dots.forEach(dot => {
-                ctx.globalAlpha = dot.opacity;
-                ctx.fillStyle = '#FF69B4';
-                ctx.beginPath();
-                ctx.arc(dot.x, dot.y, dotSize / 2, 0, Math.PI * 2);
-                ctx.fill();
-            });
-            ctx.globalAlpha = 1; // Reset alpha
-        }
-
-        function updateDots() {
-            dots.forEach(dot => {
-                dot.x += (dot.targetX - dot.x) * 0.1;
-                dot.y += (dot.targetY - dot.y) * 0.1;
-            });
-            drawDots();
-            animationFrameId = requestAnimationFrame(updateDots);
-        }
-
-        function handleMouseMove(event) {
-            const mouseX = event.pageX;
-            const mouseY = event.pageY;
-            const waterDrop = document.querySelector('.water-drop');
-
-            waterDrop.style.left = `${mouseX - waterDrop.offsetWidth / 2}px`;
-            waterDrop.style.top = `${mouseY - waterDrop.offsetHeight / 2}px`;
-
-            dots.forEach(dot => {
-                const dx = mouseX - dot.x;
-                const dy = mouseY - dot.y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-
-                if (distance < distanceThreshold) {
-                    dot.opacity = Math.max(0, 1 - distance / distanceThreshold);
-                    dot.targetX = mouseX + Math.cos(Math.atan2(dy, dx)) * distanceThreshold * 0.5;
-                    dot.targetY = mouseY + Math.sin(Math.atan2(dy, dx)) * distanceThreshold * 0.5;
-                } else {
-                    dot.opacity = Math.min(1, dot.opacity + 0.05);
-                    dot.targetX = dot.x;
-                    dot.targetY = dot.y;
-                }
-            });
-        }
-
-        window.addEventListener('resize', resizeCanvas);
-        document.addEventListener('mousemove', handleMouseMove);
-        resizeCanvas();
-        updateDots();
-    </script>
+    <footer>
+        <p>&copy; 2024 SaaS Company. All rights reserved.</p>
+        <p><a href="#home">Back to Top</a></p>
+    </footer>
 </body>
 </html>
