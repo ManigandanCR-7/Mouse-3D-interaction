@@ -19,21 +19,6 @@
             position: relative; /* Make it a positioning context */
         }
 
-        .glass-rectangle {
-            position: fixed;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 1002px;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
-            backdrop-filter: blur(10px); /* Blur effect */
-            border-radius: 35px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            z-index: 10; /* Ensure it sits above other content */
-        }
-
         .water-drop {
             position: absolute;
             width: 60px; /* Width of the water drop */
@@ -86,32 +71,30 @@
             animation: shine 1s infinite;
         }
 
-        /* Responsive adjustments for mobile */
-        @media (max-width: 600px) {
-            .content {
-                width: 100vw;
-                height: 100vh;
-            }
+        .rectangle {
+            position: fixed;
+            left: 243px;
+            top: 224px;
+            width: 1002px;
+            height: 2875px; /* Updated height */
+            border-radius: 35px;
+            background: rgba(255, 255, 255, 0.2); /* Semi-transparent white */
+            backdrop-filter: blur(10px); /* Blur effect */
+            border: 1px solid rgba(255, 255, 255, 0.3); /* Border to enhance the glass effect */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25); /* Shadow for depth */
+        }
 
-            .water-drop {
-                width: 40px;
-                height: 40px;
-            }
-
-            .glass-rectangle {
-                width: 90%;
-                height: 100%;
-                padding: 20px;
-            }
+        audio {
+            display: none; /* Hide audio controls */
         }
     </style>
 </head>
 <body>
     <div class="content">
         <canvas id="dotsCanvas"></canvas>
+        <div class="rectangle"></div>
         <div class="water-drop"></div>
     </div>
-    <div class="glass-rectangle"></div>
     <audio id="background-music" autoplay loop>
         <source src="path-to-your-pink-panther-music.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
@@ -196,16 +179,8 @@
             });
         }
 
-        function handleTouchMove(event) {
-            const touch = event.touches[0];
-            const touchX = touch.clientX;
-            const touchY = touch.clientY;
-            handleMouseMove({ pageX: touchX, pageY: touchY });
-        }
-
         window.addEventListener('resize', resizeCanvas);
         document.addEventListener('mousemove', handleMouseMove);
-        document.addEventListener('touchmove', handleTouchMove);
         resizeCanvas();
         updateDots();
     </script>
