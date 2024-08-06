@@ -12,6 +12,7 @@
             background-color: #000; /* Black background */
             overflow-x: hidden;
             color: #fff;
+            perspective: 1000px; /* Added perspective for 3D effect */
         }
 
         /* Header */
@@ -288,7 +289,9 @@
             margin: 0 auto;
         }
 
-        .contact input, .contact textarea, .contact button {
+        .contact input,
+        .contact textarea,
+        .contact button {
             width: 100%;
             padding: 15px;
             margin-bottom: 20px;
@@ -357,9 +360,7 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <h1> Here's the Place , Where your Website  </h1>
-        <h1>  3D Mouse Interaction Program can be  </h1>
-        <h1>  Installed on the way  </h1>
+        <h1>Experience the Future of 3D SaaS</h1>
         <p>Creating Interactive 3D Experiences for Web Design Agencies</p>
         <a href="#contact" class="cta-button">Get Started</a>
     </section>
@@ -457,11 +458,17 @@
         document.addEventListener('mousemove', (event) => {
             const mouseX = event.clientX;
             const mouseY = event.clientY;
+            const winWidth = window.innerWidth;
+            const winHeight = window.innerHeight;
 
             dots.forEach((dot, index) => {
                 const delay = index * 0.02;
+                const depth = index / numberOfDots * 20; // Adding depth
+                const offsetX = (mouseX - winWidth / 2) * (depth / 100);
+                const offsetY = (mouseY - winHeight / 2) * (depth / 100);
+
                 setTimeout(() => {
-                    dot.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+                    dot.style.transform = `translate3d(${mouseX - offsetX}px, ${mouseY - offsetY}px, ${-depth}px)`;
                     dot.style.opacity = 1 - (index / numberOfDots);
                 }, delay * 1000);
             });
