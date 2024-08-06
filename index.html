@@ -71,11 +71,17 @@
             animation: shine 1s infinite;
         }
 
-        /* Glassy fixed rectangle removed */
-        /* Navigation bar removed */
-        
-        audio {
-            display: none; /* Hide audio controls */
+        /* Responsive adjustments for mobile */
+        @media (max-width: 600px) {
+            .content {
+                width: 100vw;
+                height: 100vh;
+            }
+
+            .water-drop {
+                width: 40px;
+                height: 40px;
+            }
         }
     </style>
 </head>
@@ -168,8 +174,16 @@
             });
         }
 
+        function handleTouchMove(event) {
+            const touch = event.touches[0];
+            const touchX = touch.clientX;
+            const touchY = touch.clientY;
+            handleMouseMove({ pageX: touchX, pageY: touchY });
+        }
+
         window.addEventListener('resize', resizeCanvas);
         document.addEventListener('mousemove', handleMouseMove);
+        document.addEventListener('touchmove', handleTouchMove);
         resizeCanvas();
         updateDots();
     </script>
