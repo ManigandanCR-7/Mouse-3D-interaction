@@ -3,19 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SaaS Homepage</title>
+    <title>Futuristic SaaS Homepage</title>
     <style>
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             scroll-behavior: smooth;
             background-color: #000; /* Black background */
             overflow-x: hidden;
+            color: #fff;
         }
 
         /* Header */
         header {
-            background-color: rgba(40, 44, 52, 0.9);
+            background-color: rgba(0, 0, 0, 0.7);
             color: white;
             padding: 20px;
             position: fixed;
@@ -23,7 +24,7 @@
             top: 0;
             left: 0;
             z-index: 1000;
-            backdrop-filter: blur(10px); /* Glassy effect */
+            backdrop-filter: blur(15px); /* Glassy effect */
         }
 
         .header-content {
@@ -36,6 +37,7 @@
 
         .header-content h1 {
             margin: 0;
+            font-size: 2em;
         }
 
         .nav-links a {
@@ -43,10 +45,12 @@
             text-decoration: none;
             margin: 0 15px;
             font-size: 18px;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
         }
 
         .nav-links a:hover {
-            text-decoration: underline;
+            color: #ff69b4; /* Pink color */
+            text-shadow: 0 0 10px rgba(255, 105, 180, 0.8);
         }
 
         /* Hero Section */
@@ -61,6 +65,7 @@
             text-align: center;
             position: relative;
             z-index: 1;
+            overflow: hidden;
         }
 
         .hero h1 {
@@ -74,18 +79,21 @@
         }
 
         .hero .cta-button {
-            background-color: #61dafb;
-            color: #282c34;
+            background: linear-gradient(45deg, #ff69b4, #ff1493);
+            color: white;
             border: none;
             padding: 15px 30px;
             font-size: 1.2em;
             cursor: pointer;
-            border-radius: 5px;
+            border-radius: 25px;
+            box-shadow: 0 0 15px rgba(255, 105, 180, 0.6);
             text-decoration: none;
+            transition: background 0.3s ease, transform 0.3s ease;
         }
 
         .hero .cta-button:hover {
-            background-color: #21a1f1;
+            background: linear-gradient(45deg, #ff1493, #ff69b4);
+            transform: scale(1.05);
         }
 
         /* Main container */
@@ -97,13 +105,42 @@
             z-index: 1;
         }
 
+        /* Sliding Sections */
+        .slider {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: 600px;
+            border-radius: 15px;
+        }
+
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            height: 100%;
+        }
+
+        .slide {
+            min-width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.1); /* Transparent slide */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            font-size: 2em;
+            text-align: center;
+            padding: 20px;
+        }
+
         /* Features Section */
         .features {
             padding: 60px 20px;
-            background-color: rgba(244, 244, 244, 0.8); /* Glassy effect */
+            background-color: rgba(244, 244, 244, 0.1); /* Transparent effect */
             border-radius: 15px;
-            backdrop-filter: blur(10px); /* Glassy effect */
+            backdrop-filter: blur(15px); /* Glassy effect */
             border: 1px solid rgba(255, 105, 180, 0.3); /* Transparent border */
+            margin-bottom: 60px;
         }
 
         .features h2 {
@@ -120,6 +157,11 @@
         .feature-item img {
             width: 100px;
             height: 100px;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-item img:hover {
+            transform: scale(1.1);
         }
 
         .feature-item h3 {
@@ -127,17 +169,18 @@
         }
 
         .feature-item p {
-            color: #555;
+            color: #ddd;
         }
 
         /* Pricing Section */
         .pricing {
             padding: 60px 20px;
             text-align: center;
-            background-color: rgba(244, 244, 244, 0.8); /* Glassy effect */
+            background-color: rgba(244, 244, 244, 0.1); /* Transparent effect */
             border-radius: 15px;
-            backdrop-filter: blur(10px); /* Glassy effect */
+            backdrop-filter: blur(15px); /* Glassy effect */
             border: 1px solid rgba(255, 105, 180, 0.3); /* Transparent border */
+            margin-bottom: 60px;
         }
 
         .pricing h2 {
@@ -151,13 +194,19 @@
         }
 
         .pricing-item {
-            background-color: white;
+            background-color: rgba(255, 255, 255, 0.1); /* Transparent effect */
             border: 1px solid #ddd;
             border-radius: 10px;
             padding: 30px;
             width: 300px;
             margin: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+
+        .pricing-item:hover {
+            box-shadow: 0 0 30px rgba(255, 105, 180, 0.6);
+            transform: scale(1.05);
         }
 
         .pricing-item h3 {
@@ -170,27 +219,31 @@
         }
 
         .pricing-item .cta-button {
-            background-color: #61dafb;
-            color: #282c34;
+            background: linear-gradient(45deg, #ff69b4, #ff1493);
+            color: white;
             border: none;
             padding: 15px 30px;
             font-size: 1em;
             cursor: pointer;
-            border-radius: 5px;
+            border-radius: 25px;
+            box-shadow: 0 0 15px rgba(255, 105, 180, 0.6);
             text-decoration: none;
+            transition: background 0.3s ease, transform 0.3s ease;
         }
 
         .pricing-item .cta-button:hover {
-            background-color: #21a1f1;
+            background: linear-gradient(45deg, #ff1493, #ff69b4);
+            transform: scale(1.05);
         }
 
         /* Testimonials Section */
         .testimonials {
             padding: 60px 20px;
-            background-color: rgba(244, 244, 244, 0.8); /* Glassy effect */
+            background-color: rgba(244, 244, 244, 0.1); /* Transparent effect */
             border-radius: 15px;
-            backdrop-filter: blur(10px); /* Glassy effect */
+            backdrop-filter: blur(15px); /* Glassy effect */
             border: 1px solid rgba(255, 105, 180, 0.3); /* Transparent border */
+            margin-bottom: 60px;
         }
 
         .testimonials h2 {
@@ -206,23 +259,24 @@
 
         .testimonial-item p {
             font-style: italic;
-            color: #555;
+            color: #ddd;
         }
 
         .testimonial-item cite {
             display: block;
             margin-top: 10px;
-            color: #333;
+            color: #bbb;
         }
 
         /* Contact Section */
         .contact {
             padding: 60px 20px;
             text-align: center;
-            background-color: rgba(244, 244, 244, 0.8); /* Glassy effect */
+            background-color: rgba(244, 244, 244, 0.1); /* Transparent effect */
             border-radius: 15px;
-            backdrop-filter: blur(10px); /* Glassy effect */
+            backdrop-filter: blur(15px); /* Glassy effect */
             border: 1px solid rgba(255, 105, 180, 0.3); /* Transparent border */
+            margin-bottom: 60px;
         }
 
         .contact h2 {
@@ -234,39 +288,50 @@
             margin: 0 auto;
         }
 
-        .contact input, .contact textarea {
+        .contact input, .contact textarea, .contact button {
             width: 100%;
             padding: 15px;
             margin: 10px 0;
-            border: 1px solid #ddd;
+            border: none;
             border-radius: 5px;
+        }
+
+        .contact input, .contact textarea {
+            background: rgba(255, 255, 255, 0.2); /* Transparent background */
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
         .contact button {
-            background-color: #61dafb;
-            color: #282c34;
-            border: none;
-            padding: 15px 30px;
-            font-size: 1.2em;
+            background: linear-gradient(45deg, #ff69b4, #ff1493);
+            color: white;
             cursor: pointer;
-            border-radius: 5px;
+            transition: background 0.3s ease, transform 0.3s ease;
         }
 
         .contact button:hover {
-            background-color: #21a1f1;
+            background: linear-gradient(45deg, #ff1493, #ff69b4);
+            transform: scale(1.05);
         }
 
         /* Footer */
         footer {
-            background-color: rgba(40, 44, 52, 0.9);
+            background-color: rgba(0, 0, 0, 0.7);
             color: white;
-            padding: 20px;
             text-align: center;
-            backdrop-filter: blur(10px); /* Glassy effect */
+            padding: 20px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            backdrop-filter: blur(15px); /* Glassy effect */
+        }
+
+        footer p {
+            margin: 0;
         }
 
         footer a {
-            color: #61dafb;
+            color: #ff69b4;
             text-decoration: none;
         }
 
@@ -274,24 +339,49 @@
             text-decoration: underline;
         }
 
-        /* Pink Dots Background */
-        .dots-background {
-            position: absolute;
-            top: 0;
-            left: 0;
+        /* Slider Animation */
+        @keyframes slide {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-100%); }
+            50% { transform: translateX(-200%); }
+            75% { transform: translateX(-300%); }
+            100% { transform: translateX(-400%); }
+        }
+
+        /* Slider Container */
+        .slider {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: 600px;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.1); /* Transparent background */
+            border: 1px solid rgba(255, 105, 180, 0.3); /* Transparent border */
+            backdrop-filter: blur(15px); /* Glassy effect */
+            margin: 0 auto;
+        }
+
+        .slides {
+            display: flex;
+            width: 500%;
+            height: 100%;
+            animation: slide 20s infinite linear;
+        }
+
+        .slide {
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle, rgba(255, 105, 180, 0.8) 20%, transparent 40%),
-                        radial-gradient(circle, rgba(255, 105, 180, 0.8) 20%, transparent 40%);
-            background-size: 30px 30px;
-            background-position: 0 0, 15px 15px;
-            z-index: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
         }
     </style>
 </head>
 <body>
-    <div class="dots-background"></div>
-    
     <header>
         <div class="header-content">
             <h1>SaaS Company</h1>
@@ -305,13 +395,23 @@
         </div>
     </header>
 
-    <section id="home" class="hero">
-        <h1>Welcome to Our SaaS Solution</h1>
+    <section class="hero">
+        <h1>Welcome to SaaS Company</h1>
         <p>Your ultimate solution for [Service/Feature].</p>
         <a href="#contact" class="cta-button">Get Started</a>
     </section>
 
     <div class="main-container">
+        <div class="slider">
+            <div class="slides">
+                <div class="slide" style="background: url('slide1.jpg') no-repeat center center/cover;">Slide 1</div>
+                <div class="slide" style="background: url('slide2.jpg') no-repeat center center/cover;">Slide 2</div>
+                <div class="slide" style="background: url('slide3.jpg') no-repeat center center/cover;">Slide 3</div>
+                <div class="slide" style="background: url('slide4.jpg') no-repeat center center/cover;">Slide 4</div>
+                <div class="slide" style="background: url('slide5.jpg') no-repeat center center/cover;">Slide 5</div>
+            </div>
+        </div>
+
         <section id="features" class="features">
             <h2>Features</h2>
             <div class="feature-item">
