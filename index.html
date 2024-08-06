@@ -21,11 +21,11 @@
 
         .fixed-rectangle {
             position: fixed;
-            top: calc(6 * (10px + 30px)); /* Adjust to place over the sixth row */
+            top: calc(6 * (10px + 30px)); /* Position starting after the 6th row */
             left: 50%;
             transform: translateX(-50%);
             width: 1002px;
-            height: 2875px;
+            height: calc(12 * (10px + 30px)); /* Extend downwards to cover rows 6 to 18 */
             background: rgba(255, 255, 255, 0.2); /* Transparent white */
             backdrop-filter: blur(10px);
             border-radius: 35px;
