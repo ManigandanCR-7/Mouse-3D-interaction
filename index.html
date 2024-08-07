@@ -11,7 +11,7 @@
             background-color: #000;
             overflow-x: hidden;
             color: #fff;
-            perspective: 1000px; /* Perspective for 3D effect */
+            perspective: 1000px;
             overflow: hidden;
         }
 
@@ -25,7 +25,7 @@
             top: 0;
             left: 0;
             z-index: 1000;
-            backdrop-filter: blur(15px); /* Glassy effect */
+            backdrop-filter: blur(15px);
         }
 
         .header-content {
@@ -36,18 +36,17 @@
             margin: 0 auto;
         }
 
+        .header-content img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+
         .header-content h1 {
             margin: 0;
             font-size: 2em;
             display: flex;
             align-items: center;
-        }
-
-        .header-content img {
-            margin-right: 15px;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
         }
 
         .nav-links a {
@@ -59,7 +58,7 @@
         }
 
         .nav-links a:hover {
-            color: #ff69b4; /* Pink color */
+            color: #ff69b4;
             text-shadow: 0 0 10px rgba(255, 105, 180, 0.8);
         }
 
@@ -68,7 +67,7 @@
             position: relative;
             width: 100%;
             height: 100vh;
-            transform-style: preserve-3d; /* Enable 3D transformations */
+            transform-style: preserve-3d;
             transform: rotateX(0) rotateY(0);
             transition: transform 0.5s;
         }
@@ -117,19 +116,74 @@
             transform: scale(1.05);
         }
 
-        /* Products Section */
-        .products {
+        /* About Section */
+        #about {
             padding: 60px 20px;
-            background-color: rgba(244, 244, 244, 0.1); /* Transparent effect */
+            background-color: rgba(0, 0, 0, 0.7);
             border-radius: 15px;
-            backdrop-filter: blur(15px); /* Glassy effect */
-            border: 1px solid rgba(255, 105, 180, 0.3); /* Transparent border */
-            margin-bottom: 60px;
-            position: relative; /* For positioning child elements */
-            overflow: hidden; /* Hide overflow for smooth transitions */
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 105, 180, 0.3);
+            margin: 60px 0;
+            overflow: hidden;
         }
 
-        .products h2 {
+        .about-slide {
+            display: flex;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .about-slide img {
+            width: 100%;
+            transition: transform 1s ease-in-out;
+        }
+
+        .about-slide img.active {
+            transform: translateX(0);
+        }
+
+        .about-slide img.next {
+            transform: translateX(100%);
+        }
+
+        .about-slide img.prev {
+            transform: translateX(-100%);
+        }
+
+        .about-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .about-nav button {
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: white;
+            padding: 10px;
+            font-size: 1.5em;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .about-nav button:hover {
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        /* Products Section */
+        #products {
+            padding: 60px 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 105, 180, 0.3);
+            margin-bottom: 60px;
+        }
+
+        #products h2 {
             text-align: center;
             margin-bottom: 40px;
         }
@@ -137,21 +191,35 @@
         .product-list {
             display: flex;
             flex-wrap: wrap;
-            justify-content: center; /* Center products horizontally */
-            position: relative; /* For positioning the sliding effect */
+            justify-content: center;
+        }
+
+        .product-item {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 105, 180, 0.3);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px;
+            box-shadow: 0 0 15px rgba(255, 105, 180, 0.6);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 105, 180, 0.8);
         }
 
         /* Testimonials Section */
-        .testimonials {
+        #testimonials {
             padding: 60px 20px;
-            background-color: rgba(244, 244, 244, 0.1); /* Transparent effect */
+            background-color: rgba(0, 0, 0, 0.7);
             border-radius: 15px;
-            backdrop-filter: blur(15px); /* Glassy effect */
-            border: 1px solid rgba(255, 105, 180, 0.3); /* Transparent border */
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 105, 180, 0.3);
             margin-bottom: 60px;
         }
 
-        .testimonials h2 {
+        #testimonials h2 {
             text-align: center;
             margin-bottom: 40px;
         }
@@ -183,30 +251,30 @@
         }
 
         /* Contact Section */
-        .contact {
+        #contact {
             padding: 60px 20px;
-            background-color: rgba(244, 244, 244, 0.1); /* Transparent effect */
+            background-color: rgba(0, 0, 0, 0.7);
             border-radius: 15px;
-            backdrop-filter: blur(15px); /* Glassy effect */
-            border: 1px solid rgba(255, 105, 180, 0.3); /* Transparent border */
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 105, 180, 0.3);
             margin-bottom: 60px;
         }
 
-        .contact h2 {
+        #contact h2 {
             text-align: center;
             margin-bottom: 40px;
         }
 
-        .contact form {
+        #contact form {
             max-width: 600px;
             margin: 0 auto;
             display: flex;
             flex-direction: column;
         }
 
-        .contact form input, .contact form textarea {
-            background: rgba(255, 255, 255, 0.1); /* Transparent background */
-            border: 1px solid rgba(255, 105, 180, 0.3); /* Transparent border */
+        #contact form input, #contact form textarea {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 105, 180, 0.3);
             color: #fff;
             padding: 15px;
             margin-bottom: 15px;
@@ -215,7 +283,7 @@
             resize: vertical;
         }
 
-        .contact form button {
+        #contact form button {
             background: linear-gradient(45deg, #ff69b4, #ff1493);
             color: white;
             border: none;
@@ -224,31 +292,29 @@
             cursor: pointer;
             border-radius: 25px;
             box-shadow: 0 0 15px rgba(255, 105, 180, 0.6);
-            text-decoration: none;
             transition: background 0.3s ease, transform 0.3s ease;
         }
 
-        .contact form button:hover {
+        #contact form button:hover {
             background: linear-gradient(45deg, #ff1493, #ff69b4);
             transform: scale(1.05);
         }
 
         .social-icons {
             text-align: center;
-            margin-top: 30px;
+            margin-top: 20px;
         }
 
         .social-icons a {
             color: white;
             text-decoration: none;
             margin: 0 15px;
-            font-size: 1.5em;
-            transition: color 0.3s ease, transform 0.3s ease;
+            font-size: 2em;
+            transition: color 0.3s ease;
         }
 
         .social-icons a:hover {
-            color: #ff69b4; /* Pink color */
-            transform: scale(1.1);
+            color: #ff69b4;
         }
 
         /* Footer */
@@ -260,8 +326,30 @@
             position: fixed;
             bottom: 0;
             width: 100%;
+            border-top: 1px solid rgba(255, 105, 180, 0.3);
+        }
+
+        /* 3D Mouse Interaction */
+        .hero-container {
+            transition: transform 0.2s;
+        }
+
+        .product-item {
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-item:hover::after {
+            content: '';
+            position: absolute;
+            top: 0;
             left: 0;
-            backdrop-filter: blur(15px); /* Glassy effect */
+            width: 100%;
+            height: 100%;
+            border: 2px solid #ff69b4;
+            box-sizing: border-box;
+            transition: opacity 0.3s ease;
+            opacity: 0.7;
         }
     </style>
 </head>
@@ -272,6 +360,7 @@
             <img src="logo.png" alt="Company Logo">
             <h1>Company Name</h1>
             <nav class="nav-links">
+                <a href="#hero">Home</a>
                 <a href="#about">About</a>
                 <a href="#products">Products</a>
                 <a href="#testimonials">Testimonials</a>
@@ -289,14 +378,29 @@
         </section>
     </div>
 
+    <!-- About Section -->
+    <section id="about">
+        <div class="about-slide">
+            <img src="about1.jpg" class="active" alt="About Image 1">
+            <img src="about2.jpg" class="next" alt="About Image 2">
+            <img src="about3.jpg" class="prev" alt="About Image 3">
+            <div class="about-nav">
+                <button class="prev-slide">&#10094;</button>
+                <button class="next-slide">&#10095;</button>
+            </div>
+        </div>
+    </section>
+
     <!-- Products Section -->
-    <section id="products" class="products">
+    <section id="products">
         <h2>Our Products</h2>
-        <!-- Background effect only, no product items -->
+        <div class="product-list">
+            <!-- Product Items Here -->
+        </div>
     </section>
 
     <!-- Testimonials Section -->
-    <section id="testimonials" class="testimonials">
+    <section id="testimonials">
         <h2>What Our Clients Say</h2>
         <div class="testimonial-item">
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio.</p>
@@ -307,7 +411,7 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact">
+    <section id="contact">
         <h2>Contact Us</h2>
         <form>
             <input type="text" placeholder="Your Name" required>
@@ -329,8 +433,9 @@
     <!-- Add Font Awesome for Social Icons -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
 
-    <!-- JavaScript for 3D Interaction -->
+    <!-- JavaScript for 3D Interaction and About Section Sliding -->
     <script>
+        // 3D Interaction
         const heroContainer = document.querySelector('.hero-container');
         
         heroContainer.addEventListener('mousemove', (e) => {
@@ -345,6 +450,35 @@
         heroContainer.addEventListener('mouseleave', () => {
             heroContainer.style.transform = `rotateX(0) rotateY(0)`;
         });
+
+        // About Section Sliding
+        const slides = document.querySelectorAll('.about-slide img');
+        let currentIndex = 0;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active', 'next', 'prev');
+                if (i === index) {
+                    slide.classList.add('active');
+                } else if (i === index - 1 || (index === 0 && i === slides.length - 1)) {
+                    slide.classList.add('prev');
+                } else if (i === index + 1 || (index === slides.length - 1 && i === 0)) {
+                    slide.classList.add('next');
+                }
+            });
+        }
+
+        document.querySelector('.next-slide').addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % slides.length;
+            showSlide(currentIndex);
+        });
+
+        document.querySelector('.prev-slide').addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+            showSlide(currentIndex);
+        });
+
+        showSlide(currentIndex);
     </script>
 </body>
 </html>
