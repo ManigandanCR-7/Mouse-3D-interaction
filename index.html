@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Futuristic SaaS Homepage</title>
+    <title>Nilofer 3D SaaS</title>
     <style>
         body {
             margin: 0;
@@ -301,6 +301,26 @@
             transform: scale(1.05);
         }
 
+        /* Contact Section */
+        .contact {
+            padding: 60px 20px;
+            text-align: center;
+            background-color: rgba(244, 244, 244, 0.1); /* Transparent effect */
+            border-radius: 15px;
+            backdrop-filter: blur(15px); /* Glassy effect */
+            border: 1px solid rgba(255, 105, 180, 0.3); /* Transparent border */
+            margin-bottom: 60px;
+        }
+
+        .contact h2 {
+            margin-bottom: 20px;
+        }
+
+        .contact p {
+            margin-bottom: 40px;
+            color: #ddd;
+        }
+
         /* Footer */
         footer {
             background-color: rgba(0, 0, 0, 0.7);
@@ -308,27 +328,19 @@
             padding: 20px;
             text-align: center;
             position: relative;
-            bottom: 0;
-            width: 100%;
-            z-index: 1000;
-            backdrop-filter: blur(15px); /* Glassy effect */
-        }
-
-        footer a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
+            z-index: 1;
+            border-top: 1px solid rgba(255, 105, 180, 0.3);
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
+    <!-- Header Section -->
     <header>
         <div class="header-content">
-            <h1><img src="logo.png" alt="Logo"> Futuristic SaaS</h1>
+            <h1><img src="logo.png" alt="Logo"> Nilofer 3D SaaS</h1>
             <nav class="nav-links">
                 <a href="#hero">Home</a>
-                <a href="#products">3D Products</a>
+                <a href="#products">3D Web Products</a>
                 <a href="#pricing">Pricing</a>
                 <a href="#contact">Contact</a>
             </nav>
@@ -336,71 +348,80 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero" id="hero">
-        <h1>Transform Your Business with Futuristic SaaS</h1>
-        <p>Innovative solutions for a cutting-edge world.</p>
-        <a href="#contact" class="cta-button">Get Started</a>
+    <section id="hero" class="hero">
+        <h1>Welcome to Nilofer 3D SaaS</h1>
+        <p>Creating Stunning 3D Web Experiences</p>
+        <a href="#products" class="cta-button">Explore Products</a>
     </section>
 
-    <!-- Main Container -->
+    <!-- Main Content -->
     <div class="main-container">
-        <!-- 3D Products Section -->
-        <section class="products" id="products">
-            <h2>3D Products</h2>
+        <!-- 3D Web Products Section -->
+        <section id="products" class="products">
+            <h2>Our 3D Web Products</h2>
             <div class="product-list">
                 <div class="product-item">
-                    <img src="product1.jpg" alt="Product 1">
-                    <h3>Product 1</h3>
-                    <p>Amazing 3D product with cool features.</p>
+                    <img src="product1.png" alt="Product 1">
+                    <h3>Product One</h3>
+                    <p>Short description of product one.</p>
                     <a href="#" class="cta-button">Learn More</a>
                 </div>
                 <div class="product-item">
-                    <img src="product2.jpg" alt="Product 2">
-                    <h3>Product 2</h3>
-                    <p>Revolutionize your web experience with this product.</p>
+                    <img src="product2.png" alt="Product 2">
+                    <h3>Product Two</h3>
+                    <p>Short description of product two.</p>
                     <a href="#" class="cta-button">Learn More</a>
                 </div>
                 <div class="product-item">
-                    <img src="product3.jpg" alt="Product 3">
-                    <h3>Product 3</h3>
-                    <p>Explore the future of 3D with this innovative product.</p>
+                    <img src="product3.png" alt="Product 3">
+                    <h3>Product Three</h3>
+                    <p>Short description of product three.</p>
+                    <a href="#" class="cta-button">Learn More</a>
+                </div>
+                <div class="product-item">
+                    <img src="product4.png" alt="Product 4">
+                    <h3>Product Four</h3>
+                    <p>Short description of product four.</p>
                     <a href="#" class="cta-button">Learn More</a>
                 </div>
             </div>
         </section>
 
         <!-- Pricing Section -->
-        <section class="pricing" id="pricing">
+        <section id="pricing" class="pricing">
             <h2>Pricing</h2>
             <div class="pricing-table">
                 <div class="pricing-item">
                     <h3>Basic Plan</h3>
-                    <p class="price">$19/month</p>
-                    <p>Basic features for individual users.</p>
-                    <a href="#" class="cta-button">Sign Up</a>
+                    <div class="price">$10/mo</div>
+                    <p>Features of the basic plan.</p>
+                    <a href="#" class="cta-button">Get Started</a>
                 </div>
                 <div class="pricing-item">
                     <h3>Pro Plan</h3>
-                    <p class="price">$49/month</p>
-                    <p>Advanced features for professionals.</p>
-                    <a href="#" class="cta-button">Sign Up</a>
+                    <div class="price">$30/mo</div>
+                    <p>Features of the pro plan.</p>
+                    <a href="#" class="cta-button">Get Started</a>
                 </div>
                 <div class="pricing-item">
                     <h3>Enterprise Plan</h3>
-                    <p class="price">$99/month</p>
-                    <p>Comprehensive features for businesses.</p>
-                    <a href="#" class="cta-button">Sign Up</a>
+                    <div class="price">$50/mo</div>
+                    <p>Features of the enterprise plan.</p>
+                    <a href="#" class="cta-button">Get Started</a>
                 </div>
             </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <h2>Contact Us</h2>
+            <p>If you have any questions, feel free to reach out to us!</p>
         </section>
     </div>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Futuristic SaaS. All rights reserved.</p>
-        <a href="#contact">Contact</a>
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Service</a>
+        <p>&copy; 2024 Nilofer 3D SaaS. All rights reserved.</p>
     </footer>
 </body>
 </html>
