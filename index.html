@@ -1,4 +1,4 @@
-DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -293,42 +293,43 @@ DOCTYPE html>
             margin-bottom: 40px;
         }
 
-        .contact form {
-            max-width: 600px;
+        .contact-form {
+            max-width: 500px;
             margin: 0 auto;
             text-align: left;
         }
 
-        .contact label {
+        .contact-form label {
             display: block;
             margin-bottom: 10px;
-            color: #bbb;
+            font-weight: bold;
         }
 
-        .contact input, .contact textarea {
+        .contact-form input,
+        .contact-form textarea {
             width: 100%;
             padding: 10px;
             margin-bottom: 20px;
-            border: 1px solid #ccc;
+            border: none;
             border-radius: 5px;
-            background-color: rgba(255, 255, 255, 0.1);
-            color: white;
+            background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent input fields */
+            color: #fff;
+            font-size: 1em;
         }
 
-        .contact button {
+        .contact-form input[type="submit"] {
             background: linear-gradient(45deg, #ff69b4, #ff1493);
             color: white;
             border: none;
             padding: 15px 30px;
-            font-size: 1.2em;
+            font-size: 1em;
             cursor: pointer;
             border-radius: 25px;
             box-shadow: 0 0 15px rgba(255, 105, 180, 0.6);
-            text-decoration: none;
             transition: background 0.3s ease, transform 0.3s ease;
         }
 
-        .contact button:hover {
+        .contact-form input[type="submit"]:hover {
             background: linear-gradient(45deg, #ff1493, #ff69b4);
             transform: scale(1.05);
         }
@@ -337,15 +338,40 @@ DOCTYPE html>
         footer {
             background-color: rgba(0, 0, 0, 0.7);
             color: white;
-            padding: 20px;
             text-align: center;
+            padding: 20px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* Pink Dots for 3D Mouse Interaction */
+        .pink-dot {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #ff69b4;
+            border-radius: 50%;
+            opacity: 0.7;
+            pointer-events: none;
+            transition: transform 0.1s ease;
+        }
+
+        /* Ensure elements are not interactive or clickable */
+        .pink-dot, .hero, .main-container, .features, .pricing, .testimonials, .contact {
+            pointer-events: none;
         }
     </style>
 </head>
 <body>
+    <!-- Header -->
     <header>
         <div class="header-content">
-            <h1><img src="Mouse-3D-interaction/image/Untitled design.png" alt="Logo"> Nilofer 3D SaaS </h1>
+            <h1><img src="Mouse-3D-interaction/image/Untitled design.png" alt="Logo"> Nilofer 3D SaaS</h1>
             <nav class="nav-links">
                 <a href="#features">Features</a>
                 <a href="#pricing">Pricing</a>
@@ -354,79 +380,116 @@ DOCTYPE html>
             </nav>
         </div>
     </header>
+
+    <!-- Hero Section -->
     <section class="hero">
         <h1>Welcome to the Future of SaaS</h1>
-        <p>Experience unparalleled 3D interactivity</p>
+        <p>Experience the most innovative 3D interactive SaaS solutions.</p>
         <a href="#features" class="cta-button">Learn More</a>
     </section>
+
+    <!-- Main Content -->
     <div class="main-container">
+        <!-- Features Section -->
         <section id="features" class="features">
             <h2>Features</h2>
             <div class="feature-item">
-                <img src="feature1.png" alt="Feature 1">
+                <img src="feature1.jpg" alt="Feature 1">
                 <h3>Interactive 3D Models</h3>
-                <p>Engage your users with fully interactive 3D models that showcase your product's features and capabilities.</p>
+                <p>Engage your users with dynamic and interactive 3D models.</p>
             </div>
             <div class="feature-item">
-                <img src="feature2.png" alt="Feature 2">
-                <h3>Custom Animations</h3>
-                <p>Bring your product to life with custom animations that highlight key functions and benefits.</p>
-            </div>
-            <div class="feature-item">
-                <img src="feature3.png" alt="Feature 3">
+                <img src="feature2.jpg" alt="Feature 2">
                 <h3>Seamless Integration</h3>
-                <p>Integrate our 3D solutions into your existing platform with ease, enhancing your user experience.</p>
+                <p>Integrate our solutions effortlessly into your existing systems.</p>
+            </div>
+            <div class="feature-item">
+                <img src="feature3.jpg" alt="Feature 3">
+                <h3>Customizable Designs</h3>
+                <p>Tailor the look and feel to match your brand's unique identity.</p>
             </div>
         </section>
+
+        <!-- Pricing Section -->
         <section id="pricing" class="pricing">
             <h2>Pricing</h2>
             <div class="pricing-table">
                 <div class="pricing-item">
-                    <h3>Basic Plan</h3>
-                    <p class="price">$9.99/month</p>
-                    <p>Perfect for small businesses looking to add basic 3D interactivity to their website.</p>
-                    <a href="#" class="cta-button">Sign Up</a>
+                    <h3>Basic</h3>
+                    <p class="price">$9/month</p>
+                    <p>Essential features for small businesses.</p>
+                    <a href="#" class="cta-button">Get Started</a>
                 </div>
                 <div class="pricing-item">
-                    <h3>Pro Plan</h3>
-                    <p class="price">$29.99/month</p>
-                    <p>Ideal for growing businesses that need advanced 3D features and customization.</p>
-                    <a href="#" class="cta-button">Sign Up</a>
+                    <h3>Pro</h3>
+                    <p class="price">$29/month</p>
+                    <p>Advanced features for growing businesses.</p>
+                    <a href="#" class="cta-button">Get Started</a>
                 </div>
                 <div class="pricing-item">
-                    <h3>Enterprise Plan</h3>
-                    <p class="price">Contact Us</p>
-                    <p>Custom solutions for large enterprises with specific 3D interactive needs.</p>
+                    <h3>Enterprise</h3>
+                    <p class="price">Custom</p>
+                    <p>Full customization and dedicated support.</p>
                     <a href="#" class="cta-button">Contact Us</a>
                 </div>
             </div>
         </section>
+
+        <!-- Testimonials Section -->
         <section id="testimonials" class="testimonials">
             <h2>Testimonials</h2>
             <div class="testimonial-item">
-                <p>"Nilofer 3D SaaS transformed our website's user experience. The 3D models are stunning and interactive!"</p>
-                <cite>- John Doe, CEO of Tech Innovators</cite>
+                <p>"Nilofer 3D SaaS has transformed the way we engage with our customers. Their interactive models are simply amazing!"</p>
+                <cite>— Jane Doe, CEO of Tech Innovators</cite>
             </div>
             <div class="testimonial-item">
-                <p>"We've seen a significant increase in user engagement since integrating Nilofer's 3D solutions. Highly recommend!"</p>
-                <cite>- Jane Smith, Marketing Director at Creative Solutions</cite>
+                <p>"The seamless integration and customizable designs have made our product demos more effective than ever."</p>
+                <cite>— John Smith, Product Manager at Creative Solutions</cite>
             </div>
         </section>
+
+        <!-- Contact Section -->
         <section id="contact" class="contact">
             <h2>Contact Us</h2>
-            <form action="#">
+            <form class="contact-form" action="https://getform.io/f/{your-getform-endpoint}" method="POST">
                 <label for="name">Name</label>
                 <input type="text" id="name" name="name" required>
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" required>
                 <label for="message">Message</label>
                 <textarea id="message" name="message" rows="5" required></textarea>
-                <button type="submit">Send Message</button>
+                <input type="submit" value="Send Message">
             </form>
         </section>
     </div>
+
+    <!-- Footer -->
     <footer>
-        &copy; 2024 Nilofer 3D SaaS. All rights reserved.
+        <p>&copy; 2024 Nilofer 3D SaaS. All rights reserved.</p>
     </footer>
+
+    <!-- Pink Dots for 3D Mouse Interaction -->
+    <script>
+        const numDots = 100;
+        const dots = [];
+
+        for (let i = 0; i < numDots; i++) {
+            const dot = document.createElement('div');
+            dot.classList.add('pink-dot');
+            document.body.appendChild(dot);
+            dots.push(dot);
+        }
+
+        document.addEventListener('mousemove', (event) => {
+            const mouseX = event.clientX;
+            const mouseY = event.clientY;
+            dots.forEach((dot, index) => {
+                const delay = index * 0.05;
+                setTimeout(() => {
+                    dot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+                }, delay);
+            });
+        });
+    </script>
 </body>
 </html>
