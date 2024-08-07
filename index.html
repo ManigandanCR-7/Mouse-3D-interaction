@@ -117,7 +117,7 @@
             transform: scale(1.05);
         }
 
-        /* 3D Products Section */
+        /* Products Section */
         .products {
             padding: 60px 20px;
             background-color: rgba(244, 244, 244, 0.1); /* Transparent effect */
@@ -137,78 +137,8 @@
         .product-list {
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-around;
+            justify-content: center; /* Center products horizontally */
             position: relative; /* For positioning the sliding effect */
-        }
-
-        .product-item {
-            text-align: center;
-            max-width: 300px;
-            margin: 20px;
-            position: relative;
-            padding: 10px;
-            background-color: rgba(255, 255, 255, 0.1); /* Transparent background */
-            border-radius: 15px;
-            overflow: hidden; /* Hide overflow for smooth transitions */
-        }
-
-        .product-item img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            transition: transform 0.3s ease;
-            position: relative;
-            z-index: 1;
-        }
-
-        .product-item img:hover {
-            transform: scale(1.1);
-        }
-
-        .product-item::before {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: -10px;
-            width: calc(100% + 20px);
-            height: calc(100% + 20px);
-            background: rgba(255, 105, 180, 0.3); /* Pink bloom effect */
-            border-radius: 50%;
-            z-index: 0;
-            box-shadow: 0 0 15px rgba(255, 105, 180, 0.8);
-            transition: opacity 0.3s ease;
-            opacity: 0;
-        }
-
-        .product-item:hover::before {
-            opacity: 1;
-        }
-
-        .product-item h3 {
-            margin: 20px 0 10px;
-        }
-
-        .product-item p {
-            color: #ddd;
-        }
-
-        .product-item .cta-button {
-            background: linear-gradient(45deg, #ff69b4, #ff1493);
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            font-size: 1em;
-            cursor: pointer;
-            border-radius: 25px;
-            box-shadow: 0 0 15px rgba(255, 105, 180, 0.6);
-            text-decoration: none;
-            transition: background 0.3s ease, transform 0.3s ease;
-            margin-top: 20px;
-        }
-
-        .product-item .cta-button:hover {
-            background: linear-gradient(45deg, #ff1493, #ff69b4);
-            transform: scale(1.05);
         }
 
         /* Testimonials Section */
@@ -362,20 +292,7 @@
     <!-- Products Section -->
     <section id="products" class="products">
         <h2>Our Products</h2>
-        <div class="product-list">
-            <div class="product-item">
-                <img src="product1.jpg" alt="Product 1">
-                <h3>Product 1</h3>
-                <p>Innovative solution for modern challenges.</p>
-                <a href="#" class="cta-button">Learn More</a>
-            </div>
-            <div class="product-item">
-                <img src="product2.jpg" alt="Product 2">
-                <h3>Product 2</h3>
-                <p>Empowering your business with cutting-edge technology.</p>
-                <a href="#" class="cta-button">Learn More</a>
-            </div>
-        </div>
+        <!-- Background effect only, no product items -->
     </section>
 
     <!-- Testimonials Section -->
