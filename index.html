@@ -15,6 +15,15 @@
             perspective: 1000px; /* Added perspective for 3D effect */
         }
 
+        /* Pink dots styles */
+        .dot {
+            position: absolute;
+            background: rgba(255, 105, 180, 0.8); /* Pink color */
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999; /* Ensure dots are on top */
+        }
+
         /* Header */
         header {
             background-color: rgba(0, 0, 0, 0.7);
@@ -293,34 +302,35 @@
             margin-bottom: 40px;
         }
 
-        .contact form {
+        .contact-form {
             max-width: 600px;
             margin: 0 auto;
             text-align: left;
         }
 
-        .contact label {
+        .contact-form label {
             display: block;
             margin-bottom: 10px;
-            color: #bbb;
+            color: #fff;
         }
 
-        .contact input, .contact textarea {
+        .contact-form input,
+        .contact-form textarea {
             width: 100%;
             padding: 10px;
             margin-bottom: 20px;
-            border: 1px solid #ccc;
+            border: 1px solid #ddd;
             border-radius: 5px;
-            background-color: rgba(255, 255, 255, 0.1);
-            color: white;
+            background-color: rgba(255, 255, 255, 0.1); /* Transparent effect */
+            color: #fff;
         }
 
-        .contact button {
+        .contact-form input[type="submit"] {
             background: linear-gradient(45deg, #ff69b4, #ff1493);
             color: white;
             border: none;
             padding: 15px 30px;
-            font-size: 1.2em;
+            font-size: 1em;
             cursor: pointer;
             border-radius: 25px;
             box-shadow: 0 0 15px rgba(255, 105, 180, 0.6);
@@ -328,7 +338,7 @@
             transition: background 0.3s ease, transform 0.3s ease;
         }
 
-        .contact button:hover {
+        .contact-form input[type="submit"]:hover {
             background: linear-gradient(45deg, #ff1493, #ff69b4);
             transform: scale(1.05);
         }
@@ -340,12 +350,29 @@
             padding: 20px;
             text-align: center;
         }
+
+        .social-icons a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 1.5em;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: #ff69b4; /* Pink color */
+            text-shadow: 0 0 10px rgba(255, 105, 180, 0.8);
+        }
+
     </style>
 </head>
 <body>
     <header>
         <div class="header-content">
-            <h1><img src="Mouse-3D-interaction/image/Untitled design.png" alt="Logo"> Nilofer 3D SaaS</h1>
+            <h1>
+                <img src="logo.png" alt="Logo">
+                Futuristic SaaS
+            </h1>
             <nav class="nav-links">
                 <a href="#features">Features</a>
                 <a href="#pricing">Pricing</a>
@@ -355,78 +382,128 @@
         </div>
     </header>
     <section class="hero">
-        <h1>Welcome to the Future of SaaS</h1>
-        <p>Experience unparalleled 3D interactivity</p>
-        <a href="#features" class="cta-button">Learn More</a>
+        <h1>Welcome to Futuristic SaaS</h1>
+        <p>The future of SaaS is here. Discover our revolutionary features and transform your business today.</p>
+        <a href="#features" class="cta-button">Get Started</a>
     </section>
-    <div class="main-container">
+    <section class="main-container">
+        <!-- Features Section -->
         <section id="features" class="features">
-            <h2>Features</h2>
+            <h2>Our Features</h2>
             <div class="feature-item">
                 <img src="feature1.png" alt="Feature 1">
-                <h3>Interactive 3D Models</h3>
-                <p>Engage your users with fully interactive 3D models that showcase your product's features and capabilities.</p>
+                <h3>Feature One</h3>
+                <p>Experience the next level of productivity with our innovative tools.</p>
             </div>
             <div class="feature-item">
                 <img src="feature2.png" alt="Feature 2">
-                <h3>Custom Animations</h3>
-                <p>Bring your product to life with custom animations that highlight key functions and benefits.</p>
+                <h3>Feature Two</h3>
+                <p>Seamlessly integrate with your existing workflows for maximum efficiency.</p>
             </div>
             <div class="feature-item">
                 <img src="feature3.png" alt="Feature 3">
-                <h3>Seamless Integration</h3>
-                <p>Integrate our 3D solutions into your existing platform with ease, enhancing your user experience.</p>
+                <h3>Feature Three</h3>
+                <p>Secure and reliable performance you can trust, 24/7.</p>
             </div>
         </section>
+
+        <!-- Sliding Sections -->
+        <div class="slider">
+            <div class="slides">
+                <div class="slide">
+                    <h2>Slide 1</h2>
+                    <p>Content for slide 1 goes here.</p>
+                </div>
+                <div class="slide">
+                    <h2>Slide 2</h2>
+                    <p>Content for slide 2 goes here.</p>
+                </div>
+                <div class="slide">
+                    <h2>Slide 3</h2>
+                    <p>Content for slide 3 goes here.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pricing Section -->
         <section id="pricing" class="pricing">
             <h2>Pricing</h2>
             <div class="pricing-table">
                 <div class="pricing-item">
                     <h3>Basic Plan</h3>
-                    <p class="price">$9.99/month</p>
-                    <p>Perfect for small businesses looking to add basic 3D interactivity to their website.</p>
-                    <a href="#" class="cta-button">Sign Up</a>
+                    <p class="price">$9.99/mo</p>
+                    <p>Ideal for individuals</p>
+                    <a href="#" class="cta-button">Choose Plan</a>
                 </div>
                 <div class="pricing-item">
                     <h3>Pro Plan</h3>
-                    <p class="price">$29.99/month</p>
-                    <p>Ideal for growing businesses that need advanced 3D features and customization.</p>
-                    <a href="#" class="cta-button">Sign Up</a>
+                    <p class="price">$29.99/mo</p>
+                    <p>Best for small teams</p>
+                    <a href="#" class="cta-button">Choose Plan</a>
                 </div>
                 <div class="pricing-item">
                     <h3>Enterprise Plan</h3>
-                    <p class="price">Contact Us</p>
-                    <p>Custom solutions for large enterprises with specific 3D interactive needs.</p>
-                    <a href="#" class="cta-button">Contact Us</a>
+                    <p class="price">$99.99/mo</p>
+                    <p>Perfect for large organizations</p>
+                    <a href="#" class="cta-button">Choose Plan</a>
                 </div>
             </div>
         </section>
+
+        <!-- Testimonials Section -->
         <section id="testimonials" class="testimonials">
-            <h2>Testimonials</h2>
+            <h2>What Our Clients Say</h2>
             <div class="testimonial-item">
-                <p>"Nilofer 3D SaaS transformed our website's user experience. The 3D models are stunning and interactive!"</p>
-                <cite>- John Doe, CEO of Tech Innovators</cite>
+                <p>"Futuristic SaaS has completely transformed our business. Highly recommended!"</p>
+                <cite>- John Doe, CEO of TechCorp</cite>
             </div>
             <div class="testimonial-item">
-                <p>"We've seen a significant increase in user engagement since integrating Nilofer's 3D solutions. Highly recommend!"</p>
-                <cite>- Jane Smith, Marketing Director at Creative Solutions</cite>
+                <p>"Their features are simply unmatched. We saw a 50% increase in productivity!"</p>
+                <cite>- Jane Smith, CTO of InnovateInc</cite>
             </div>
         </section>
+
+        <!-- Contact Section -->
         <section id="contact" class="contact">
             <h2>Contact Us</h2>
-            <form action="#">
-                <label for="name">Name</label>
+            <form class="contact-form">
+                <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required>
-                <label for="email">Email</label>
+
+                <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required>
-                <label for="message">Message</label>
+
+                <label for="message">Message:</label>
                 <textarea id="message" name="message" rows="5" required></textarea>
-                <button type="submit">Send Message</button>
+
+                <input type="submit" value="Send Message">
             </form>
         </section>
-    </div>
+    </section>
     <footer>
-        &copy; 2024 Nilofer 3D SaaS. All rights reserved.
+        <p>&copy; 2024 Futuristic SaaS. All rights reserved.</p>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
     </footer>
+
+    <!-- Pink dots interaction script -->
+    <script>
+        document.addEventListener('mousemove', (e) => {
+            const dot = document.createElement('div');
+            dot.className = 'dot';
+            dot.style.width = dot.style.height = `${Math.random() * 10 + 5}px`;
+            dot.style.left = `${e.pageX}px`;
+            dot.style.top = `${e.pageY}px`;
+            document.body.appendChild(dot);
+
+            setTimeout(() => {
+                dot.remove();
+            }, 1000);
+        });
+    </script>
 </body>
 </html>
