@@ -302,38 +302,42 @@
 
         /* Footer */
         footer {
-            background-color: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.7);
             color: white;
             text-align: center;
             padding: 20px;
-            border-top: 1px solid rgba(255, 105, 180, 0.3);
-        }
-
-        footer p {
-            margin: 0;
-            font-size: 0.9em;
-        }
-
-        /* 3D Mouse Interaction */
-        #cursor {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 105, 180, 0.8);
-            border-radius: 50%;
-            pointer-events: none;
-            transform: translate3d(0, 0, 0);
-            transition: transform 0.1s ease-out;
-            z-index: 9999;
+            bottom: 0;
+            width: 100%;
+            border-top: 1px solid rgba(255, 105, 180, 0.3);
+            backdrop-filter: blur(15px);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+            margin: 0 15px;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #ff69b4;
+            text-shadow: 0 0 10px rgba(255, 105, 180, 0.8);
         }
     </style>
 </head>
 <body>
     <header>
         <div class="header-content">
-            <h1><img src="profile-picture.jpg" alt="Profile Picture"> Nilofer 3D SaaS</h1>
+            <img src="logo.png" alt="Nilofer 3D SaaS Logo">
+            <h1>Nilofer 3D SaaS</h1>
             <nav class="nav-links">
                 <a href="#about">About</a>
                 <a href="#products">Products</a>
@@ -343,26 +347,25 @@
         </div>
     </header>
 
-    <div class="hero-container">
+    <section class="hero-container">
         <div class="hero">
             <h1>Welcome to Nilofer 3D SaaS</h1>
-            <p>Experience the Future of Interactive Web Design</p>
-            <a href="#about" class="cta-button">Learn More</a>
+            <p>Revolutionizing the way you experience 3D on the web.</p>
+            <a href="#products" class="cta-button">Explore Our Products</a>
         </div>
-    </div>
+    </section>
 
     <section id="about">
         <h2>About Us</h2>
         <div class="about-slide">
-            <img src="about-image1.jpg" alt="About Image 1" class="active">
-            <img src="about-image2.jpg" alt="About Image 2" class="next">
-            <img src="about-image3.jpg" alt="About Image 3" class="prev">
+            <img src="about1.jpg" alt="About Image 1" class="active">
+            <img src="about2.jpg" alt="About Image 2">
+            <img src="about3.jpg" alt="About Image 3">
         </div>
         <div class="about-nav">
             <button class="prev-btn">❮</button>
             <button class="next-btn">❯</button>
         </div>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
     </section>
 
     <section id="products">
@@ -370,61 +373,63 @@
         <div class="product-list">
             <div class="product-item">
                 <h3>Product 1</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>Experience seamless 3D interactions on your website.</p>
             </div>
             <div class="product-item">
                 <h3>Product 2</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>Enhance user engagement with stunning 3D effects.</p>
             </div>
             <div class="product-item">
                 <h3>Product 3</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>Take your web design to the next level with our SaaS tools.</p>
             </div>
         </div>
     </section>
 
     <section id="testimonials">
-        <h2>Testimonials</h2>
+        <h2>What Our Clients Say</h2>
         <div class="testimonial-item">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+            <p>Nilofer 3D SaaS transformed our website. Our clients are amazed by the 3D effects!</p>
         </div>
         <div class="testimonial-item">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+            <p>The interactive demos are a game-changer. Our user engagement has skyrocketed!</p>
+        </div>
+        <div class="testimonial-item">
+            <p>We love the flexibility and ease of use. Highly recommend Nilofer 3D SaaS!</p>
         </div>
     </section>
 
     <section id="contact">
         <h2>Contact Us</h2>
-        <form action="#">
-            <input type="text" placeholder="Your Name" required>
-            <input type="email" placeholder="Your Email" required>
-            <textarea placeholder="Your Message" rows="5" required></textarea>
+        <form action="https://formspree.io/f/{form_id}" method="POST">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
             <button type="submit">Send Message</button>
         </form>
     </section>
 
     <footer>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
         <p>&copy; 2024 Nilofer 3D SaaS. All rights reserved.</p>
     </footer>
 
-    <div id="cursor"></div>
-
     <script>
-        // 3D Mouse Interaction
-        document.addEventListener('mousemove', (e) => {
-            const cursor = document.getElementById('cursor');
-            const x = e.clientX - cursor.offsetWidth / 2;
-            const y = e.clientY - cursor.offsetHeight / 2;
-            cursor.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+        document.addEventListener('mousemove', function(e) {
+            var heroContainer = document.querySelector('.hero-container');
+            var x = (e.clientX - window.innerWidth / 2) / window.innerWidth * 2;
+            var y = (e.clientY - window.innerHeight / 2) / window.innerHeight * 2;
+            heroContainer.style.transform = 'rotateX(' + y * 10 + 'deg) rotateY(' + x * 10 + 'deg)';
         });
 
-        // About Section Slideshow
-        const slides = document.querySelectorAll('.about-slide img');
-        const prevBtn = document.querySelector('.prev-btn');
-        const nextBtn = document.querySelector('.next-btn');
-        let currentIndex = 0;
+        var slides = document.querySelectorAll('.about-slide img');
+        var currentIndex = 0;
 
-        const showSlide = (index) => {
+        function showSlide(index) {
             slides.forEach((slide, i) => {
                 slide.classList.remove('active', 'next', 'prev');
                 if (i === index) {
@@ -435,15 +440,15 @@
                     slide.classList.add('prev');
                 }
             });
-        };
+        }
 
-        prevBtn.addEventListener('click', () => {
-            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+        document.querySelector('.next-btn').addEventListener('click', function() {
+            currentIndex = (currentIndex + 1) % slides.length;
             showSlide(currentIndex);
         });
 
-        nextBtn.addEventListener('click', () => {
-            currentIndex = (currentIndex + 1) % slides.length;
+        document.querySelector('.prev-btn').addEventListener('click', function() {
+            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
             showSlide(currentIndex);
         });
 
