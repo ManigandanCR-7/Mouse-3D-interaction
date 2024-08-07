@@ -1,4 +1,4 @@
-DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -143,8 +143,8 @@ DOCTYPE html>
             padding: 20px;
         }
 
-        /* Features Section */
-        .features {
+        /* 3D Web Products Section */
+        .products {
             padding: 60px 20px;
             background-color: rgba(244, 244, 244, 0.1); /* Transparent effect */
             border-radius: 15px;
@@ -153,32 +153,38 @@ DOCTYPE html>
             margin-bottom: 60px;
         }
 
-        .features h2 {
+        .products h2 {
             text-align: center;
             margin-bottom: 40px;
         }
 
-        .feature-item {
-            text-align: center;
-            max-width: 300px;
-            margin: 20px auto;
+        .product-list {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
         }
 
-        .feature-item img {
+        .product-item {
+            text-align: center;
+            max-width: 300px;
+            margin: 20px;
+        }
+
+        .product-item img {
             width: 100px;
             height: 100px;
             transition: transform 0.3s ease;
         }
 
-        .feature-item img:hover {
+        .product-item img:hover {
             transform: scale(1.1);
         }
 
-        .feature-item h3 {
+        .product-item h3 {
             margin: 20px 0 10px;
         }
 
-        .feature-item p {
+        .product-item p {
             color: #ddd;
         }
 
@@ -296,31 +302,26 @@ DOCTYPE html>
         .contact form {
             max-width: 600px;
             margin: 0 auto;
-            text-align: left;
         }
 
-        .contact label {
-            display: block;
-            margin-bottom: 10px;
-            color: #bbb;
-        }
-
-        .contact input, .contact textarea {
+        .contact form input,
+        .contact form textarea {
             width: 100%;
-            padding: 10px;
+            padding: 15px;
             margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            border: none;
+            border-radius: 10px;
             background-color: rgba(255, 255, 255, 0.1);
-            color: white;
+            color: #fff;
+            font-size: 1em;
         }
 
-        .contact button {
+        .contact form .cta-button {
             background: linear-gradient(45deg, #ff69b4, #ff1493);
             color: white;
             border: none;
             padding: 15px 30px;
-            font-size: 1.2em;
+            font-size: 1em;
             cursor: pointer;
             border-radius: 25px;
             box-shadow: 0 0 15px rgba(255, 105, 180, 0.6);
@@ -328,7 +329,7 @@ DOCTYPE html>
             transition: background 0.3s ease, transform 0.3s ease;
         }
 
-        .contact button:hover {
+        .contact form .cta-button:hover {
             background: linear-gradient(45deg, #ff1493, #ff69b4);
             transform: scale(1.05);
         }
@@ -337,96 +338,105 @@ DOCTYPE html>
         footer {
             background-color: rgba(0, 0, 0, 0.7);
             color: white;
-            padding: 20px;
             text-align: center;
+            padding: 20px;
         }
     </style>
 </head>
 <body>
+    <!-- Header -->
     <header>
         <div class="header-content">
-            <h1><img src="Mouse-3D-interaction/image/Untitled design.png" > Nilofer 3D SaaS </h1>
+            <h1><img src="logo.png" alt="Logo"> Futuristic SaaS</h1>
             <nav class="nav-links">
-                <a href="#features">Features</a>
+                <a href="#features">3D Web Products</a>
                 <a href="#pricing">Pricing</a>
                 <a href="#testimonials">Testimonials</a>
                 <a href="#contact">Contact</a>
             </nav>
         </div>
     </header>
+
+    <!-- Hero Section -->
     <section class="hero">
-        <h1>Welcome to the Future of SaaS</h1>
-        <p>Experience unparalleled 3D interactivity</p>
-        <a href="#features" class="cta-button">Learn More</a>
+        <h1>Welcome to the Future</h1>
+        <p>Explore our cutting-edge 3D web products and take your business to the next level.</p>
+        <a href="#features" class="cta-button">Explore Now</a>
     </section>
+
     <div class="main-container">
-        <section id="features" class="features">
-            <h2>Features</h2>
-            <div class="feature-item">
-                <img src="feature1.png" alt="Feature 1">
-                <h3>Interactive 3D Models</h3>
-                <p>Engage your users with fully interactive 3D models that showcase your product's features and capabilities.</p>
-            </div>
-            <div class="feature-item">
-                <img src="feature2.png" alt="Feature 2">
-                <h3>Custom Animations</h3>
-                <p>Bring your product to life with custom animations that highlight key functions and benefits.</p>
-            </div>
-            <div class="feature-item">
-                <img src="feature3.png" alt="Feature 3">
-                <h3>Seamless Integration</h3>
-                <p>Integrate our 3D solutions into your existing platform with ease, enhancing your user experience.</p>
+        <!-- 3D Web Products Section -->
+        <section id="features" class="products">
+            <h2>3D Web Products</h2>
+            <div class="product-list">
+                <div class="product-item">
+                    <img src="product1.jpg" alt="Product 1">
+                    <h3>Product 1</h3>
+                    <p>Revolutionize your website with our interactive 3D models and animations.</p>
+                </div>
+                <div class="product-item">
+                    <img src="product2.jpg" alt="Product 2">
+                    <h3>Product 2</h3>
+                    <p>Enhance user engagement with our stunning 3D visualizations.</p>
+                </div>
+                <div class="product-item">
+                    <img src="product3.jpg" alt="Product 3">
+                    <h3>Product 3</h3>
+                    <p>Create immersive experiences with our advanced 3D tools and software.</p>
+                </div>
             </div>
         </section>
+
+        <!-- Pricing Section -->
         <section id="pricing" class="pricing">
             <h2>Pricing</h2>
             <div class="pricing-table">
                 <div class="pricing-item">
-                    <h3>Basic Plan</h3>
-                    <p class="price">$9.99/month</p>
-                    <p>Perfect for small businesses looking to add basic 3D interactivity to their website.</p>
-                    <a href="#" class="cta-button">Sign Up</a>
+                    <h3>Basic</h3>
+                    <div class="price">$9.99/month</div>
+                    <a href="#" class="cta-button">Get Started</a>
                 </div>
                 <div class="pricing-item">
-                    <h3>Pro Plan</h3>
-                    <p class="price">$29.99/month</p>
-                    <p>Ideal for growing businesses that need advanced 3D features and customization.</p>
-                    <a href="#" class="cta-button">Sign Up</a>
+                    <h3>Pro</h3>
+                    <div class="price">$29.99/month</div>
+                    <a href="#" class="cta-button">Get Started</a>
                 </div>
                 <div class="pricing-item">
-                    <h3>Enterprise Plan</h3>
-                    <p class="price">Contact Us</p>
-                    <p>Custom solutions for large enterprises with specific 3D interactive needs.</p>
-                    <a href="#" class="cta-button">Contact Us</a>
+                    <h3>Enterprise</h3>
+                    <div class="price">$99.99/month</div>
+                    <a href="#" class="cta-button">Get Started</a>
                 </div>
             </div>
         </section>
+
+        <!-- Testimonials Section -->
         <section id="testimonials" class="testimonials">
             <h2>Testimonials</h2>
             <div class="testimonial-item">
-                <p>"Nilofer 3D SaaS transformed our website's user experience. The 3D models are stunning and interactive!"</p>
-                <cite>- John Doe, CEO of Tech Innovators</cite>
+                <p>"Futuristic SaaS transformed our business with their incredible 3D web products. Our customers love it!"</p>
+                <cite>- John Doe, CEO of ExampleCorp</cite>
             </div>
             <div class="testimonial-item">
-                <p>"We've seen a significant increase in user engagement since integrating Nilofer's 3D solutions. Highly recommend!"</p>
-                <cite>- Jane Smith, Marketing Director at Creative Solutions</cite>
+                <p>"The best investment we've made. The 3D tools are easy to use and have significantly increased user engagement."</p>
+                <cite>- Jane Smith, Founder of StartupXYZ</cite>
             </div>
         </section>
+
+        <!-- Contact Section -->
         <section id="contact" class="contact">
             <h2>Contact Us</h2>
-            <form action="#">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" required>
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
-                <label for="message">Message</label>
-                <textarea id="message" name="message" rows="5" required></textarea>
-                <button type="submit">Send Message</button>
+            <form>
+                <input type="text" name="name" placeholder="Your Name">
+                <input type="email" name="email" placeholder="Your Email">
+                <textarea name="message" rows="5" placeholder="Your Message"></textarea>
+                <button type="submit" class="cta-button">Send Message</button>
             </form>
         </section>
     </div>
+
+    <!-- Footer -->
     <footer>
-        &copy; 2024 Nilofer 3D SaaS. All rights reserved.
+        <p>&copy; 2024 Futuristic SaaS. All rights reserved.</p>
     </footer>
 </body>
 </html>
