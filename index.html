@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,13 +9,12 @@
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background-color: #000; /* Dark black background */
-            color: #fff; /* White text for contrast */
-            overflow-y: scroll; /* Enable vertical scrolling */
-            overflow-x: hidden; /* Disable horizontal scrolling */
+            background-color: #000;
+            color: #fff;
+            overflow-y: scroll;
+            overflow-x: hidden;
         }
 
-        /* WebKit-based browsers */
         ::-webkit-scrollbar {
             width: 12px;
         }
@@ -32,15 +32,16 @@
             background: #ff1493;
         }
 
-        /* Blinking effect */
         ::-webkit-scrollbar-thumb:active {
             animation: blink 0.5s infinite;
         }
 
         @keyframes blink {
-            0%, 100% {
+            0%,
+            100% {
                 background: #ff69b4;
             }
+
             50% {
                 background: #ff1493;
             }
@@ -154,7 +155,6 @@
             backdrop-filter: blur(15px);
         }
 
-        /* About Section Styles */
         .about-section {
             text-align: center;
             padding: 80px 20px;
@@ -215,8 +215,99 @@
         .slider-dots .active {
             background: #ff1493;
         }
+
+        .about-section:hover {
+            background: radial-gradient(circle, rgba(255, 105, 180, 0.3) 0%, rgba(0, 0, 0, 0.8) 70%);
+        }
+
+        .products-section {
+            text-align: center;
+            padding: 80px 20px;
+            position: relative;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 15px;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 105, 180, 0.3);
+            margin: 60px auto;
+            max-width: 1140px;
+        }
+
+        .products-heading {
+            font-size: 2.5em;
+            margin-bottom: 40px;
+        }
+
+        .product-container {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .product-subheading {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .product-slide {
+            width: 90%;
+            margin: 0 auto;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(15px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image {
+            width: 300px;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 20px;
+            overflow: hidden;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .product-stars {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .product-stars span {
+            color: gold;
+            font-size: 1.5em;
+            margin: 0 5px;
+        }
+
+        .product-description {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .product-dots {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .product-dots div {
+            width: 10px;
+            height: 10px;
+            background: #ff69b4;
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .product-dots .active {
+            background: #ff1493;
+        }
     </style>
 </head>
+
 <body>
     <header>
         <div class="header-content">
@@ -234,39 +325,69 @@
     <section class="hero-container">
         <div class="hero">
             <h1>Welcome to Nilofer 3D SaaS</h1>
-            <p>Revolutionizing the way you experience 3D on the web.</p>
+            <p>Experience the future of web design with our cutting-edge 3D solutions.</p>
             <a href="#products" class="cta-button">Explore Our Products</a>
         </div>
     </section>
 
     <section id="about" class="about-section">
-        <h2 class="about-heading">About</h2>
+        <h2 class="about-heading">About Us</h2>
         <div class="about-container">
-            <div class="about-description" id="about-description">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque leo non ex fermentum, ut elementum purus malesuada. Curabitur imperdiet felis vitae turpis consequat, vel tincidunt dolor convallis.</p>
+            <div class="about-description">
+                <p>Nilofer 3D SaaS is a leading provider of innovative 3D web design solutions. Our mission is to empower designers and businesses with the tools they need to create immersive and interactive web experiences.</p>
             </div>
-            <div class="about-image" id="about-image" style="background-image: url('image1.jpg');"></div>
-        </div>
-        <div class="slider-dots" id="slider-dots">
-            <div class="active" onclick="showSlide(0)"></div>
-            <div onclick="showSlide(1)"></div>
-            <div onclick="showSlide(2)"></div>
+            <div class="about-image" style="background-image: url('about.jpg');"></div>
         </div>
     </section>
 
-    <section id="products">
-        <h2>Our Products</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque leo non ex fermentum, ut elementum purus malesuada. Curabitur imperdiet felis vitae turpis consequat, vel tincidunt dolor convallis.</p>
-    </section>
+    <section id="products" class="products-section">
+        <h2 class="products-heading">SaaS Products</h2>
 
-    <section id="testimonials">
-        <h2>Testimonials</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque leo non ex fermentum, ut elementum purus malesuada. Curabitur imperdiet felis vitae turpis consequat, vel tincidunt dolor convallis.</p>
-    </section>
+        <div class="product-container">
+            <h3 class="product-subheading">Freemium Product</h3>
+            <div class="product-slide">
+                <div class="product-image" style="background-image: url('freemium.jpg');"></div>
+                <div class="product-stars">
+                    <span>★</span>
+                    <span>★</span>
+                </div>
+                <p class="product-description">3D mouse interaction futuristic plug-in product</p>
+            </div>
+        </div>
 
-    <section id="contact">
-        <h2>Contact Us</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque leo non ex fermentum, ut elementum purus malesuada. Curabitur imperdiet felis vitae turpis consequat, vel tincidunt dolor convallis.</p>
+        <div class="product-container">
+            <h3 class="product-subheading">Paid Product + (50% off on successful referrals)</h3>
+            <div class="product-slide">
+                <div class="product-image" style="background-image: url('paid.jpg');"></div>
+                <div class="product-stars">
+                    <span>★</span>
+                    <span>★</span>
+                    <span>★</span>
+                </div>
+                <p class="product-description">3D mouse + buttons futuristic plug-in product</p>
+            </div>
+        </div>
+
+        <div class="product-container">
+            <h3 class="product-subheading">Premium Product + (60% off on successful 2 referrals)</h3>
+            <div class="product-slide">
+                <div class="product-image" style="background-image: url('premium.jpg');"></div>
+                <div class="product-stars">
+                    <span>★</span>
+                    <span>★</span>
+                    <span>★</span>
+                    <span>★</span>
+                    <span>★</span>
+                </div>
+                <p class="product-description">3D website futuristic design + 3D Mouse interaction + 3D buttons plug-in product</p>
+            </div>
+        </div>
+
+        <div class="product-dots">
+            <div class="active" onclick="currentSlide(1)"></div>
+            <div onclick="currentSlide(2)"></div>
+            <div onclick="currentSlide(3)"></div>
+        </div>
     </section>
 
     <footer>
@@ -274,43 +395,32 @@
     </footer>
 
     <script>
-        const slides = [
-            {
-                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque leo non ex fermentum, ut elementum purus malesuada. Curabitur imperdiet felis vitae turpis consequat, vel tincidunt dolor convallis.",
-                image: 'image1.jpg'
-            },
-            {
-                description: "Curabitur imperdiet felis vitae turpis consequat, vel tincidunt dolor convallis. Nullam scelerisque leo non ex fermentum, ut elementum purus malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-                image: 'image2.jpg'
-            },
-            {
-                description: "Vestibulum eu urna orci. Phasellus at velit ac sapien sagittis vehicula non ut nisi. Nulla facilisi. Duis vel massa at ex viverra varius. Nullam scelerisque leo non ex fermentum.",
-                image: 'image3.jpg'
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            let slides = document.querySelectorAll('.product-slide');
+            let dots = document.querySelectorAll('.product-dots div');
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = 'none';
             }
-        ];
-
-        let currentSlide = 0;
-
-        function showSlide(index) {
-            currentSlide = index;
-            document.getElementById('about-description').innerHTML = `<p>${slides[index].description}</p>`;
-            document.getElementById('about-image').style.backgroundImage = `url('${slides[index].image}')`;
-
-            const dots = document.querySelectorAll('.slider-dots div');
-            dots.forEach(dot => dot.classList.remove('active'));
-            dots[index].classList.add('active');
+            slideIndex++;
+            if (slideIndex > slides.length) {
+                slideIndex = 1;
+            }
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(' active', '');
+            }
+            slides[slideIndex - 1].style.display = 'block';
+            dots[slideIndex - 1].className += ' active';
+            setTimeout(showSlides, 15000); // Change slide every 15 seconds
         }
 
-        function autoSlide() {
-            currentSlide = (currentSlide + 1) % slides.length;
-            showSlide(currentSlide);
+        function currentSlide(n) {
+            slideIndex = n - 1;
+            showSlides();
         }
-
-        // Initial slide
-        showSlide(0);
-
-        // Auto slide every 5 seconds
-        setInterval(autoSlide, 5000);
     </script>
 </body>
+
 </html>
