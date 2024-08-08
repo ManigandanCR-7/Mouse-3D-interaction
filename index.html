@@ -47,8 +47,29 @@
                 background: #ff1493;
             }
         }
+
+        /* Transparent blur slide */
+        .blur-slide {
+            position: absolute;
+            top: 2013px;
+            left: 3636px;
+            width: 1440px;
+            height: 215px;
+            background: rgba(255, 255, 255, 0.1); /* Slight transparency */
+            backdrop-filter: blur(10px); /* Blur effect */
+            border-radius: 40px; /* Corner radius */
+            border: 1px solid rgba(255, 105, 180, 0.3); /* Border with pinkish hue */
+            box-shadow: 0 0 15px rgba(255, 105, 180, 0.6); /* Box shadow for better visibility */
+            padding: 20px;
+            box-sizing: border-box;
+            color: #fff;
+        }
     </style>
 </head>
 <body>
+    <!-- Transparent blur slide -->
+    <div class="blur-slide">
+        <p>This is a transparent blur slide with the specified properties.</p>
+    </div>
 </body>
 </html>
