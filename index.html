@@ -106,17 +106,28 @@
             perspective: 1000px; /* Perspective for 3D effect */
         }
 
-        .hero {
+        .hero-content {
             position: relative;
             width: 80%;
             height: 140%;
-            background: rgba(0, 0, 0, 0.9); /* Dark black transparency */
+            background: rgba(0, 0, 0, 0.7);
             border-radius: 25px;
             backdrop-filter: blur(15px);
             border: 1px solid rgba(255, 105, 180, 0.3);
             transform-style: preserve-3d; /* Required for 3D effect */
             transition: transform 0.5s;
-            transform: translateY(-12px); /* Adjust slide position above heading */
+        }
+
+        .hero-content h1, .hero-content p, .cta-button {
+            margin: 0;
+            transform: rotateY(0deg);
+            transition: transform 0.5s ease;
+        }
+
+        .hero-content:hover .hero-content h1,
+        .hero-content:hover .hero-content p,
+        .hero-content:hover .cta-button {
+            transform: rotateY(-15deg); /* Rotate on hover */
         }
 
         .hero h1 {
@@ -175,17 +186,23 @@
             <img src="logo.png" alt="Logo">
             <h1>Nilofer 3D SaaS</h1>
             <nav class="nav-links">
+                <a href="#testimonials">Testimonials</a>
                 <a href="#contact">Contact</a>
             </nav>
         </div>
     </header>
 
     <section class="hero-container">
-        <div class="hero">
+        <div class="hero-content">
             <h1>Welcome to Nilofer 3D SaaS</h1>
             <p>Revolutionizing the way you experience 3D on the web.</p>
-            <a href="#contact" class="cta-button">Explore Our Products</a>
+            <a href="#testimonials" class="cta-button">Explore Our Products</a>
         </div>
+    </section>
+
+    <section id="testimonials">
+        <h2>Testimonials</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque leo non ex fermentum, ut elementum purus malesuada. Curabitur imperdiet felis vitae turpis consequat, vel tincidunt dolor convallis.</p>
     </section>
 
     <section id="contact">
@@ -196,23 +213,5 @@
     <footer>
         <p>&copy; 2024 Nilofer 3D SaaS. All rights reserved.</p>
     </footer>
-
-    <script>
-        const hero = document.querySelector('.hero');
-
-        document.addEventListener('mousemove', (e) => {
-            const { clientX: x, clientY: y } = e;
-            const { innerWidth: width, innerHeight: height } = window;
-
-            const rotateX = ((y / height) - 0.5) * 20; // Adjust the multiplier for desired effect
-            const rotateY = ((x / width) - 0.5) * -20; // Adjust the multiplier for desired effect
-
-            hero.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-        });
-
-        document.addEventListener('mouseleave', () => {
-            hero.style.transform = 'rotateX(0) rotateY(0)';
-        });
-    </script>
 </body>
 </html>
