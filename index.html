@@ -107,14 +107,16 @@
         }
 
         .hero {
+            position: relative;
             width: 80%;
             height: 140%;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.9); /* Dark black transparency */
             border-radius: 25px;
             backdrop-filter: blur(15px);
             border: 1px solid rgba(255, 105, 180, 0.3);
             transform-style: preserve-3d; /* Required for 3D effect */
             transition: transform 0.5s;
+            transform: translateY(-12px); /* Adjust slide position above heading */
         }
 
         .hero h1 {
