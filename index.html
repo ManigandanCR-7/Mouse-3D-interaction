@@ -159,17 +159,32 @@
             text-align: center;
             padding: 80px 20px;
             position: relative;
-            background: rgba(0, 0, 0, 0.8);
+            background: #ff69b4; /* Pinkish background */
             border-radius: 15px;
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 105, 180, 0.3);
+            box-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
             margin: 60px auto;
             max-width: 1140px;
+            overflow: hidden;
+        }
+
+        .about-section::before {
+            content: "";
+            position: absolute;
+            top: -10%;
+            left: -10%;
+            width: 120%;
+            height: 120%;
+            background: radial-gradient(circle, rgba(255, 105, 180, 0.7), rgba(255, 105, 180, 0) 70%);
+            border-radius: 50%;
+            z-index: 0;
+            opacity: 0.5;
         }
 
         .about-heading {
             font-size: 2.5em;
             margin-bottom: 40px;
+            position: relative;
+            z-index: 1;
         }
 
         .about-container {
@@ -178,6 +193,7 @@
             align-items: center;
             position: relative;
             margin-bottom: 40px;
+            z-index: 1;
         }
 
         .about-description {
@@ -265,7 +281,7 @@
     </section>
 
     <section id="contact">
-        <h2>Contact Us</h2>
+        <h2>Contact</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque leo non ex fermentum, ut elementum purus malesuada. Curabitur imperdiet felis vitae turpis consequat, vel tincidunt dolor convallis.</p>
     </section>
 
