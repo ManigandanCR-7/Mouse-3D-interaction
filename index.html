@@ -2,425 +2,169 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3D SaaS Modern Webpage</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #000;
-            color: #fff;
-            overflow-y: scroll;
-            overflow-x: hidden;
-        }
-
-        ::-webkit-scrollbar {
-            width: 12px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #000;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #ff69b4;
-            border-radius: 6px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #ff1493;
-        }
-
-        ::-webkit-scrollbar-thumb:active {
-            animation: blink 0.5s infinite;
-        }
-
-        @keyframes blink {
-            0%,
-            100% {
-                background: #ff69b4;
-            }
-
-            50% {
-                background: #ff1493;
-            }
-        }
-
-        header {
-            background-color: rgba(0, 0, 0, 0.7);
-            color: white;
-            padding: 20px;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            left: 0;
-            z-index: 1000;
-            backdrop-filter: blur(15px);
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1140px;
-            margin: 0 auto;
-        }
-
-        .header-content img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-        }
-
-        .header-content h1 {
-            margin: 0;
-            font-size: 2em;
-            display: flex;
-            align-items: center;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            font-size: 18px;
-            transition: color 0.3s ease, text-shadow 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: #ff69b4;
-            text-shadow: 0 0 10px rgba(255, 105, 180, 0.8);
-        }
-
-        .hero-container {
-            position: relative;
-            width: 100%;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(45deg, #ff69b4, #ff1493);
-            color: white;
-            text-align: center;
-            overflow: hidden;
-        }
-
-        .hero h1 {
-            font-size: 4em;
-            margin: 0;
-        }
-
-        .hero p {
-            font-size: 1.5em;
-            margin: 20px 0;
-        }
-
-        .cta-button {
-            background: linear-gradient(45deg, #ff69b4, #ff1493);
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            font-size: 1.2em;
-            cursor: pointer;
-            border-radius: 25px;
-            box-shadow: 0 0 15px rgba(255, 105, 180, 0.6);
-            text-decoration: none;
-            transition: background 0.3s ease, transform 0.3s ease;
-        }
-
-        .cta-button:hover {
-            background: linear-gradient(45deg, #ff1493, #ff69b4);
-            transform: scale(1.05);
-        }
-
-        section {
-            padding: 60px 20px;
-            background-color: rgba(0, 0, 0, 0.7);
-            border-radius: 15px;
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 105, 180, 0.3);
-            margin: 60px 20px;
-        }
-
-        footer {
-            background: rgba(0, 0, 0, 0.7);
-            color: white;
-            text-align: center;
-            padding: 20px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            border-top: 1px solid rgba(255, 105, 180, 0.3);
-            backdrop-filter: blur(15px);
-        }
-
-        .about-section {
-            text-align: center;
-            padding: 80px 20px;
-            position: relative;
-            background: rgba(0, 0, 0, 0.8);
-            border-radius: 15px;
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 105, 180, 0.3);
-            margin: 60px auto;
-            max-width: 1140px;
-        }
-
-        .about-heading {
-            font-size: 2.5em;
-            margin-bottom: 40px;
-        }
-
-        .about-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            margin-bottom: 40px;
-        }
-
-        .about-description {
-            width: 45%;
-            text-align: left;
-            font-size: 1.2em;
-            margin-right: 20px;
-        }
-
-        .about-image {
-            width: 45%;
-            height: 300px;
-            background-size: cover;
-            background-position: center;
-            border-radius: 20px;
-            overflow: hidden;
-        }
-
-        .slider-dots {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
-        .slider-dots div {
-            width: 10px;
-            height: 10px;
-            background: #ff69b4;
-            border-radius: 50%;
-            margin: 0 5px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .slider-dots .active {
-            background: #ff1493;
-        }
-
-        .about-section:hover {
-            background: radial-gradient(circle, rgba(255, 105, 180, 0.3) 0%, rgba(0, 0, 0, 0.8) 70%);
-        }
-
-        .products-section {
-            text-align: center;
-            padding: 80px 20px;
-            position: relative;
-            background: rgba(0, 0, 0, 0.8);
-            border-radius: 15px;
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 105, 180, 0.3);
-            margin: 60px auto;
-            max-width: 1140px;
-        }
-
-        .products-heading {
-            font-size: 2.5em;
-            margin-bottom: 40px;
-        }
-
-        .product-container {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .product-subheading {
-            font-size: 2em;
-            margin-bottom: 20px;
-        }
-
-        .product-slide {
-            width: 90%;
-            margin: 0 auto;
-            padding: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            backdrop-filter: blur(15px);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .product-image {
-            width: 300px;
-            height: 200px;
-            background-size: cover;
-            background-position: center;
-            border-radius: 20px;
-            overflow: hidden;
-            display: inline-block;
-            margin-bottom: 20px;
-        }
-
-        .product-stars {
-            display: flex;
-            justify-content: center;
-            margin: 20px 0;
-        }
-
-        .product-stars span {
-            color: gold;
-            font-size: 1.5em;
-            margin: 0 5px;
-        }
-
-        .product-description {
-            font-size: 1.2em;
-            margin-bottom: 20px;
-        }
-
-        .product-dots {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
-        .product-dots div {
-            width: 10px;
-            height: 10px;
-            background: #ff69b4;
-            border-radius: 50%;
-            margin: 0 5px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .product-dots .active {
-            background: #ff1493;
-        }
-    </style>
-</head>
-
-<body>
-    <header>
-        <div class="header-content">
-            <img src="logo.png" alt="Logo">
-            <h1>Nilofer 3D SaaS</h1>
-            <nav class="nav-links">
-                <a href="#about">About</a>
-                <a href="#products">Products</a>
-                <a href="#testimonials">Testimonials</a>
-                <a href="#contact">Contact</a>
-            </nav>
-        </div>
-    </header>
-
-    <section class="hero-container">
-        <div class="hero">
-            <h1>Welcome to Nilofer 3D SaaS</h1>
-            <p>Experience the future of web design with our cutting-edge 3D solutions.</p>
-            <a href="#products" class="cta-button">Explore Our Products</a>
-        </div>
-    </section>
-
-    <section id="about" class="about-section">
-        <h2 class="about-heading">About Us</h2>
-        <div class="about-container">
-            <div class="about-description">
-                <p>Nilofer 3D SaaS is a leading provider of innovative 3D web design solutions. Our mission is to empower designers and businesses with the tools they need to create immersive and interactive web experiences.</p>
-            </div>
-            <div class="about-image" style="background-image: url('about.jpg');"></div>
-        </div>
-    </section>
-
     <section id="products" class="products-section">
-        <h2 class="products-heading">SaaS Products</h2>
+    <h2 class="products-heading">SaaS Products</h2>
 
-        <div class="product-container">
-            <h3 class="product-subheading">Freemium Product</h3>
-            <div class="product-slide">
-                <div class="product-image" style="background-image: url('freemium.jpg');"></div>
-                <div class="product-stars">
-                    <span>★</span>
-                    <span>★</span>
-                </div>
-                <p class="product-description">3D mouse interaction futuristic plug-in product</p>
+    <div class="product-container">
+        <h3 class="product-subheading">Freemium Product</h3>
+        <div class="product-slide">
+            <div class="product-image" style="background-image: url('freemium.jpg');"></div>
+            <div class="product-stars">
+                <span>★</span>
+                <span>★</span>
             </div>
+            <p class="product-description">3D mouse interaction futuristic plug-in product</p>
         </div>
+    </div>
 
-        <div class="product-container">
-            <h3 class="product-subheading">Paid Product + (50% off on successful referrals)</h3>
-            <div class="product-slide">
-                <div class="product-image" style="background-image: url('paid.jpg');"></div>
-                <div class="product-stars">
-                    <span>★</span>
-                    <span>★</span>
-                    <span>★</span>
-                </div>
-                <p class="product-description">3D mouse + buttons futuristic plug-in product</p>
+    <div class="product-container">
+        <h3 class="product-subheading">Paid Product + (50% off on successful referrals)</h3>
+        <div class="product-slide">
+            <div class="product-image" style="background-image: url('paid.jpg');"></div>
+            <div class="product-stars">
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
             </div>
+            <p class="product-description">3D mouse + buttons futuristic plug-in product</p>
         </div>
+    </div>
 
-        <div class="product-container">
-            <h3 class="product-subheading">Premium Product + (60% off on successful 2 referrals)</h3>
-            <div class="product-slide">
-                <div class="product-image" style="background-image: url('premium.jpg');"></div>
-                <div class="product-stars">
-                    <span>★</span>
-                    <span>★</span>
-                    <span>★</span>
-                    <span>★</span>
-                    <span>★</span>
-                </div>
-                <p class="product-description">3D website futuristic design + 3D Mouse interaction + 3D buttons plug-in product</p>
+    <div class="product-container">
+        <h3 class="product-subheading">Premium Product + (60% off on successful 2 referrals)</h3>
+        <div class="product-slide">
+            <div class="product-image" style="background-image: url('premium.jpg');"></div>
+            <div class="product-stars">
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
             </div>
+            <p class="product-description">3D website futuristic design + 3D Mouse interaction + 3D buttons plug-in product</p>
         </div>
+    </div>
 
-        <div class="product-dots">
-            <div class="active" onclick="currentSlide(1)"></div>
-            <div onclick="currentSlide(2)"></div>
-            <div onclick="currentSlide(3)"></div>
-        </div>
-    </section>
+    <div class="product-dots">
+        <div class="active" onclick="currentSlide(1)"></div>
+        <div onclick="currentSlide(2)"></div>
+        <div onclick="currentSlide(3)"></div>
+    </div>
+</section>
 
-    <footer>
-        <p>&copy; 2024 Nilofer 3D SaaS. All rights reserved.</p>
-    </footer>
+<style>
+    .products-section {
+        text-align: center;
+        padding: 80px 20px;
+        position: relative;
+        background: rgba(0, 0, 0, 0.8);
+        border-radius: 15px;
+        backdrop-filter: blur(15px);
+        border: 1px solid rgba(255, 105, 180, 0.3);
+        margin: 60px auto;
+        max-width: 1140px;
+    }
 
-    <script>
-        let slideIndex = 0;
+    .products-heading {
+        font-size: 2.5em;
+        margin-bottom: 40px;
+    }
+
+    .product-container {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .product-subheading {
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
+
+    .product-slide {
+        width: 90%;
+        margin: 0 auto;
+        padding: 40px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+        backdrop-filter: blur(15px);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .product-image {
+        width: 300px;
+        height: 200px;
+        background-size: cover;
+        background-position: center;
+        border-radius: 20px;
+        overflow: hidden;
+        display: inline-block;
+        margin-bottom: 20px;
+    }
+
+    .product-stars {
+        display: flex;
+        justify-content: center;
+        margin: 20px 0;
+    }
+
+    .product-stars span {
+        color: gold;
+        font-size: 1.5em;
+        margin: 0 5px;
+    }
+
+    .product-description {
+        font-size: 1.2em;
+        margin-bottom: 20px;
+    }
+
+    .product-dots {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .product-dots div {
+        width: 10px;
+        height: 10px;
+        background: #ff69b4;
+        border-radius: 50%;
+        margin: 0 5px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+    .product-dots .active {
+        background: #ff1493;
+    }
+</style>
+
+<script>
+    let slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+        let slides = document.querySelectorAll('.product-slide');
+        let dots = document.querySelectorAll('.product-dots div');
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].style.display = 'none';
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) {
+            slideIndex = 1;
+        }
+        for (let i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(' active', '');
+        }
+        slides[slideIndex - 1].style.display = 'block';
+        dots[slideIndex - 1].className += ' active';
+        setTimeout(showSlides, 15000); // Change slide every 15 seconds
+    }
+
+    function currentSlide(n) {
+        slideIndex = n - 1;
         showSlides();
-
-        function showSlides() {
-            let slides = document.querySelectorAll('.product-slide');
-            let dots = document.querySelectorAll('.product-dots div');
-            for (let i = 0; i < slides.length; i++) {
-                slides[i].style.display = 'none';
-            }
-            slideIndex++;
-            if (slideIndex > slides.length) {
-                slideIndex = 1;
-            }
-            for (let i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(' active', '');
-            }
-            slides[slideIndex - 1].style.display = 'block';
-            dots[slideIndex - 1].className += ' active';
-            setTimeout(showSlides, 15000); // Change slide every 15 seconds
-        }
-
-        function currentSlide(n) {
-            slideIndex = n - 1;
-            showSlides();
-        }
-    </script>
-</body>
-
-</html>
+    }
+</script>
+</head>
