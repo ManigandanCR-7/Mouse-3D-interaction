@@ -103,28 +103,43 @@
             color: white;
             text-align: center;
             overflow: hidden;
-            perspective: 1000px; /* Perspective for 3D effect */
         }
 
         .hero {
-            width: 80%;
-            height: 60%;
-            background: rgba(0, 0, 0, 0.7);
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-slide {
+            position: absolute;
+            width: 90%;
+            height: 80%;
+            background: rgba(255, 255, 255, 0.1); /* Light white with transparency */
             border-radius: 15px;
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 105, 180, 0.3);
-            transform-style: preserve-3d; /* Required for 3D effect */
-            transition: transform 0.5s;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            transform-style: preserve-3d;
+            transform: rotateY(0deg);
+            transition: transform 0.5s ease;
+            z-index: -1;
+        }
+
+        .hero-slide:hover {
+            transform: rotateY(15deg); /* Rotate effect on hover */
         }
 
         .hero h1 {
             font-size: 4em;
             margin: 0;
+            position: relative;
+            z-index: 2;
         }
 
         .hero p {
             font-size: 1.5em;
             margin: 20px 0;
+            position: relative;
+            z-index: 2;
         }
 
         .cta-button {
@@ -138,6 +153,8 @@
             box-shadow: 0 0 15px rgba(255, 105, 180, 0.6);
             text-decoration: none;
             transition: background 0.3s ease, transform 0.3s ease;
+            position: relative;
+            z-index: 2;
         }
 
         .cta-button:hover {
@@ -180,6 +197,7 @@
 
     <section class="hero-container">
         <div class="hero">
+            <div class="hero-slide"></div>
             <h1>Welcome to Nilofer 3D SaaS</h1>
             <p>Revolutionizing the way you experience 3D on the web.</p>
             <a href="#contact" class="cta-button">Explore Our Products</a>
@@ -194,23 +212,5 @@
     <footer>
         <p>&copy; 2024 Nilofer 3D SaaS. All rights reserved.</p>
     </footer>
-
-    <script>
-        const hero = document.querySelector('.hero');
-
-        document.addEventListener('mousemove', (e) => {
-            const { clientX: x, clientY: y } = e;
-            const { innerWidth: width, innerHeight: height } = window;
-
-            const rotateX = ((y / height) - 0.5) * 20; // Adjust the multiplier for desired effect
-            const rotateY = ((x / width) - 0.5) * -20; // Adjust the multiplier for desired effect
-
-            hero.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-        });
-
-        document.addEventListener('mouseleave', () => {
-            hero.style.transform = 'rotateX(0) rotateY(0)';
-        });
-    </script>
 </body>
 </html>
