@@ -1,100 +1,76 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hero Section with 3D Effect</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #000; /* Dark black background */
-            color: #fff; /* White text for contrast */
-            overflow-y: scroll; /* Enable vertical scrolling */
-            overflow-x: hidden; /* Disable horizontal scrolling */
-            perspective: 1000px; /* Add perspective for 3D effect */
-        }
+<section class="hero-container">
+    <div class="hero">
+        <h1>Welcome to Nilofer 3D SaaS</h1>
+        <p>Revolutionizing the way you experience 3D on the web.</p>
+        <a href="#testimonials" class="cta-button">Explore Our Products</a>
+    </div>
+</section>
 
-        .hero-container {
-            position: relative;
-            width: 100%;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(45deg, #ff69b4, #ff1493);
-            color: white;
-            text-align: center;
-            overflow: hidden;
-            transform-style: preserve-3d;
-            transition: transform 0.6s ease-in-out;
-        }
+<style>
+    .hero-container {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(45deg, #ff69b4, #ff1493);
+        color: white;
+        text-align: center;
+        overflow: hidden;
+        perspective: 1000px; /* Adds perspective to create 3D effect */
+    }
 
-        /* 3D turning effect on hover */
-        .hero-container:hover {
-            transform: rotateY(20deg) rotateX(10deg);
-        }
+    .hero {
+        transition: transform 0.6s ease;
+        transform-style: preserve-3d;
+    }
 
-        .hero {
-            transform-style: preserve-3d;
-        }
+    .hero h1, .hero p, .cta-button {
+        transition: transform 0.6s ease;
+        transform-style: preserve-3d;
+    }
 
-        .hero h1, .hero p, .cta-button {
-            transform: translateZ(0);
-            transition: transform 0.6s ease-in-out;
-        }
+    .hero-container:hover .hero {
+        transform: rotateY(15deg) rotateX(10deg);
+    }
 
-        /* Individual elements 3D effect */
-        .hero-container:hover .hero h1 {
-            transform: translateZ(50px) rotateY(20deg);
-        }
+    .hero-container:hover .hero h1,
+    .hero-container:hover .hero p,
+    .hero-container:hover .cta-button {
+        transform: rotateY(-15deg) rotateX(-10deg);
+    }
 
-        .hero-container:hover .hero p {
-            transform: translateZ(30px) rotateY(20deg);
-        }
+    .hero h1 {
+        font-size: 4em;
+        margin: 0;
+    }
 
-        .hero-container:hover .cta-button {
-            transform: translateZ(70px) rotateY(20deg);
-        }
+    .hero p {
+        font-size: 1.5em;
+        margin: 20px 0;
+    }
 
-        .hero h1 {
-            font-size: 4em;
-            margin: 0;
-        }
+    .cta-button {
+        background: linear-gradient(45deg, #ff69b4, #ff1493);
+        color: white;
+        border: none;
+        padding: 15px 30px;
+        font-size: 1.2em;
+        cursor: pointer;
+        border-radius: 25px;
+        box-shadow: 0 0 15px rgba(255, 105, 180, 0.6);
+        text-decoration: none;
+        transition: transform 0.6s ease, background 0.3s ease;
+        transform-style: preserve-3d;
+    }
 
-        .hero p {
-            font-size: 1.5em;
-            margin: 20px 0;
-        }
+    .cta-button:hover {
+        background: linear-gradient(45deg, #ff1493, #ff69b4);
+        transform: rotateY(-15deg) rotateX(-10deg) scale(1.05);
+    }
 
-        .cta-button {
-            background: linear-gradient(45deg, #ff69b4, #ff1493);
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            font-size: 1.2em;
-            cursor: pointer;
-            border-radius: 25px;
-            box-shadow: 0 0 15px rgba(255, 105, 180, 0.6);
-            text-decoration: none;
-            transition: background 0.3s ease, transform 0.6s ease-in-out;
-            transform-style: preserve-3d;
-        }
-
-        /* Button 3D effect on hover */
-        .cta-button:hover {
-            background: linear-gradient(45deg, #ff1493, #ff69b4);
-            transform: translateZ(50px) rotateY(15deg);
-        }
-    </style>
-</head>
-<body>
-    <section class="hero-container">
-        <div class="hero">
-            <h1>Welcome to Nilofer 3D SaaS</h1>
-            <p>Revolutionizing the way you experience 3D on the web.</p>
-            <a href="#testimonials" class="cta-button">Explore Our Products</a>
-        </div>
-    </section>
-</body>
-</html>
+    .hero-container:hover .cta-button {
+        transform: rotateY(15deg) rotateX(10deg);
+    }
+</style>
