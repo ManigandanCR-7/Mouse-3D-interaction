@@ -3,28 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3D SaaS Modern Webpage</title>
+    <title>SaaS Products</title>
     <style>
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background-color: #000; /* Dark black background */
-            color: #fff; /* White text for contrast */
-            overflow-y: scroll; /* Enable vertical scrolling */
-            overflow-x: hidden; /* Disable horizontal scrolling */
+            background-color: #000;
+            color: #fff;
+            overflow-y: scroll;
+            overflow-x: hidden;
         }
 
-        section {
-            padding: 60px 20px;
-            background-color: rgba(0, 0, 0, 0.7);
-            border-radius: 15px;
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 105, 180, 0.3);
-            margin: 60px 20px;
-        }
-
-        /* About Section Styles */
-        .about-section {
+        .products-section {
             text-align: center;
             padding: 80px 20px;
             position: relative;
@@ -36,42 +26,73 @@
             max-width: 1140px;
         }
 
-        .about-heading {
+        .products-heading {
             font-size: 2.5em;
             margin-bottom: 40px;
         }
 
-        .about-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
+        .product-container {
+            text-align: center;
             margin-bottom: 40px;
         }
 
-        .about-description {
-            width: 45%;
-            text-align: left;
-            font-size: 1.2em;
-            margin-right: 20px;
+        .product-subheading {
+            font-size: 2em;
+            margin-bottom: 20px;
         }
 
-        .about-image {
-            width: 45%;
-            height: 300px;
+        .product-slide {
+            width: 90%;
+            margin: 0 auto;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(15px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image {
+            width: 300px;
+            height: 200px;
             background-size: cover;
             background-position: center;
             border-radius: 20px;
             overflow: hidden;
+            display: inline-block;
+            margin-bottom: 20px;
         }
 
-        .slider-dots {
+        .product-stars {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .product-stars span {
+            color: gold;
+            font-size: 1.5em;
+            margin: 0 5px;
+        }
+
+        .product-description {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .product-discount {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .product-dots {
             display: flex;
             justify-content: center;
             margin-top: 20px;
         }
 
-        .slider-dots div {
+        .product-dots div {
             width: 10px;
             height: 10px;
             background: #ff69b4;
@@ -81,65 +102,91 @@
             transition: background 0.3s;
         }
 
-        .slider-dots .active {
+        .product-dots .active {
             background: #ff1493;
         }
     </style>
 </head>
 <body>
-    <section id="about" class="about-section">
-        <h2 class="about-heading">About</h2>
-        <div class="about-container">
-            <div class="about-description" id="about-description">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque leo non ex fermentum, ut elementum purus malesuada. Curabitur imperdiet felis vitae turpis consequat, vel tincidunt dolor convallis.</p>
+    <section id="products" class="products-section">
+        <h2 class="products-heading">SaaS Products</h2>
+
+        <div class="product-container">
+            <div class="product-slide">
+                <div class="product-subheading">Freemium Product</div>
+                <div class="product-image" style="background-image: url('freemium.jpg');"></div>
+                <div class="product-stars">
+                    <span>★</span>
+                    <span>★</span>
+                </div>
+                <p class="product-description">3D mouse interaction futuristic plug-in product</p>
             </div>
-            <div class="about-image" id="about-image" style="background-image: url('image1.jpg');"></div>
         </div>
-        <div class="slider-dots" id="slider-dots">
-            <div class="active" onclick="showSlide(0)"></div>
-            <div onclick="showSlide(1)"></div>
-            <div onclick="showSlide(2)"></div>
+
+        <div class="product-container">
+            <div class="product-slide">
+                <div class="product-subheading">Paid Product</div>
+                <div class="product-discount">+ (50% off on successful referrals)</div>
+                <div class="product-image" style="background-image: url('paid.jpg');"></div>
+                <div class="product-stars">
+                    <span>★</span>
+                    <span>★</span>
+                    <span>★</span>
+                </div>
+                <p class="product-description">3D mouse + buttons futuristic plug-in product</p>
+            </div>
+        </div>
+
+        <div class="product-container">
+            <div class="product-slide">
+                <div class="product-subheading">Premium Product</div>
+                <div class="product-discount">+ (60% off on 2 successful referrals)</div>
+                <div class="product-image" style="background-image: url('premium.jpg');"></div>
+                <div class="product-stars">
+                    <span>★</span>
+                    <span>★</span>
+                    <span>★</span>
+                    <span>★</span>
+                    <span>★</span>
+                </div>
+                <p class="product-description">3D website futuristic design + 3D Mouse interaction + 3D buttons plug-in product</p>
+            </div>
+        </div>
+
+        <div class="product-dots">
+            <div class="active" onclick="currentSlide(1)"></div>
+            <div onclick="currentSlide(2)"></div>
+            <div onclick="currentSlide(3)"></div>
         </div>
     </section>
 
     <script>
-        const slides = [
-            {
-                description: "At Nilofer 3D SaaS, we offer cutting-edge 3D products designed specifically for web designers and agencies. Our innovative solutions bring a new dimension to web design, providing startups and established businesses with interactive, immersive tools that set them apart.",
-                image: 'image1.jpg'
-            },
-            {
-                description: "Revolutionizing the web design industry with our state-of-the-art 3D products. Tailored for web designers and design agencies, our solutions offer a startup-friendly approach to integrating dynamic 3D elements into your projects. From interactive demos to stunning visual effects.",
-                image: 'image2.jpg'
-            },
-            {
-                description: "We provide a suite of advanced 3D tools specifically crafted for web designers and agencies. Our startup-centric solutions make it easy to incorporate impressive 3D effects and interactive features into your projects, helping you deliver exceptional results With Customer Retention & ROI .",
-                image: 'image3.jpg'
-            }
-        ];
+    let slideIndex = 0;
+    showSlides();
 
-        let currentSlide = 0;
-
-        function showSlide(index) {
-            currentSlide = index;
-            document.getElementById('about-description').innerHTML = `<p>${slides[index].description}</p>`;
-            document.getElementById('about-image').style.backgroundImage = `url('${slides[index].image}')`;
-
-            const dots = document.querySelectorAll('.slider-dots div');
-            dots.forEach(dot => dot.classList.remove('active'));
-            dots[index].classList.add('active');
+    function showSlides() {
+        let slides = document.querySelectorAll('.product-slide');
+        let dots = document.querySelectorAll('.product-dots div');
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].style.display = 'none';
         }
-
-        function autoSlide() {
-            currentSlide = (currentSlide + 1) % slides.length;
-            showSlide(currentSlide);
+        slideIndex++;
+        if (slideIndex > slides.length) {
+            slideIndex = 1;
         }
+        for (let i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(' active', '');
+        }
+        slides[slideIndex - 1].style.display = 'block';
+        dots[slideIndex - 1].className += ' active';
+        setTimeout(showSlides, 8000); // Change slide every 8 seconds
+    }
 
-        // Initial slide
-        showSlide(0);
+    function currentSlide(n) {
+        slideIndex = n - 1;
+        showSlides();
+    }
+</script>
 
-        // Auto slide every 5 seconds
-        setInterval(autoSlide, 5000);
-    </script>
 </body>
 </html>
