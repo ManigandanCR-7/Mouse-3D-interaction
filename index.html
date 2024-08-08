@@ -103,6 +103,18 @@
             color: white;
             text-align: center;
             overflow: hidden;
+            perspective: 1000px; /* Perspective for 3D effect */
+        }
+
+        .hero {
+            width: 80%;
+            height: 60%;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 105, 180, 0.3);
+            transform-style: preserve-3d; /* Required for 3D effect */
+            transition: transform 0.5s;
         }
 
         .hero h1 {
@@ -182,5 +194,23 @@
     <footer>
         <p>&copy; 2024 Nilofer 3D SaaS. All rights reserved.</p>
     </footer>
+
+    <script>
+        const hero = document.querySelector('.hero');
+
+        document.addEventListener('mousemove', (e) => {
+            const { clientX: x, clientY: y } = e;
+            const { innerWidth: width, innerHeight: height } = window;
+
+            const rotateX = ((y / height) - 0.5) * 20; // Adjust the multiplier for desired effect
+            const rotateY = ((x / width) - 0.5) * -20; // Adjust the multiplier for desired effect
+
+            hero.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+
+        document.addEventListener('mouseleave', () => {
+            hero.style.transform = 'rotateX(0) rotateY(0)';
+        });
+    </script>
 </body>
 </html>
