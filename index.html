@@ -3,122 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3D SaaS Modern Webpage</title>
+    <title>Testimonials</title>
     <style>
         body {
             margin: 0;
             font-family: Arial, sans-serif;
             background-color: #000; /* Dark black background */
             color: #fff; /* White text for contrast */
-            overflow-y: scroll; /* Enable vertical scrolling */
             overflow-x: hidden; /* Disable horizontal scrolling */
         }
 
-        /* WebKit-based browsers */
-        ::-webkit-scrollbar {
-            width: 12px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #000;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #ff69b4;
-            border-radius: 6px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #ff1493;
-        }
-
-        /* Blinking effect */
-        ::-webkit-scrollbar-thumb:active {
-            animation: blink 0.5s infinite;
-        }
-
-        @keyframes blink {
-            0%, 100% {
-                background: #ff69b4;
-            }
-            50% {
-                background: #ff1493;
-            }
-        }
-
-        header {
+        section {
+            padding: 60px 20px;
             background-color: rgba(0, 0, 0, 0.7);
-            color: white;
-            padding: 20px;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            left: 0;
-            z-index: 1000;
+            border-radius: 15px;
             backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 105, 180, 0.3);
+            margin: 20px 0;
         }
 
-        .header-content {
+        .testimonial-slide {
+            position: relative;
+            width: calc(100% - 40px);
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: rgba(255, 105, 180, 0.2);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 105, 180, 0.4);
+            box-shadow: 0 0 15px rgba(255, 105, 180, 0.5);
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            max-width: 1140px;
-            margin: 0 auto;
+            transition: transform 0.3s ease;
         }
 
-        .header-content img {
-            width: 50px;
-            height: 50px;
+        .testimonial-slide img {
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
+            margin-right: 20px;
         }
 
-        .header-content h1 {
+        .testimonial-slide.right {
+            margin-left: 20px;
+            margin-right: auto;
+            flex-direction: row-reverse;
+        }
+
+        .testimonial-slide.left {
+            margin-right: 20px;
+            margin-left: auto;
+        }
+
+        .testimonial-slide-content {
+            flex: 1;
+        }
+
+        h2 {
             margin: 0;
-            font-size: 2em;
-            display: flex;
-            align-items: center;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            font-size: 18px;
-            transition: color 0.3s ease, text-shadow 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: #ff69b4;
-            text-shadow: 0 0 10px rgba(255, 105, 180, 0.8);
-        }
-
-        footer {
-            background: rgba(0, 0, 0, 0.7);
-            color: white;
+            font-size: 2.5em;
             text-align: center;
-            padding: 20px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            border-top: 1px solid rgba(255, 105, 180, 0.3);
-            backdrop-filter: blur(15px);
+            color: #ff69b4;
+        }
+
+        p {
+            margin: 20px 0;
+            font-size: 1.2em;
+            line-height: 1.5;
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="header-content">
-            <img src="logo.png" alt="Logo">
-            <h1>Nilofer 3D SaaS</h1>
-            <nav class="nav-links">
-                <a href="#testimonials">Testimonials</a>
-                <a href="#contact">Contact</a>
-            </nav>
+    <section id="testimonials">
+        <h2>Testimonials</h2>
+        <div class="testimonial-slide left">
+            <img src="path/to/image1.jpg" alt="Reviewer 1">
+            <div class="testimonial-slide-content">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque leo non ex fermentum, ut elementum purus malesuada. Curabitur imperdiet felis vitae turpis consequat, vel tincidunt dolor convallis.</p>
+            </div>
         </div>
-    </header>
 
-    <footer>
-        <p>&copy; 2024 Nilofer 3D SaaS. All rights reserved.</p>
-    </footer>
+        <div class="testimonial-slide right">
+            <img src="path/to/image2.jpg" alt="Reviewer 2">
+            <div class="testimonial-slide-content">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque leo non ex fermentum, ut elementum purus malesuada. Curabitur imperdiet felis vitae turpis consequat, vel tincidunt dolor convallis.</p>
+            </div>
+        </div>
+
+        <div class="testimonial-slide left">
+            <img src="path/to/image3.jpg" alt="Reviewer 3">
+            <div class="testimonial-slide-content">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque leo non ex fermentum, ut elementum purus malesuada. Curabitur imperdiet felis vitae turpis consequat, vel tincidunt dolor convallis.</p>
+            </div>
+        </div>
+    </section>
 </body>
 </html>
