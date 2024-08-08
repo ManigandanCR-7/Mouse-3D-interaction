@@ -8,42 +8,9 @@
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background-color: #000; /* Dark black background */
-            color: #fff; /* White text for contrast */
-            overflow-y: scroll; /* Enable vertical scrolling */
-            overflow-x: hidden; /* Disable horizontal scrolling */
-        }
-
-        /* WebKit-based browsers */
-        ::-webkit-scrollbar {
-            width: 12px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #000;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #ff69b4;
-            border-radius: 6px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #ff1493;
-        }
-
-        /* Blinking effect */
-        ::-webkit-scrollbar-thumb:active {
-            animation: blink 0.5s infinite;
-        }
-
-        @keyframes blink {
-            0%, 100% {
-                background: #ff69b4;
-            }
-            50% {
-                background: #ff1493;
-            }
+            background-color: #000;
+            color: #fff;
+            overflow-x: hidden;
         }
 
         header {
@@ -62,7 +29,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1140px;
+            max-width: 1002px;
             margin: 0 auto;
         }
 
@@ -92,17 +59,36 @@
             text-shadow: 0 0 10px rgba(255, 105, 180, 0.8);
         }
 
+        section {
+            padding: 60px 20px;
+            border-radius: 15px;
+            margin: 60px 20px;
+            position: relative;
+        }
+
         .hero-container {
             position: relative;
             width: 100%;
             height: 100vh;
+            transform-style: preserve-3d;
+            transform: rotateX(0) rotateY(0);
+            transition: transform 0.5s;
+        }
+
+        .hero {
+            background: url('hero-bg.jpg') no-repeat center center/cover;
+            color: white;
+            height: 100vh;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(45deg, #ff69b4, #ff1493);
-            color: white;
             text-align: center;
-            overflow: hidden;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(255, 105, 180, 0.6);
         }
 
         .hero h1 {
@@ -133,13 +119,77 @@
             transform: scale(1.05);
         }
 
-        section {
-            padding: 60px 20px;
+        #about {
             background-color: rgba(0, 0, 0, 0.7);
             border-radius: 15px;
             backdrop-filter: blur(15px);
             border: 1px solid rgba(255, 105, 180, 0.3);
-            margin: 60px 20px;
+            position: relative;
+        }
+
+        #about h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .about-content .description {
+            max-width: 45%;
+            font-size: 1.2em;
+            line-height: 1.5;
+            color: #ddd;
+        }
+
+        .about-content .image {
+            width: 45%;
+            height: auto;
+            background-size: cover;
+            background-position: center;
+            border-radius: 40px;
+            height: 215px;
+        }
+
+        .about-slider {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .about-slider div {
+            width: 10px;
+            height: 10px;
+            background: rgba(255, 105, 180, 0.5);
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .about-slider div.active {
+            background: #ff69b4;
+        }
+
+        .about-content::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            border-radius: 50%;
+            background: radial-gradient(circle at center, rgba(255, 105, 180, 0.3), transparent);
+            transition: opacity 0.3s ease;
+            opacity: 0;
+        }
+
+        #about:hover .about-content::before {
+            opacity: 1;
         }
 
         footer {
@@ -154,94 +204,33 @@
             backdrop-filter: blur(15px);
         }
 
-        /* About Section Styles */
-        .about-section {
-            text-align: center;
-            padding: 80px 20px;
-            position: relative;
-            background: #ff69b4; /* Pinkish background */
-            border-radius: 15px;
-            box-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
-            margin: 60px auto;
-            max-width: 1140px;
-            overflow: hidden;
-        }
-
-        .about-section::before {
-            content: "";
-            position: absolute;
-            top: -10%;
-            left: -10%;
-            width: 120%;
-            height: 120%;
-            background: radial-gradient(circle, rgba(255, 105, 180, 0.7), rgba(255, 105, 180, 0) 70%);
-            border-radius: 50%;
-            z-index: 0;
-            opacity: 0.5;
-        }
-
-        .about-heading {
-            font-size: 2.5em;
-            margin-bottom: 40px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .about-container {
+        .social-links {
             display: flex;
             justify-content: center;
-            align-items: center;
-            position: relative;
-            margin-bottom: 40px;
-            z-index: 1;
+            margin-bottom: 20px;
         }
 
-        .about-description {
-            width: 45%;
-            text-align: left;
-            font-size: 1.2em;
-            margin-right: 20px;
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+            margin: 0 15px;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
         }
 
-        .about-image {
-            width: 45%;
-            height: 300px;
-            background-size: cover;
-            background-position: center;
-            border-radius: 20px;
-            overflow: hidden;
-        }
-
-        .slider-dots {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
-        .slider-dots div {
-            width: 10px;
-            height: 10px;
-            background: #ff69b4;
-            border-radius: 50%;
-            margin: 0 5px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .slider-dots .active {
-            background: #ff1493;
+        .social-links a:hover {
+            color: #ff69b4;
+            text-shadow: 0 0 10px rgba(255, 105, 180, 0.8);
         }
     </style>
 </head>
 <body>
     <header>
         <div class="header-content">
-            <img src="logo.png" alt="Logo">
+            <img src="logo.png" alt="Nilofer 3D SaaS Logo">
             <h1>Nilofer 3D SaaS</h1>
             <nav class="nav-links">
                 <a href="#about">About</a>
-                <a href="#products">Products</a>
-                <a href="#testimonials">Testimonials</a>
                 <a href="#contact">Contact</a>
             </nav>
         </div>
@@ -251,33 +240,23 @@
         <div class="hero">
             <h1>Welcome to Nilofer 3D SaaS</h1>
             <p>Revolutionizing the way you experience 3D on the web.</p>
-            <a href="#products" class="cta-button">Explore Our Products</a>
+            <a href="#about" class="cta-button">Explore More</a>
         </div>
     </section>
 
-    <section id="about" class="about-section">
-        <h2 class="about-heading">About</h2>
-        <div class="about-container">
-            <div class="about-description" id="about-description">
+    <section id="about">
+        <h2>About Us</h2>
+        <div class="about-content">
+            <div class="description" id="about-description">
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque leo non ex fermentum, ut elementum purus malesuada. Curabitur imperdiet felis vitae turpis consequat, vel tincidunt dolor convallis.</p>
             </div>
-            <div class="about-image" id="about-image" style="background-image: url('image1.jpg');"></div>
+            <div class="image" id="about-image" style="background-image: url('image1.jpg');"></div>
         </div>
-        <div class="slider-dots" id="slider-dots">
-            <div class="active" onclick="showSlide(0)"></div>
-            <div onclick="showSlide(1)"></div>
-            <div onclick="showSlide(2)"></div>
+        <div class="about-slider">
+            <div class="slider-dot active"></div>
+            <div class="slider-dot"></div>
+            <div class="slider-dot"></div>
         </div>
-    </section>
-
-    <section id="products">
-        <h2>Our Products</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque leo non ex fermentum, ut elementum purus malesuada. Curabitur imperdiet felis vitae turpis consequat, vel tincidunt dolor convallis.</p>
-    </section>
-
-    <section id="testimonials">
-        <h2>Testimonials</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque leo non ex fermentum, ut elementum purus malesuada. Curabitur imperdiet felis vitae turpis consequat, vel tincidunt dolor convallis.</p>
     </section>
 
     <section id="contact">
@@ -300,33 +279,35 @@
                 image: 'image2.jpg'
             },
             {
-                description: "Vestibulum eu urna orci. Phasellus at velit ac sapien sagittis vehicula non ut nisi. Nulla facilisi. Duis vel massa at ex viverra varius. Nullam scelerisque leo non ex fermentum.",
+                description: "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam scelerisque leo non ex fermentum, ut elementum purus malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
                 image: 'image3.jpg'
             }
         ];
 
         let currentSlide = 0;
 
-        function showSlide(index) {
-            currentSlide = index;
-            document.getElementById('about-description').innerHTML = `<p>${slides[index].description}</p>`;
-            document.getElementById('about-image').style.backgroundImage = `url('${slides[index].image}')`;
+        function updateSlide() {
+            const descriptionElement = document.getElementById('about-description');
+            const imageElement = document.getElementById('about-image');
+            descriptionElement.innerHTML = `<p>${slides[currentSlide].description}</p>`;
+            imageElement.style.backgroundImage = `url(${slides[currentSlide].image})`;
 
-            const dots = document.querySelectorAll('.slider-dots div');
-            dots.forEach(dot => dot.classList.remove('active'));
-            dots[index].classList.add('active');
+            document.querySelectorAll('.slider-dot').forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
         }
 
-        function autoSlide() {
+        document.querySelectorAll('.slider-dot').forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentSlide = index;
+                updateSlide();
+            });
+        });
+
+        setInterval(() => {
             currentSlide = (currentSlide + 1) % slides.length;
-            showSlide(currentSlide);
-        }
-
-        // Initial slide
-        showSlide(0);
-
-        // Auto slide every 5 seconds
-        setInterval(autoSlide, 5000);
+            updateSlide();
+        }, 5000);
     </script>
 </body>
 </html>
