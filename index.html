@@ -12,6 +12,7 @@
             height: 3340px;
             color: #fff; /* Ensure any text is visible */
             overflow-y: scroll; /* Enable vertical scrolling */
+            overflow-x: hidden; /* Disable horizontal scrolling */
             scrollbar-width: thin; /* Firefox */
             scrollbar-color: #ff69b4 #000; /* Firefox */
         }
@@ -50,9 +51,10 @@
 
         /* Transparent blur slide */
         .blur-slide {
-            position: absolute;
-            top: 2013px;
-            left: 3636px;
+            position: fixed; /* Fix to top of the viewport */
+            top: 0; /* Position at the very top */
+            left: 50%; /* Center horizontally */
+            transform: translateX(-50%); /* Adjust for perfect centering */
             width: 1440px;
             height: 215px;
             background: rgba(255, 255, 255, 0.1); /* Slight transparency */
