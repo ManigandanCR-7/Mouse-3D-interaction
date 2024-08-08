@@ -3,14 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Basic Webpage</title>
+    <title>Custom Scrollbar Webpage</title>
     <style>
         body {
             margin: 0;
             background-color: #000; /* Dark black background */
             width: 1140px;
             height: 3340px;
-            overflow: hidden; /* Prevent scrolling */
+            color: #fff; /* Ensure any text is visible */
+            overflow-y: scroll; /* Enable vertical scrolling */
+            scrollbar-width: thin; /* Firefox */
+            scrollbar-color: #ff69b4 #000; /* Firefox */
+        }
+
+        /* WebKit-based browsers */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #000;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #ff69b4;
+            border-radius: 6px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ff1493;
+        }
+
+        /* Blinking effect */
+        ::-webkit-scrollbar-thumb:active {
+            animation: blink 0.5s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% {
+                background: #ff69b4;
+            }
+            50% {
+                background: #ff1493;
+            }
         }
     </style>
 </head>
