@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hero Section with 3D Effect</title>
+    <title>Hero Section with Bubble Effect</title>
     <style>
         body {
             margin: 0;
@@ -12,7 +12,8 @@
             color: #fff; /* White text for contrast */
             overflow-y: scroll; /* Enable vertical scrolling */
             overflow-x: hidden; /* Disable horizontal scrolling */
-            perspective: 1000px; /* Add perspective for 3D effect */
+            position: relative;
+            height: 100vh;
         }
 
         .hero-container {
@@ -26,38 +27,10 @@
             color: white;
             text-align: center;
             overflow: hidden;
-            transform-style: preserve-3d;
-            transition: transform 0.6s ease-in-out;
         }
 
         .hero {
-            transform-style: preserve-3d;
-        }
-
-        .hero h1, .hero p, .cta-button {
-            transform: translateZ(0);
-            transition: transform 0.6s ease-in-out;
-        }
-
-        .hero-container:hover .hero h1 {
-            transform: translateZ(50px);
-        }
-
-        .hero-container:hover .hero p {
-            transform: translateZ(30px);
-        }
-
-        .hero-container:hover .cta-button {
-            transform: translateZ(70px);
-        }
-
-        /* 3D effect based on mouse position */
-        .hero-container {
-            perspective-origin: center;
-        }
-
-        .hero-container:hover {
-            transform: rotateY(calc(var(--mouse-x, 0) * 1deg)) rotateX(calc(var(--mouse-y, 0) * 0.5deg));
+            z-index: 1;
         }
 
         .hero h1 {
@@ -81,13 +54,59 @@
             box-shadow: 0 0 15px rgba(255, 105, 180, 0.6);
             text-decoration: none;
             transition: background 0.3s ease, transform 0.6s ease-in-out;
-            transform-style: preserve-3d;
         }
 
         .cta-button:hover {
             background: linear-gradient(45deg, #ff1493, #ff69b4);
-            transform: translateZ(50px) rotateY(calc(var(--mouse-x, 0) * 0.3deg));
+            transform: scale(1.05);
         }
+
+        .bubbles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .bubble {
+            position: absolute;
+            bottom: -100px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            animation: rise 10s infinite ease-in;
+        }
+
+        @keyframes rise {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 0.7;
+            }
+            50% {
+                transform: translateY(-500px) scale(1.2);
+                opacity: 0.9;
+            }
+            100% {
+                transform: translateY(-1000px) scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        /* Randomize bubble sizes and positions */
+        .bubble:nth-child(1) { left: 10%; width: 20px; height: 20px; animation-duration: 8s; }
+        .bubble:nth-child(2) { left: 20%; width: 25px; height: 25px; animation-duration: 10s; }
+        .bubble:nth-child(3) { left: 30%; width: 15px; height: 15px; animation-duration: 12s; }
+        .bubble:nth-child(4) { left: 40%; width: 35px; height: 35px; animation-duration: 9s; }
+        .bubble:nth-child(5) { left: 50%; width: 30px; height: 30px; animation-duration: 11s; }
+        .bubble:nth-child(6) { left: 60%; width: 40px; height: 40px; animation-duration: 13s; }
+        .bubble:nth-child(7) { left: 70%; width: 20px; height: 20px; animation-duration: 8s; }
+        .bubble:nth-child(8) { left: 80%; width: 50px; height: 50px; animation-duration: 10s; }
+        .bubble:nth-child(9) { left: 90%; width: 15px; height: 15px; animation-duration: 12s; }
+        .bubble:nth-child(10) { left: 95%; width: 25px; height: 25px; animation-duration: 9s; }
     </style>
 </head>
 <body>
@@ -97,25 +116,18 @@
             <p>Revolutionizing the way you experience 3D on the web.</p>
             <a href="#testimonials" class="cta-button">Explore Our Products</a>
         </div>
+        <div class="bubbles">
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+        </div>
     </section>
-
-    <script>
-        document.querySelector('.hero-container').addEventListener('mousemove', function(e) {
-            const width = this.offsetWidth;
-            const height = this.offsetHeight;
-            const offsetX = 0.5 - e.clientX / width;
-            const offsetY = 0.5 - e.clientY / height;
-            const moveX = offsetX * 30;
-            const moveY = offsetY * 30;
-
-            this.style.setProperty('--mouse-x', moveX);
-            this.style.setProperty('--mouse-y', moveY);
-        });
-
-        document.querySelector('.hero-container').addEventListener('mouseleave', function() {
-            this.style.setProperty('--mouse-x', 0);
-            this.style.setProperty('--mouse-y', 0);
-        });
-    </script>
 </body>
 </html>
