@@ -671,23 +671,6 @@
         </div>
     </section>
 
-    <script>
-        document.addEventListener('mousemove', function (e) {
-            const line = document.createElement('div');
-            line.classList.add('line');
-            line.style.left = `${e.clientX}px`;
-            line.style.top = `${e.clientY}px`;
-
-            document.body.appendChild(line);
-
-            line.style.animation = 'lineBloom 0.7s ease-out forwards';
-
-            setTimeout(() => {
-                line.remove();
-            }, 700);
-        });
-    </script>
-
   <script>
         const slides = [
             {
@@ -755,6 +738,25 @@
         showSlides();
     }
 </script>
+
+    
+    <script>
+        document.addEventListener('mousemove', function (e) {
+            const line = document.createElement('div');
+            line.classList.add('line');
+            line.style.left = `${e.clientX}px`;
+            line.style.top = `${e.clientY}px`;
+
+            document.body.appendChild(line);
+
+            line.style.animation = 'lineBloom 0.7s ease-out forwards';
+
+            setTimeout(() => {
+                line.remove();
+            }, 700);
+        });
+    </script>
+
 
     
 </body>
