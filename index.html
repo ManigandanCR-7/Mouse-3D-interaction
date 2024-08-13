@@ -5,6 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Section</title>
     <style>
+
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: black;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .line {
+            position: absolute;
+            width: 5px;
+            height: 20px;
+            background: linear-gradient(45deg, rgba(0, 0, 255, 0.7), rgba(0, 255, 255, 0.7));
+            transform-origin: center;
+            pointer-events: none;
+            box-shadow: 0 0 15px rgba(0, 0, 255, 1), 0 0 25px rgba(0, 255, 255, 0.9);
+            border-radius: 50%;
+            opacity: 0.8;
+        }
+
+        @keyframes lineBloom {
+            0% {
+                width: 5px;
+                height: 20px;
+                transform: scale(1) rotate(0deg);
+                opacity: 0.8;
+            }
+            50% {
+                width: 10px;
+                height: 40px;
+                transform: scale(1.5) rotate(180deg);
+                opacity: 1;
+            }
+            100% {
+                width: 15px;
+                height: 60px;
+                transform: scale(2) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
         body {
             margin: 0;
             font-family: Arial, sans-serif;
@@ -625,6 +670,23 @@
             <a href="https://calendly.com/your-link" class="cta-button">Book a Free Schedule</a>
         </div>
     </section>
+
+    <script>
+        document.addEventListener('mousemove', function (e) {
+            const line = document.createElement('div');
+            line.classList.add('line');
+            line.style.left = `${e.clientX}px`;
+            line.style.top = `${e.clientY}px`;
+
+            document.body.appendChild(line);
+
+            line.style.animation = 'lineBloom 0.7s ease-out forwards';
+
+            setTimeout(() => {
+                line.remove();
+            }, 700);
+        });
+    </script>
 
   <script>
         const slides = [
