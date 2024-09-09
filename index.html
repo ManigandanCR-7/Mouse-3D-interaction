@@ -507,19 +507,21 @@
 
         /* Cookie Bar */
         .cookie-bar {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 90%;
-            max-width: 1000px;
-            padding: 20px;
-            background: rgba(255, 192, 203, 0.2); /* Transparent pink */
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            z-index: 1000;
-            backdrop-filter: blur(10px); /* Glass effect */
-        }
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 1000px;
+    padding: 40px 20px; /* Increased padding for more height */
+    background: rgba(255, 192, 203, 0.2); /* Transparent pink */
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    backdrop-filter: blur(10px); /* Glass effect */
+    min-height: 100px; /* Ensures minimum height for the bar */
+}
+
 
         .cookie-content {
             display: flex;
