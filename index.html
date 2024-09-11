@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fluid Blue Line Mouse Interaction</title>
+    <title>Rapid Fluid Mouse Interaction - Larger Effect</title>
     <style>
         body {
             margin: 0;
@@ -11,19 +11,16 @@
             overflow: hidden;
             background-color: black;
             height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
 
         .line {
             position: absolute;
-            width: 5px;
-            height: 20px;
+            width: 15px;
+            height: 50px;
             background: linear-gradient(45deg, rgba(0, 0, 255, 0.7), rgba(0, 255, 255, 0.7));
             transform-origin: center;
             pointer-events: none;
-            box-shadow: 0 0 15px rgba(0, 0, 255, 1), 0 0 25px rgba(0, 255, 255, 0.9);
+            box-shadow: 0 0 30px rgba(0, 0, 255, 0.8), 0 0 45px rgba(0, 255, 255, 0.7);
             border-radius: 50%;
             opacity: 0.8;
             will-change: transform, opacity;
@@ -31,21 +28,11 @@
 
         @keyframes lineBloom {
             0% {
-                width: 5px;
-                height: 20px;
                 transform: scale(1) rotate(0deg);
-                opacity: 0.8;
-            }
-            50% {
-                width: 10px;
-                height: 40px;
-                transform: scale(1.5) rotate(180deg);
-                opacity: 1;
+                opacity: 0.9;
             }
             100% {
-                width: 15px;
-                height: 60px;
-                transform: scale(2) rotate(360deg);
+                transform: scale(3) rotate(360deg);
                 opacity: 0;
             }
         }
@@ -53,30 +40,34 @@
 </head>
 <body>
     <script>
-        let lastTime = 0;
-        const throttleDelay = 20; // 20ms delay for smoother rendering
+        const pool = [];
+        const maxPoolSize = 50;
+        let poolIndex = 0;
 
-        function createLine(x, y) {
+        // Precreate larger lines and store in pool to reuse
+        for (let i = 0; i < maxPoolSize; i++) {
             const line = document.createElement('div');
             line.classList.add('line');
-            line.style.left = `${x}px`;
-            line.style.top = `${y}px`;
-
             document.body.appendChild(line);
-
-            line.style.animation = 'lineBloom 0.7s ease-out forwards';
-
-            setTimeout(() => {
-                line.remove();
-            }, 700); // Matches the animation duration
+            pool.push(line);
         }
 
-        document.addEventListener('mousemove', function (e) {
-            const currentTime = new Date().getTime();
-            if (currentTime - lastTime >= throttleDelay) {
-                lastTime = currentTime;
-                requestAnimationFrame(() => createLine(e.clientX, e.clientY));
-            }
+        // Function to display the line effect
+        function showLine(x, y) {
+            const line = pool[poolIndex];
+            poolIndex = (poolIndex + 1) % maxPoolSize; // Cycle through the pool
+
+            line.style.left = `${x}px`;
+            line.style.top = `${y}px`;
+            line.style.animation = 'none'; // Reset animation
+
+            // Force reflow to restart the animation
+            line.offsetHeight; 
+            line.style.animation = 'lineBloom 0.5s ease-out forwards'; // Slightly longer animation for bigger effect
+        }
+
+        document.addEventListener('mousemove', (e) => {
+            showLine(e.clientX, e.clientY);
         });
     </script>
 </body>
