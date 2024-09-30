@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smooth 3D Snake Cursor</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: black;
+        }
+
+        #cursor-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+
+        .ball {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 0, 255, 1) 0%, rgba(255, 255, 255, 0) 70%);
+            box-shadow: 0px 0px 10px rgba(255, 0, 255, 0.7);
+            opacity: 0;
+            transition: opacity 0.2s ease-out;
+        }
+
+        #ball1 {
+            width: 24px;
+            height: 24px;
+            box-shadow: 0px 0px 15px rgba(255, 0, 255, 0.9);
+        }
+    </style>
+</head>
+<body>
+    <div id="cursor-container">
+        <div class="ball" id="ball1"></div>
+        <div class="ball" id="ball2"></div>
+        <div class="ball" id="ball3"></div>
+        <div class="ball" id="ball4"></div>
+        <div class="ball" id="ball5"></div>
+    </div>
+
+    <script>
+        const balls = document.querySelectorAll('.ball');
+        const positions = Array.from({ length: balls.length }, () => ({ x: 0, y: 0 }));
+        let mouseX = 0, mouseY = 0;
+        let lastMouseMoveTime = 0;
+        let cursorVisible = false;
+
+        // Smooth movement using requestAnimationFrame
+        function animate() {
+            // Move the leading ball directly to the mouse position
+            positions[0].x += (mouseX - positions[0].x) * 0.15;
+            positions[0].y += (mouseY - positions[0].y) * 0.15;
+            balls[0].style.transform = `translate(${positions[0].x}px, ${positions[0].y}px) scale(1.2)`;
+
+            // Move the trailing balls with easing motion
+            for (let i = 1; i < balls.length; i++) {
+                positions[i].x += (positions[i - 1].x - positions[i].x) * 0.2; // Faster follow-up
+                positions[i].y += (positions[i - 1].y - positions[i].y) * 0.2;
+                balls[i].style.transform = `translate(${positions[i].x}px, ${positions[i].y}px) scale(1.1)`;
+            }
+
+            // Check for stopping and hiding cursor
+            if (Date.now() - lastMouseMoveTime > 500) {
+                hideCursor();
+            }
+
+            requestAnimationFrame(animate); // Keep the animation loop running smoothly
+        }
+
+        // Start the animation loop
+        animate();
+
+        // Mouse movement detection
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            lastMouseMoveTime = Date.now();
+
+            if (!cursorVisible) {
+                showCursor();
+            }
+        });
+
+        // Show the 3D cursor when the mouse moves
+        function showCursor() {
+            balls.forEach(ball => {
+                ball.style.opacity = '1'; // Fade-in effect
+            });
+            cursorVisible = true;
+        }
+
+        // Hide the cursor if there's no movement
+        function hideCursor() {
+            if (!cursorVisible) return;
+
+            balls.forEach((ball) => {
+                ball.style.opacity = '0'; // Smooth fade-out
+            });
+            cursorVisible = false;
+        }
+
+    </script>
+</body>
+</html>

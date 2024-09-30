@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Cursor Ripples Animation</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #000; /* Dark background for contrast */
+        }
+
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<canvas id="rippleCanvas"></canvas>
+
+<script>
+    const canvas = document.getElementById("rippleCanvas");
+    const ctx = canvas.getContext("2d");
+
+    let width, height;
+    let mouse = { x: 0, y: 0 };
+    let ripples = [];
+
+    // Set canvas to full window size
+    function resizeCanvas() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    // Mouse move event listener
+    canvas.addEventListener('mousemove', (e) => {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+
+        // Create ripples at the mouse position
+        ripples.push({ x: mouse.x, y: mouse.y, radius: 0 });
+    });
+
+    // Animation loop
+    function animate() {
+        ctx.clearRect(0, 0, width, height);
+
+        // Draw ripples
+        ripples.forEach((ripple, index) => {
+            ctx.beginPath();
+            ctx.arc(ripple.x, ripple.y, ripple.radius, 0, Math.PI * 2);
+            ctx.strokeStyle = `rgba(0, 191, 255, ${1 - (ripple.radius / 100)})`; // Fade out
+            ctx.lineWidth = 2;
+            ctx.stroke();
+
+            ripple.radius += 2; // Expand ripple radius
+
+            // Remove ripples once they are large enough
+            if (ripple.radius > 100) {
+                ripples.splice(index, 1);
+            }
+        });
+
+        requestAnimationFrame(animate);
+    }
+
+    animate();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transparent Watery Fluid Interaction</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #000; /* Dark background for contrast */
+        }
+
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<canvas id="fluidCanvas"></canvas>
+
+<script>
+    const canvas = document.getElementById("fluidCanvas");
+    const ctx = canvas.getContext("2d");
+
+    let width, height;
+    let mouse = { x: 0, y: 0 };
+
+    // Set canvas to full window size
+    function resizeCanvas() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    // Fluid particles array
+    const particles = [];
+
+    // Create a fluid particle object
+    function createParticle(x, y) {
+        return {
+            x: x,
+            y: y,
+            radius: Math.random() * 30 + 10, // Larger radius for more watery effect
+            speedX: (Math.random() - 0.5) * 4,
+            speedY: (Math.random() - 0.5) * 4,
+            alpha: 0.8, // Set alpha for transparency
+            color: `rgba(0, 191, 255, ${Math.random() * 0.8 + 0.2})` // Light blue with random transparency
+        };
+    }
+
+    // Generate particles in random positions
+    for (let i = 0; i < 150; i++) {
+        particles.push(createParticle(Math.random() * width, Math.random() * height));
+    }
+
+    // Mouse move event listener
+    canvas.addEventListener('mousemove', (e) => {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+
+        // Add new particles at the mouse position
+        particles.push(createParticle(mouse.x, mouse.y));
+    });
+
+    // Animation loop
+    function animate() {
+        ctx.clearRect(0, 0, width, height);
+
+        particles.forEach((particle, index) => {
+            particle.x += particle.speedX;
+            particle.y += particle.speedY;
+            particle.alpha -= 0.01; // Fade out effect
+
+            // Remove particles once alpha is less than 0
+            if (particle.alpha <= 0) {
+                particles.splice(index, 1);
+            }
+
+            // Draw the particle as a semi-transparent circle
+            ctx.beginPath();
+            ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+            ctx.fillStyle = particle.color; // Use the random color for transparency
+            ctx.fill();
+        });
+
+        requestAnimationFrame(animate);
+    }
+
+    animate();
+</script>
+
+</body>
+</html>

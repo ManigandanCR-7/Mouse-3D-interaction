@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CTA Button with Hidden Music Player</title>
+    <style>
+        body {
+            background-color: #000000; /* Dark background */
+            color: #fff; /* White text */
+            font-family: Arial, sans-serif;
+            display: flex; /* Flexbox layout */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            height: 100vh; /* Full viewport height */
+            margin: 0; /* Remove default margin */
+        }
+
+        .cta-button {
+            display: inline-block; /* Make the CTA button inline */
+            padding: 20px 40px; /* Button size */
+            background-color: #ff007f; /* Pink background */
+            color: #fff; /* White text */
+            font-size: 1.5em; /* Large font size */
+            font-weight: bold; /* Bold text */
+            text-transform: uppercase; /* Uppercase text */
+            text-decoration: none; /* Remove underline */
+            border-radius: 50px; /* Round button corners */
+            cursor: pointer; /* Pointer cursor */
+            position: relative; /* For animation */
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s; /* Button transition */
+            box-shadow: 0 0 10px rgba(255, 0, 127, 0.7); /* Glowing pink shadow */
+        }
+
+        .cta-button:hover {
+            background-color: #e6006b; /* Darker pink on hover */
+            transform: translateY(-5px); /* Lift effect */
+            box-shadow: 0 0 20px rgba(255, 0, 127, 0.9); /* Enhanced pink glow */
+        }
+
+        .cta-button:active {
+            transform: translateY(2px); /* Slight push effect on click */
+        }
+
+        /* Music icon animation */
+        .music-icon {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            margin-left: 10px;
+            background: url('https://via.placeholder.com/20') no-repeat center;
+            background-size: contain;
+            transition: transform 0.3s; /* Rotate effect for music icon */
+        }
+
+        .playing .music-icon {
+            animation: spin 2s linear infinite; /* Spin the icon when playing */
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Hidden audio player */
+        audio {
+            display: none; /* Hide the player */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CTA Button -->
+    <a class="cta-button" id="musicBtn">
+        Play Music
+        <div class="music-icon"></div>
+    </a>
+
+    <!-- Hidden Music Player -->
+    <audio id="musicPlayer" loop>
+        <source src="3d-c/Adele_Adele_-_Skyfall.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        // JavaScript to handle play/pause and button interaction
+        const musicBtn = document.getElementById('musicBtn');
+        const musicPlayer = document.getElementById('musicPlayer');
+
+        // Add event listener for the CTA button
+        musicBtn.addEventListener('click', function() {
+            if (musicPlayer.paused) {
+                musicPlayer.play(); // Play the music
+                musicBtn.classList.add('playing'); // Add 'playing' class for animation
+                musicBtn.textContent = 'Pause Music'; // Change button text
+            } else {
+                musicPlayer.pause(); // Pause the music
+                musicBtn.classList.remove('playing'); // Remove 'playing' class
+                musicBtn.textContent = 'Play Music'; // Change button text
+            }
+        });
+    </script>
+
+</body>
+</html>
