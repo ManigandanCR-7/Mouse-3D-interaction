@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Nilofer 3D SaaS | Landing Page</title>
     <style>
         /* Basic Styles */
@@ -66,6 +66,7 @@
             z-index: 1000;
             display: flex;
             justify-content: center;
+            flex-wrap: wrap; /* Ensures wrapping on small screens */
         }
 
          .navbar img.round-image {
@@ -113,11 +114,6 @@
             position: relative;
         }
 
-        .hero h1:hover {
-            transform: translateZ(20px);
-            text-shadow: 0 0 20px rgba(255, 0, 127, 0.5);
-        }
-
         .hero p {
             font-size: 1.5rem;
             color: #ddd;
@@ -134,7 +130,6 @@
             transition: all 0.3s ease;
         }
 
-        
         .cta-button:hover {
             background-color: #ff33a1;
             transform: translateZ(20px);
@@ -169,56 +164,111 @@
         audio {
             display: none; /* Hide the player */
         }
-        
-    .company-showcase {
-    position: relative;
-    width: 100vw;
-    height: 140px;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 20px; /* Moves it 20px lower */
-}
 
+        /* Company Showcase Section */
+        .company-showcase {
+            position: relative;
+            width: 100vw;
+            height: 140px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
 
-.showcase-slide {
-    position: relative;
-    width: 80vw;
-    height: 150px;
-    background:#0d0d0d; /* Transparent slide */
-    border-radius: 20px;
-    box-shadow: 0 10px 30px #0d0d0d; /* Subtle shadow for depth */
-    backdrop-filter: blur(10px); /* Optional: Glassmorphism effect */
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    padding: 20px;
-    animation: slideEffect 10s linear infinite; /* Sliding and downward effect */
-}
+        .showcase-slide {
+            position: relative;
+            width: 80vw;
+            height: 150px;
+            background:#0d0d0d; /* Transparent slide */
+            border-radius: 20px;
+            box-shadow: 0 10px 30px #0d0d0d; /* Subtle shadow for depth */
+            backdrop-filter: blur(10px); /* Optional: Glassmorphism effect */
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            padding: 20px;
+            animation: slideEffect 10s linear infinite; /* Sliding and downward effect */
+        }
 
-.moving-image {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    border-radius: 40%; /* Circular image */
-    transition: transform 0.5s ease-in-out;
-}
+        .moving-image {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 40%; /* Circular image */
+            transition: transform 0.5s ease-in-out;
+        }
 
-.moving-image:hover {
-    transform: scale(1.2); /* Zoom effect on hover */
-}
+        .moving-image:hover {
+            transform: scale(1.2); /* Zoom effect on hover */
+        }
 
-/* Sliding effect with slight downward motion */
-@keyframes slideEffect {
-    0% { transform: translateX(0) translateY(0); }
-    25% { transform: translateX(-100px) translateY(-10px); }
-    40% { transform: translateX(-200px) translateY(-20px); }
-    75% { transform: translateX(-100px) translateY(-10px); }
-    100% { transform: translateX(0) translateY(0); }
-}
+        /* Sliding effect with slight downward motion */
+        @keyframes slideEffect {
+            0% { transform: translateX(0) translateY(0); }
+            25% { transform: translateX(-100px) translateY(-10px); }
+            40% { transform: translateX(-200px) translateY(-20px); }
+            75% { transform: translateX(-100px) translateY(-10px); }
+            100% { transform: translateX(0) translateY(0); }
+        }
 
+        /* Responsive Media Queries */
+        @media screen and (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 10px;
+            }
 
+            .navbar a {
+                margin: 10px 0;
+                padding: 10px;
+                width: 100%; /* Full width on mobile */
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem; /* Smaller font for mobile */
+            }
+
+            .hero p {
+                font-size: 1.2rem; /* Adjust paragraph size */
+            }
+
+            .cta-button {
+                padding: 10px 30px;
+                font-size: 1rem;
+            }
+
+            .showcase-slide {
+                width: 90vw; /* Wider slide for mobile */
+                padding: 10px;
+            }
+
+            .moving-image {
+                width: 80px;
+                height: 80px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem; /* Even smaller font for very small screens */
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .cta-button {
+                padding: 8px 20px;
+                font-size: 0.9rem;
+            }
+
+            .showcase-slide {
+                width: 100vw; /* Full width slide for very small screens */
+            }
+        }
 /* Features Section */
 .features {
     background-color: #0d0d0d;
@@ -401,15 +451,15 @@
 
 /* Set GIF as background */
 .how-it-works-step:nth-child(1) {
-    background-image: url('landing page/how-it-works/fine-clue-youtuber.gif');
+    background-image: url('how-it-works/fine-clue-youtuber.gif');
 }
 
 .how-it-works-step:nth-child(2) {
-    background-image: url('landing page/how-it-works/signing-signature.gif');
+    background-image: url('how-it-works/signing-signature.gif');
 }
 
 .how-it-works-step:nth-child(3) {
-    background-image: url('landing page/how-it-works/plugged-in-and-ready-spiritual.gif');
+    background-image: url('how-it-works/plugged-in-and-ready-spiritual.gif');
 }
 
 /* Step Heading */
@@ -582,16 +632,16 @@
 
 
 .slide-1 {
-  background-image: url('landing page/3d-c/3d-1-.gif');
+  background-image: url('3d-c/3d-1-.gif');
 }
 .slide-2 {
-  background-image: url('landing page/3d-c/3c-2 - Made with Clipchamp.gif');
+  background-image: url('3d-c/3c-2 - Made with Clipchamp.gif');
 }
 .slide-3 {
-  background-image: url('landing page/3d-c/3c-3 - Made with Clipchamp.gif');
+  background-image: url('3d-c/3c-3 - Made with Clipchamp.gif');
 }
 .slide-4 {
-  background-image: url('landing page/3d-c/3c-4 - Made with Clipchamp.gif');
+  background-image: url('3d-c/3c-4 - Made with Clipchamp.gif');
 }
 
 @media (max-width: 768px) {
@@ -837,7 +887,7 @@
     </div>
 
     <div class="navbar">
-        <img src="landing page/nilofer-logo/gif1 (3).gif" alt="Company 2" class="round-image">
+        <img src="nilofer-logo/gif1 (3).gif" alt="Company 2" class="round-image">
         <a href="#home">Home</a>
         <a href="#features">Features</a>
         <a href="#how-it-works">How It Works</a>
@@ -848,7 +898,11 @@
     </div>
     
 
- 
+    <!-- Hidden Music Player -->
+    <audio id="musicPlayer" loop>
+        <source src="3d-c/Adele_Adele_-_Skyfall.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
 
     <section class="hero" id="home">
         <h1>3D Cursor with Micro-Saas </h1>
@@ -858,7 +912,7 @@
                with Co-partners  </p>
 
         <audio id="musicPlayer" loop>
-            <source src="landing page/3d-c/Adele_Adele_-_Skyfall.mp3" type="audio/mp3">
+            <source src="3d-c/Adele_Adele_-_Skyfall.mp3" type="audio/mp3">
             Your browser does not support the audio element.
         </audio>
         
@@ -867,10 +921,10 @@
             <div class="showcase-slide">
            
             
-                <img src="landing page/nilofer-logo/gif1.gif" alt="Company Logo" class="moving-image">
-                <img src="landing page/nilofer-logo/gif1 (3).gif" alt="Company Logo" class="moving-image">
-                <img src="landing page/nilofer-logo/gif1 (1).gif" alt="Company Logo" class="moving-image">
-                <img src="landing page/nilofer-logo/gif1 (4).gif" alt="Company Logo" class="moving-image">
+                <img src="nilofer-logo/gif1.gif" alt="Company Logo" class="moving-image">
+                <img src="nilofer-logo/gif1 (3).gif" alt="Company Logo" class="moving-image">
+                <img src="nilofer-logo/gif1 (1).gif" alt="Company Logo" class="moving-image">
+                <img src="nilofer-logo/gif1 (4).gif" alt="Company Logo" class="moving-image">
                
             </div>
         </div>
@@ -886,25 +940,25 @@
             could leave websites in 0.05 sec.</p>
             
         <div class="features-item">
-            <img src="landing page/features/jorbsparasocial-jorbs.gif" alt="Feature 1 GIF"> <!-- Replace with your GIF -->
+            <img src="features/jorbsparasocial-jorbs.gif" alt="Feature 1 GIF"> <!-- Replace with your GIF -->
             <h3>Dynamic-Cursor</h3>
             <p>3D-web-Interaction<br>
              with dynamic changing </p>
         </div>
         <div class="features-item">
-            <img src="landing page/features/easy-plus-foodie.gif" alt="Feature 2 GIF"> <!-- Replace with your GIF -->
+            <img src="features/easy-plus-foodie.gif" alt="Feature 2 GIF"> <!-- Replace with your GIF -->
             <h3>3D Custom-Crafted</h3>
             <p>easy Customized with <br>
                just using web request</p>
         </div>
         <div class="features-item">
-            <img src="landing page/features/usb-flash-drive.gif" alt="Feature 3 GIF"> <!-- Replace with your GIF -->
+            <img src="features/usb-flash-drive.gif" alt="Feature 3 GIF"> <!-- Replace with your GIF -->
             <h3>Easy-Integration</h3>
             <p>Web-Connect<br>
               using Integrate </p>
         </div>
         <div class="features-item">
-            <img src="landing page/features/mesmerizing-trippy.gif" alt="Feature 4 GIF"> <!-- Replace with your GIF -->
+            <img src="features/mesmerizing-trippy.gif" alt="Feature 4 GIF"> <!-- Replace with your GIF -->
             <h3>Mesmerizing-effect</h3>
             <p>stunning-on-web <br>
               with 3d effects 
@@ -947,25 +1001,25 @@
 <div class="showcase-container" id="showcase-container">
     <div class="slide slide-1">
       <div class="online-status">Online</div>
-      <a href="landing page/fluid.html" target="_blank" class="slide-cta-button">View Now</a>
+      <a href="fluid.html" target="_blank" class="slide-cta-button">View Now</a>
     </div>
   
     <!-- Slide 2 -->
     <div class="slide slide-2">
       <div class="online-status">Online</div>
-      <a href="landing page/Cursor.html" target="_blank" class="slide-cta-button">View Now</a>
+      <a href="Cursor.html" target="_blank" class="slide-cta-button">View Now</a>
     </div>
   
     <!-- Slide 3 -->
     <div class="slide slide-3">
       <div class="online-status">Online</div>
-      <a href="landing page/feather.html" target="_blank" class="slide-cta-button">View Now</a>
+      <a href="bluerings.html" target="_blank" class="slide-cta-button">View Now</a>
     </div>
   
     <!-- Slide 4 -->
     <div class="slide slide-4">
       <div class="online-status">Online</div>
-      <a href="landing page/bluerings.html" target="_blank" class="slide-cta-button">View Now</a>
+      <a href="feather.html" target="_blank" class="slide-cta-button">View Now</a>
     </div>
   </div>
   
@@ -981,23 +1035,23 @@
             with 3D-Cursor "</p>
         <span class="rating">⭐⭐⭐⭐⭐</span>
         <span>- Ceo ( NEP)</span>
-        <img class="play-image" id="playImage1" src="landing page/nilofer-logo/gif1 (1).gif" alt="Play Music">
-        <audio id="audio1" src="landing page/3d-c/team were so innovat.m4a"></audio>
+        <img class="play-image" id="playImage1" src="nilofer-logo/gif1 (1).gif" alt="Play Music">
+        <audio id="audio1" src="3d-c/team were so innovat.m4a"></audio>
     </div>
     <div class="testimonial-item">
         <p>"Nilofer 3D SaaS Customer support <br> 
                were awesome "</p>
         <span class="rating">⭐⭐⭐⭐</span>
         <span>- Founder @ A.m clubs </span>
-        <img class="play-image" id="playImage2" src="landing page/nilofer-logo/gif1.gif" alt="Play Music">
-        <audio id="audio2" src="landing page/3d-c/Neelofer 3D SaaS Cus.m4a"></audio>
+        <img class="play-image" id="playImage2" src="nilofer-logo/gif1.gif" alt="Play Music">
+        <audio id="audio2" src="3d-c/Neelofer 3D SaaS Cus.m4a"></audio>
     </div>
     <div class="testimonial-item">
         <p>" Unique & well crafted 3D-Cursor, Recommended !"</p>
         <span class="rating">⭐⭐⭐⭐⭐</span>
         <span>- Nilofer's trainee</span>
-        <img class="play-image" id="playImage3" src="landing page/nilofer-logo/gif1 (3).gif" alt="Play Music">
-        <audio id="audio3" src="landing page/3d-c/Unique well crafted .m4a"></audio>
+        <img class="play-image" id="playImage3" src="nilofer-logo/gif1 (3).gif" alt="Play Music">
+        <audio id="audio3" src="3d-c/Unique well crafted .m4a"></audio>
     </div>
 </section>  
     
@@ -1054,7 +1108,7 @@
 
     <section class="pricing" id="pricing">
         <div class="pricing-plan">
-            <img src="landing page/3d-c/3c-3 - Made with Clipchamp.gif" alt="Deck Card Shape"> <!-- Placeholder image -->
+            <img src="3d-c/3c-3 - Made with Clipchamp.gif" alt="Deck Card Shape"> <!-- Placeholder image -->
             <h3>Pro Plan</h3>
             <h2> $ 399 / 30 days</h2>
             <p>Exclusive for <br>
@@ -1062,7 +1116,7 @@
             <a href="https://calendly.com/manigandan-3d-cursor-addict/30min" class="price-cta-button">book an meet</a>
         </div>
         <div class="pricing-plan">
-            <img src="landing page/3d-c/3c-4 - Made with Clipchamp.gif" alt="Deck Card Shape"> <!-- Placeholder image -->
+            <img src="3d-c/3c-4 - Made with Clipchamp.gif" alt="Deck Card Shape"> <!-- Placeholder image -->
             <h3>Premium Plan</h3>
             <h2> $ 499 / 30 days</h2>
             <p>Customized for <br> 
