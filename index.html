@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-68XH12PX3T"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-68XH12PX3T');
-</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Nilofer 3D SaaS | Landing Page</title>
@@ -735,9 +726,8 @@
             transform: translateZ(10px) scale(1.05);
             box-shadow: 0 0 25px rgba(255, 0, 127, 0.5);
         }
-
         .container {
-            display: flex; /* Use flexbox for layout */
+            display: flex; /* Flexbox layout */
             justify-content: flex-start; /* Align items to the left */
             width: 100%; /* Full width */
             margin-top: 80px; /* Space below the fixed header */
@@ -750,17 +740,45 @@
         }
 
         .qa-item {
-            background-color: #1a1a1a; /* Q&A item background */
+            background-color: #000; /* Black background for the slide */
             border-radius: 10px; /* Rounded corners */
             margin-bottom: 20px; /* Spacing between items */
             overflow: hidden; /* Hide overflow */
-            transition: transform 0.3s; /* Animation on hover */
+            transition: transform 0.3s, box-shadow 0.3s; /* Hover animation with box shadow */
             cursor: pointer; /* Pointer cursor */
+            position: relative; /* For corner lighting effect */
+        }
+
+        .qa-item::before, .qa-item::after {
+            content: ''; /* Create the corner lighting effect */
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background: linear-gradient(45deg, rgba(255,255,255,0.8), transparent); /* White light gradient */
+            transition: 0.3s ease-in-out; /* Smooth transition */
+        }
+
+        .qa-item::before {
+            top: -10px; /* Top-left corner */
+            left: -10px;
+            border-radius: 50%; /* Circular glow */
+        }
+
+        .qa-item::after {
+            bottom: -10px; /* Bottom-right corner */
+            right: -10px;
+            border-radius: 50%; /* Circular glow */
+        }
+
+        .qa-item:hover {
+            transform: translateY(-5px); /* Slight lift effect */
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5); /* White corner glow effect */
         }
 
         .question {
             padding: 15px; /* Question padding */
             font-size: 1.2em; /* Question font size */
+            color: #fff; /* White text color */
             position: relative; /* Positioning for hover effect */
         }
 
@@ -768,6 +786,7 @@
             display: none; /* Hide answer initially */
             padding: 15px; /* Answer padding */
             background-color: #222; /* Darker background for answers */
+            color: #ccc; /* Lighter font color for answers */
             font-size: 1em; /* Answer font size */
         }
 
@@ -775,82 +794,100 @@
             display: block; /* Show the first answer by default */
         }
 
-        .qa-item:hover {
-            transform: translateY(-5px); /* Lift effect on hover */
-            box-shadow: 0 0 15px rgba(255, 0, 127, 0.5); /* Pink glow effect */
-        }
-
         .pricing {
-            background-color: #000000; /* Same background as Q&A */
-            padding: 60px; /* Pricing section padding */
+            background-color: #000; /* Black background for pricing */
+            padding: 60px; /* Section padding */
             border-radius: 10px; /* Rounded corners */
-            width: auto; /* Auto width for horizontal layout */
-            display: flex; /* Flexbox for horizontal layout */
+            width: auto; /* Auto width */
+            display: flex; /* Flexbox for layout */
             flex-direction: row; /* Horizontal stacking */
             align-items: center; /* Center items */
-            overflow-x: auto; /* Horizontal scrolling */
-            gap: 40px; /* Increase space between pricing plans */
+            overflow-x: auto; /* Enable horizontal scrolling */
+            gap: 40px; /* Space between pricing plans */
             margin-top: 40px; /* Add space between Q&A and pricing */
         }
 
         .pricing h2 {
             color: #ff007f; /* Pink heading color */
-            margin-bottom: 20px; /* Space below header */
+            margin-bottom: 20px; /* Space below the header */
         }
 
         .pricing-plan {
-            background-color: #222; /* Background for pricing plans */
+            background-color: #151515; /* Dark background for pricing plan */
             border-radius: 30px; /* Rounded corners */
-            padding: 30px; /* Increased padding for better spacing */
-            transition: transform 0.3s, box-shadow 0.3s; /* Animation on hover */
+            padding: 30px; /* Increased padding */
+            transition: transform 0.3s, box-shadow 0.3s; /* Hover animation */
             cursor: pointer; /* Pointer cursor */
-            width: 450px; /* Increased width */
-            height: 600px; /* Increased height */
+            width: 450px; /* Plan width */
+            height: 600px; /* Plan height */
             text-align: center; /* Center text */
             transform-style: preserve-3d; /* Enable 3D effects */
-            perspective: 1000px; /* Set perspective */
+            perspective: 1000px; /* Perspective for 3D */
+            position: relative; /* For corner lighting effect */
+        }
+
+        .pricing-plan::before, .pricing-plan::after {
+            content: ''; /* Create corner light effect */
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background: linear-gradient(45deg, rgba(255,255,255,0.8), transparent); /* White light gradient */
+            transition: 0.3s ease-in-out; /* Smooth transition */
+        }
+
+        .pricing-plan::before {
+            top: -10px; /* Top-left corner */
+            left: -10px;
+            border-radius: 50%; /* Circular glow */
+        }
+
+        .pricing-plan::after {
+            bottom: -10px; /* Bottom-right corner */
+            right: -10px;
+            border-radius: 50%; /* Circular glow */
+        }
+
+        .pricing-plan:hover {
+            transform: rotateY(10deg); /* 3D rotate effect */
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5); /* Enhanced corner lighting */
         }
 
         .pricing-plan img {
             width: 150px; /* Image size */
-            height: 150px;
-            border-radius: 30px;  /* Keep image aspect ratio */
-            margin: 40px auto; /* Center image with margin */
-        }
-
-        .pricing-plan:hover {
-            transform: rotateY(10deg); /* Slightly rotate on hover for 3D effect */
-            box-shadow: 0 0 20px rgba(255, 0, 127, 0.7); /* Enhanced pink glow effect */
+            height: 150px; /* Image height */
+            border-radius: 30px; /* Rounded image corners */
+            margin: 40px auto; /* Center image */
         }
 
         .pricing-plan h3 {
-            font-size: 1.8em; /* Increased heading size */
+            font-size: 1.8em; /* Large heading size */
             color: #ff007f; /* Pink heading */
             margin-bottom: 20px; /* Space below the title */
         }
 
         .pricing-plan p {
-            font-size: 1.3em; /* Larger text for better readability */
+            font-size: 1.3em; /* Larger font size */
             margin: 10px 0; /* Space between paragraphs */
+            color: #fff; /* White text */
         }
 
         .price-cta-button {
-            display: inline-block; /* Make link behave like a button */
-            padding: 15px 30px; /* Increased button size */
-            margin-top: 20px; /* Space above button */
-            background-color: #ff007f; /* Pink button background */
+            display: inline-block; /* Button behavior */
+            padding: 15px 30px; /* Button padding */
+            margin-top: 20px; /* Space above the button */
+            background-color: #ff007f; /* Pink button */
             color: #fff; /* White text */
-            text-decoration: none; /* Remove underline */
-            border-radius: 15px; /* Rounded corners */
-            font-size: 1.2em; /* Larger font size for the button */
-            transition: background-color 0.3s, box-shadow 0.3s; /* Button transition */
+            text-decoration: none; /* No underline */
+            border-radius: 15px; /* Rounded button corners */
+            font-size: 1.2em; /* Larger font size */
+            transition: background-color 0.3s, box-shadow 0.3s; /* Button hover animation */
         }
 
         .price-cta-button:hover {
             background-color: #e6006b; /* Darker pink on hover */
-            box-shadow: 0 0 10px rgba(255, 0, 127, 0.7); /* Button glow effect */
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.7); /* White glow effect on hover */
         }
-    
+
         /* Call to Action Section */
         .cta-section {
             background-color: #000000;
@@ -914,9 +951,9 @@
     </audio>
 
     <section class="hero" id="home">
-        <h1>3D Cursor with Micro-Saas </h1>
-        <p>website 3D Cursor subscription for everyone , Pause or cancel anytime </p>
-        <a href="#showcase" id="musicBtn" class="cta-button">Get exposure </a>
+        <h1>Make an Subscription With No tension</h1>
+        <p>We'll help your Client's Website Genrate 5X Retention </p>
+        <a href="#showcase" id="musicBtn" class="cta-button">Experience now </a>
         <p><br>
                with Co-partners  </p>
 
@@ -943,7 +980,7 @@
 
     <section class="features" id="features">
         <h2 style="text-align: center;">
-            Our 3D-Cursor make client's stunned <br>
+            Our Retention solution make client's Website Super stunned <br>
         </h2>
         <p style="text-align: center;">Where in a common approach, people <br>
             could leave websites in 0.05 sec.</p>
@@ -965,15 +1002,6 @@
             <h3>Easy-Integration</h3>
             <p>Web-Connect<br>
               using Integrate </p>
-        </div>
-        <div class="features-item">
-            <img src="landing page/features/mesmerizing-trippy.gif" alt="Feature 4 GIF"> <!-- Replace with your GIF -->
-            <h3>Mesmerizing-effect</h3>
-            <p>stunning-on-web <br>
-              with 3d effects 
-            </p>
-            <a href="#testimonials" class="cta-button"> client's feedback </a>
-            
         </div>
     </section>
 
@@ -1024,6 +1052,7 @@
       <div class="online-status">Online</div>
       <a href="landing page/feather.html" target="_blank" class="slide-cta-button">View Now</a>
     </div>
+  
     <!-- Slide 4 -->
     <div class="slide slide-4">
       <div class="online-status">Online</div>
@@ -1035,31 +1064,32 @@
     <h2>Client's Reviews</h2> 
   </div>
   <p style="text-align: center;">
-( click companies icon's for voice reviews ) </p>
+
 
 <section class="testimonials" id="testimonials">
     <div class="testimonial-item">
-        <p>" team were so innovative 
-            with 3D-Cursor "</p>
+        <p>" team makes 5X retention 
+            assured with on track "</p>
         <span class="rating">⭐⭐⭐⭐⭐</span>
         <span>- Ceo ( NEP)</span>
         <img class="play-image" id="playImage1" src="landing page/nilofer-logo/gif1 (1).gif" alt="Play Music">
-        <audio id="audio1" src="landing page/3d-c/team were so innovat.m4a"></audio>
+        
     </div>
     <div class="testimonial-item">
-        <p>"Nilofer 3D SaaS Customer support <br> 
-               were awesome "</p>
+        <p>"beleive it not , the Retention <br> 
+            analytics were amazing "</p>
         <span class="rating">⭐⭐⭐⭐</span>
         <span>- Founder @ A.m clubs </span>
         <img class="play-image" id="playImage2" src="landing page/nilofer-logo/gif1.gif" alt="Play Music">
-        <audio id="audio2" src="landing page/3d-c/Neelofer 3D SaaS Cus.m4a"></audio>
+        
     </div>
     <div class="testimonial-item">
-        <p>" Unique & well crafted 3D-Cursor, Recommended !"</p>
+        <p>" Unique & Customer <br>
+          Satisfied Recommended !"</p>
         <span class="rating">⭐⭐⭐⭐⭐</span>
         <span>- Nilofer's trainee</span>
         <img class="play-image" id="playImage3" src="landing page/nilofer-logo/gif1 (3).gif" alt="Play Music">
-        <audio id="audio3" src="landing page/3d-c/Unique well crafted .m4a"></audio>
+        
     </div>
 </section>  
     
@@ -1138,9 +1168,9 @@
 
 
     <section class="cta-section" id="cta-section">
-        <h2>Ready to Elevate Your Experience?</h2>
-        <h3>3 days - free trail</h3>
-        <a href="https://calendly.com/manigandan-3d-cursor-addict/30min" class="price-cta-button">Book now </a>
+        <h2>Ready for Client's Website Retainers , Experience it ?</h2>
+        <h3>3 days - free trail </h3>
+        <a href="https://calendly.com/manigandan-3d-cursor-addict/30min" class="price-cta-button"> get it </a>
     </section>
 
     <footer class="footer">
