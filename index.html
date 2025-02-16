@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+    <link rel="manifest" href="/manifest.json">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="manifest" href="manifest.json">
@@ -919,13 +920,54 @@
             margin: 0 10px;
         }
 
+        .overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.overlay-content {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.overlay button {
+  background-color: #ff00ff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.overlay button:hover {
+  background-color: #d600d6;
+}
+
+
     </style>
     
 </head>
 
 <body>
 
-  
+  <div id="installOverlay" class="overlay">
+  <div class="overlay-content">
+    <p>Install our app for a better experience!</p>
+    <button id="acceptInstall">Accept</button>
+  </div>
+</div>
+
    
 
     <div id="cursor-container">
@@ -1187,8 +1229,39 @@
         <a href="#privacy">Privacy Policy</a> | <a href="#terms">Terms of Service</a>
     </footer>
 
-    
 
+    
+<script>
+    if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("/service-worker.js")
+    .then(() => console.log("Service Worker Registered"));
+}
+</script>
+
+<script>
+        let deferredPrompt;
+
+window.addEventListener("beforeinstallprompt", (event) => {
+  event.preventDefault();
+  deferredPrompt = event;
+  
+  // Show the overlay
+  document.getElementById("installOverlay").style.display = "flex";
+});
+
+document.getElementById("acceptInstall").addEventListener("click", () => {
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+    
+    // Hide the overlay after user interacts
+    document.getElementById("installOverlay").style.display = "none";
+    
+    // Optionally, clear deferredPrompt to avoid duplicate prompts
+    deferredPrompt = null;
+  }
+});
+
+</script>
 
     
     
