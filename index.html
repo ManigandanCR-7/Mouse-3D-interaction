@@ -1347,29 +1347,31 @@
 
     <script>
   let deferredPrompt;
-  const installButton = document.getElementById('accept-btn');
 
-  window.addEventListener('beforeinstallprompt', (event) => {
-    // Prevent the default prompt
-    event.preventDefault();
-    deferredPrompt = event;
+window.addEventListener("beforeinstallprompt", (event) => {
+  event.preventDefault(); // Prevent automatic showing
+  deferredPrompt = event; // Store the event for later use
 
-    // Show your custom install button
-    installButton.style.display = 'block';
+  // Show your custom "Install" button
+  const installButton = document.getElementById("install-btn");
+  installButton.style.display = "block";
 
-    // When the button is clicked, show the prompt
-    installButton.addEventListener('click', () => {
-      deferredPrompt.prompt();
+  installButton.addEventListener("click", () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt(); // Show the install banner
+
       deferredPrompt.userChoice.then((choiceResult) => {
-        if (choiceResult.outcome === 'accepted') {
-          console.log('User accepted the A2HS prompt');
+        if (choiceResult.outcome === "accepted") {
+          console.log("User accepted the install prompt");
         } else {
-          console.log('User dismissed the A2HS prompt');
+          console.log("User dismissed the install prompt");
         }
-        deferredPrompt = null;
+        deferredPrompt = null; // Reset after use
       });
-    });
+    }
   });
+});
+
 </script>
 
     
