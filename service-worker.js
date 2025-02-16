@@ -4,6 +4,12 @@ self.addEventListener("install", (event) => {
       return cache.addAll([
         "/",
         "index.html",
+        "landing page/Cursor.html"
+        "landing page/bluerings.html"
+        "landing page/feather.html"
+        "landing page/fluid.html"
+        "landing page/review.html"
+        
         "Group 5.png",
         "Group 6.png"
       ]);
