@@ -9,7 +9,6 @@ self.addEventListener("install", (event) => {
         "landing page/feather.html"
         "landing page/fluid.html"
         "landing page/review.html"
-        
         "Group 5.png",
         "Group 6.png"
       ]);
