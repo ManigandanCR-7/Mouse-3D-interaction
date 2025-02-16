@@ -919,6 +919,41 @@
             color: #ff007f;
             margin: 0 10px;
         }
+
+        .on-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.on-layer-content {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.on-layer button {
+  background-color: #ff00ff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.on-layer button:hover {
+  background-color: #d600d6;
+}
+
     </style>
 </head>
 
@@ -933,6 +968,14 @@
         <div class="ball" id="ball6"></div>
         <div class="ball" id="ball7"></div>
     </div>
+
+    <div id="installOnLayer" class="on-layer">
+  <div class="on-layer-content">
+    <p>Install our app for a better experience!</p>
+    <button id="acceptInstall">Accept</button>
+  </div>
+</div>
+
 
     <div class="navbar">
         <img src="landing page/nilofer-logo/gif1 (3).gif" alt="Company 2" class="round-image">
@@ -1180,6 +1223,38 @@
         <a href="#privacy">Privacy Policy</a> | <a href="#terms">Terms of Service</a>
     </footer>
 
+    <script>
+    let deferredPrompt;
+
+window.addEventListener("beforeinstallprompt", (event) => {
+  event.preventDefault();
+  deferredPrompt = event;
+  
+  // Show the on-layer
+  document.getElementById("installOnLayer").style.display = "flex";
+});
+
+document.getElementById("acceptInstall").addEventListener("click", () => {
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+    
+    // Hide the on-layer after user interaction
+    document.getElementById("installOnLayer").style.display = "none";
+    
+    // Optionally, clear deferredPrompt to avoid duplicate prompts
+    deferredPrompt = null;
+  }
+});
+    </script>
+
+    
+    <script> 
+        if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("/service-worker.js")
+    .then(() => console.log("Service Worker Registered"));
+} </script>
+
+    
     <script>
         const balls = document.querySelectorAll('.ball');
         const positions = Array.from({ length: balls.length }, () => ({ x: 0, y: 0 }));
